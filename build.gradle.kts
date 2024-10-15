@@ -22,17 +22,26 @@ val curse_id: String? by project
 repositories {
     maven("https://teamvoided.org/releases")
     maven("https://maven.terraformersmc.com/") { name = "Terraformers" }
+
+    maven("https://repo.greenhouse.house/releases/") { name = "Greenhouse Maven" }
+    maven("https://mvn.devos.one/releases/") // Porting Lib
+    maven("https://maven.jamieswhiteshirt.com/libs-release") {
+        content { includeGroup("com.jamieswhiteshirt") }
+    }
+    maven("https://repo.greenhouse.house/snapshots/")
+    maven("https://jitpack.io/")
+
     mavenCentral()
 }
 
 println("Task: " + gradle.startParameter.taskNames.joinToString(","))
 
 modSettings {
-    entrypoint("main", "org.teamvoided.template.Template::init")
-    entrypoint("client", "org.teamvoided.template.TemplateClient::init")
-    entrypoint("fabric-datagen", "org.teamvoided.template.data.gen.TemplateData")
+    entrypoint("main", "org.teamvoided.voided_delight.VoidedDelight::init")
+    entrypoint("client", "org.teamvoided.voided_delight.VoidedDelightClient::init")
+    entrypoint("fabric-datagen", "org.teamvoided.voided_delight.data.gen.VoidedDelightData")
 
-    mixinFile("${modId()}.client.mixins.json")
+//    mixinFile("${modId()}.client.mixins.json")
 //    mixinFile("${modId()}.mixins.json")
 //    accessWidener("${modId()}.accesswidener")
 }
@@ -43,6 +52,8 @@ dependencies {
 
     modCompileOnly("${libs.emi.get()}:api")
     modLocalRuntime(libs.emi)
+
+    modImplementation(libs.farmers.felight)
 }
 
 loom {

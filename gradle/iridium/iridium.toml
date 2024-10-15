@@ -1,8 +1,8 @@
-projectTitle = "Team Voided Template"
-modId = "template"
-githubRepo = "Teamvoided/TeamVoidedTemplateMod"
+projectTitle = "Voided Delight"
+modId = "voided_delight"
+githubRepo = "Teamvoided/VoidedDelight"
 discordServerInviteId = "KZ5Q364hEg"
-authors = [ "WiredTomato", "TheEnderCore" ]
+authors = [ "TheEnderCore" ]
 majorMinecraftVersion = "1.21"
 minecraftVersion = "1.21.1"
 fabricLoaderVersion = "0.16.5"
