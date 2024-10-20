@@ -7,11 +7,17 @@ iridium = "3.3.2"
 modmenu = "11.0.2"
 emi = "1.1.16+1.21.1"
 farmers-felight = "1.21-2.1.9+refabricated"
+dusks-and-dungeons = "1.0.0-alpha.3-b1-SNAPSHOT"
+appleskin = "mc1.21-3.0.5"
+
 [libraries]
 #farrow = { module = "net.wiredtomato:farrow", version.ref = "farrow" }
 modmenu = { module = "com.terraformersmc:modmenu", version.ref = "modmenu" }
 emi = { module = "dev.emi:emi-fabric", version.ref = "emi" }
 farmers-felight = { module = "vectorwing:FarmersDelight", version.ref = "farmers-felight" }
+
+dusks-and-dungeons = { module = "org.teamvoided:dusk_autumn", version.ref = "dusks-and-dungeons" }
+appleskin = { module = "squeek.appleskin:appleskin-fabric", version.ref = "appleskin" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

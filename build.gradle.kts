@@ -21,7 +21,10 @@ val curse_id: String? by project
 
 repositories {
     maven("https://teamvoided.org/releases")
+    maven("https://teamvoided.org/snapshots")
+    maven("https://maven.ryanliptak.com/")
     maven("https://maven.terraformersmc.com/") { name = "Terraformers" }
+    maven("https://maven.shedaniel.me/")
 
     maven("https://repo.greenhouse.house/releases/") { name = "Greenhouse Maven" }
     maven("https://mvn.devos.one/releases/") // Porting Lib
@@ -54,6 +57,9 @@ dependencies {
     modLocalRuntime(libs.emi)
 
     modImplementation(libs.farmers.felight)
+    modImplementation(libs.dusks.and.dungeons)
+
+//    modImplementation(libs.appleskin)
 }
 
 loom {
