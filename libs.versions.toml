@@ -7,7 +7,7 @@ iridium = "3.3.2"
 modmenu = "11.0.2"
 emi = "1.1.16+1.21.1"
 farmers-felight = "1.21-2.1.9+refabricated"
-dusks-and-dungeons = "1.0.0-alpha.3-b1-SNAPSHOT"
+dusks-and-dungeons = "1.0.0-alpha.4-SNAPSHOT"
 appleskin = "mc1.21-3.0.5"
 
 [libraries]

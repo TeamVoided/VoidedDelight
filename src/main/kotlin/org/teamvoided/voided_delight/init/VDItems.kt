@@ -8,17 +8,23 @@ import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.RegistryKeys
 import org.teamvoided.voided_delight.VoidedDelight.id
 import org.teamvoided.voided_delight.item.VDFoodComponents
+import vectorwing.farmersdelight.common.FoodValues
+import vectorwing.farmersdelight.common.item.ConsumableItem
+import vectorwing.farmersdelight.common.registry.ModItems.bowlFoodItem
 
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 object VDItems {
     val ITEMS = mutableListOf<Item>()
-    val EVIL_ITEMS = mutableSetOf<Item>()
+    val SECRET_ITEMS = mutableSetOf<Item>()
+
+    val STUFFED_LANTERN_PUMPKIN =
+        register("stuffed_lantern_pumpkin", ConsumableItem(bowlFoodItem(FoodValues.STUFFED_PUMPKIN), true))
 
     val CANDY_BERRY = register("candy_berry", Item(Item.Settings().food(VDFoodComponents.CANDY_BERRY)))
     val MARSHMARROW = register("marshmarrow", Item(Item.Settings().food(VDFoodComponents.MARSHMAROW)))
     val LOLLIPOP = register("lollipop", Item(Item.Settings().food(VDFoodComponents.LOLLIPOP)))
-    val CANDY_CARROT = register("candy_carrot", Item(Item.Settings().food(VDFoodComponents.CANDY_CARROT)))
+    val CANDY_CORN = register("candy_corn", Item(Item.Settings().food(VDFoodComponents.CANDY_CORN)))
     val CLOUDY_CANDY = register("cloudy_candy", Item(Item.Settings().food(VDFoodComponents.CLOUDY_CANDY)))
     val SYRUP_APPLE = register("syrup_apple", Item(Item.Settings().food(VDFoodComponents.SYRUP_APPLE)))
     val CRYSTAL_CANDY_SHARD =

@@ -13,6 +13,7 @@ import org.teamvoided.dusk_autumn.util.offerReversibleCompactingRecipes4
 import org.teamvoided.dusk_autumn.util.smeltDefault
 import org.teamvoided.voided_delight.block.VDFamilies.recipesBlockFamilies
 import org.teamvoided.voided_delight.init.VDBlocks
+import org.teamvoided.voided_delight.init.VDItems
 import java.util.concurrent.CompletableFuture
 
 class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) : FabricRecipeProvider(o, r) {
@@ -22,8 +23,8 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
 
         e.smeltDefault(VDBlocks.CRYSTAL_CANDY_BLOCK, DnDFloraBlocks.CORN_SYRUP_BLOCK)
         e.offerReversibleCompactingRecipes4(
-            RecipeCategory.MISC, DnDItems.ROCK_CANDY_SHARD,
-            RecipeCategory.BUILDING_BLOCKS, DnDStoneBlocks.ROCK_CANDY_BLOCK
+            RecipeCategory.MISC, VDItems.CRYSTAL_CANDY_SHARD,
+            RecipeCategory.BUILDING_BLOCKS, VDBlocks.CRYSTAL_CANDY_BLOCK
         )
 
 //        ShapedRecipeJsonFactory.create(RecipeCategory.MISC, DnDItems.FARMERS_HAT)

@@ -2,6 +2,7 @@ package org.teamvoided.voided_delight.init
 
 
 import net.minecraft.block.AbstractBlock
+import net.minecraft.block.AbstractBlock.Settings.copy
 import net.minecraft.block.Block
 import net.minecraft.block.Blocks
 import net.minecraft.block.MapColor
@@ -10,9 +11,12 @@ import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
+import org.teamvoided.dusk_autumn.init.blocks.DnDFloraBlocks
 import org.teamvoided.dusk_autumn.util.*
 import org.teamvoided.voided_delight.VoidedDelight.id
 import org.teamvoided.voided_delight.item.VDFoodComponents
+import vectorwing.farmersdelight.common.block.FeastBlock
+import vectorwing.farmersdelight.common.registry.ModItems
 
 
 @Suppress("LargeClass", "TooManyFunctions", "MemberVisibilityCanBePrivate", "unused")
@@ -30,7 +34,12 @@ object VDBlocks {
     val AXABLE = mutableSetOf<Block>()
     val SHOVELABLE = mutableSetOf<Block>()
     val HOEABLE = mutableSetOf<Block>()
-    val EVIL_BLOCKS = mutableSetOf<Block>()
+    val SECRET_BLOCKS = mutableSetOf<Block>()
+
+    val STUFFED_LANTERN_PUMPKIN = register(
+        "stuffed_lantern_pumpkin",
+        FeastBlock(copy(DnDFloraBlocks.LANTERN_PUMPKIN), ModItems.STUFFED_PUMPKIN, false)
+    )
 
     val CRYSTAL_CANDY_BLOCK = registerEdible(
         "crystal_candy_block",
