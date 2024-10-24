@@ -2,6 +2,7 @@ package org.teamvoided.voided_delight.init
 
 import net.minecraft.component.type.AttributeModifiersComponent
 import net.minecraft.item.FoodComponent
+import net.minecraft.item.FoodComponents
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
 import net.minecraft.registry.Registries
@@ -35,6 +36,11 @@ object VDItems {
     val PALE_PUMPKIN_SOUP = register("pale_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
     val GLOOM_PUMPKIN_SOUP = register("gloom_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
 
+    val LANTERN_PUMPKIN_PIE = register("lantern_pumpkin_pie", foodItem(FoodComponents.PUMPKIN_PIE))
+    val MOSSKIN_PUMPKIN_PIE = register("mosskin_pumpkin_pie", foodItem(FoodComponents.PUMPKIN_PIE))
+    val PALE_PUMPKIN_PIE = register("pale_pumpkin_pie", foodItem(FoodComponents.PUMPKIN_PIE))
+    val GLOOM_PUMPKIN_PIE = register("gloom_pumpkin_pie", foodItem(FoodComponents.PUMPKIN_PIE))
+
     val CANDY_BERRY = register("candy_berry", Item(Item.Settings().food(VDFoodComponents.CANDY_BERRY)))
     val MARSHMARROW = register("marshmarrow", Item(Item.Settings().food(VDFoodComponents.MARSHMAROW)))
     val LOLLIPOP = register("lollipop", Item(Item.Settings().food(VDFoodComponents.LOLLIPOP)))
@@ -64,4 +70,5 @@ object VDItems {
     fun CountSettings(count: Int): Item.Settings = Item.Settings().maxCount(count)
 
     fun bowlItem(food: FoodComponent) = ConsumableItem(bowlFoodItem(food), true)
+    fun foodItem(food: FoodComponent) = Item(Item.Settings().food(food))
 }

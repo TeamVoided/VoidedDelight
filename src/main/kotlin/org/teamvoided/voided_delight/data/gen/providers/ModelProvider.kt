@@ -46,6 +46,16 @@ class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
         VDBlocks.STUFFED_PALE_PUMPKIN.asItem(),
         VDBlocks.STUFFED_GLOOM_PUMPKIN.asItem(),
 
+        VDItems.LANTERN_PUMPKIN_SOUP,
+        VDItems.MOSSKIN_PUMPKIN_SOUP,
+        VDItems.PALE_PUMPKIN_SOUP,
+        VDItems.GLOOM_PUMPKIN_SOUP,
+
+        VDItems.LANTERN_PUMPKIN_PIE,
+        VDItems.MOSSKIN_PUMPKIN_PIE,
+        VDItems.PALE_PUMPKIN_PIE,
+        VDItems.GLOOM_PUMPKIN_PIE,
+
         VDItems.CANDY_BERRY,
         VDItems.MARSHMARROW,
         VDItems.CANDY_CORN,
