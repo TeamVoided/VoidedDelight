@@ -1,6 +1,6 @@
 package org.teamvoided.voided_delight
 
 @Suppress("unused")
-object VoidedDelightClient{
+object VoidedDelightClient {
     fun init() {}
 }

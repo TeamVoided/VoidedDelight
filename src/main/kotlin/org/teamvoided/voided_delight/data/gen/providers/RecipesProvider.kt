@@ -6,9 +6,7 @@ import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.feature_flags.FeatureFlags
 import net.minecraft.recipe.RecipeCategory
 import net.minecraft.registry.HolderLookup
-import org.teamvoided.dusk_autumn.init.DnDItems
 import org.teamvoided.dusk_autumn.init.blocks.DnDFloraBlocks
-import org.teamvoided.dusk_autumn.init.blocks.DnDStoneBlocks
 import org.teamvoided.dusk_autumn.util.offerReversibleCompactingRecipes4
 import org.teamvoided.dusk_autumn.util.smeltDefault
 import org.teamvoided.voided_delight.block.VDFamilies.recipesBlockFamilies

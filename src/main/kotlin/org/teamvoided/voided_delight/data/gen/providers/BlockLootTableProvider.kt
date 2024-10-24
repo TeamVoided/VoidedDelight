@@ -2,7 +2,9 @@ package org.teamvoided.voided_delight.data.gen.providers
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
-import net.minecraft.block.*
+import net.minecraft.block.Block
+import net.minecraft.block.DoorBlock
+import net.minecraft.block.SlabBlock
 import net.minecraft.registry.HolderLookup
 import org.teamvoided.voided_delight.init.VDBlocks
 import java.util.concurrent.CompletableFuture

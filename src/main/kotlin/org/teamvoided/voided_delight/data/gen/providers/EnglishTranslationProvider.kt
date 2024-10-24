@@ -7,7 +7,6 @@ import net.minecraft.item.Item
 import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
-import org.teamvoided.dusk_autumn.init.DnDTabs
 import org.teamvoided.voided_delight.init.VDItems
 import org.teamvoided.voided_delight.init.VDTabs
 import java.util.concurrent.CompletableFuture

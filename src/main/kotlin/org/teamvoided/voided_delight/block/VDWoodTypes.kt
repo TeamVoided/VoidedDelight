@@ -1,6 +1,5 @@
 package org.teamvoided.voided_delight.block
 
-import net.fabricmc.fabric.api.`object`.builder.v1.block.type.BlockSetTypeBuilder
 import net.fabricmc.fabric.api.`object`.builder.v1.block.type.WoodTypeBuilder
 import net.minecraft.block.BlockSetType
 import net.minecraft.block.WoodType
