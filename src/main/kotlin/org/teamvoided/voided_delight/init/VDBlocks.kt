@@ -37,6 +37,14 @@ object VDBlocks {
         stuffedPumpkinOf(copy(DnDFloraBlocks.PALE_PUMPKIN), VDItems.STUFFED_PALE_PUMPKIN)
     )
 
+    val LANTERN_PUMPKIN_PIE =
+        register("lantern_pumpkin_pie", pieOf(copy(Blocks.CAKE), VDItems.LANTERN_PUMPKIN_PIE_SLICE))
+    val MOSSKIN_PUMPKIN_PIE =
+        register("mosskin_pumpkin_pie", pieOf(copy(Blocks.CAKE), VDItems.MOSSKIN_PUMPKIN_PIE_SLICE))
+    val GLOOM_PUMPKIN_PIE = register("gloom_pumpkin_pie", pieOf(copy(Blocks.CAKE), VDItems.GLOOM_PUMPKIN_PIE_SLICE))
+    val PALE_PUMPKIN_PIE = register("pale_pumpkin_pie", pieOf(copy(Blocks.CAKE), VDItems.PALE_PUMPKIN_PIE_SLICE))
+
+
     val CRYSTAL_CANDY_BLOCK = registerEdible(
         "crystal_candy_block",
         VDFoodComponents.CRYSTAL_CANDY_8,

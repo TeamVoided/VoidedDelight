@@ -2,7 +2,6 @@ package org.teamvoided.voided_delight.init
 
 import net.minecraft.component.type.AttributeModifiersComponent
 import net.minecraft.item.FoodComponent
-import net.minecraft.item.FoodComponents
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
 import net.minecraft.registry.Registries
@@ -23,23 +22,23 @@ object VDItems {
 
     val LANTERN_PUMPKIN_SLICE = register("lantern_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
     val MOSSKIN_PUMPKIN_SLICE = register("mosskin_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
-    val PALE_PUMPKIN_SLICE = register("pale_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
     val GLOOM_PUMPKIN_SLICE = register("gloom_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
+    val PALE_PUMPKIN_SLICE = register("pale_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
 
     val STUFFED_LANTERN_PUMPKIN = register("stuffed_lantern_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
     val STUFFED_MOSSKIN_PUMPKIN = register("stuffed_mosskin_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
-    val STUFFED_PALE_PUMPKIN = register("stuffed_pale_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
     val STUFFED_GLOOM_PUMPKIN = register("stuffed_gloom_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
+    val STUFFED_PALE_PUMPKIN = register("stuffed_pale_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
 
     val LANTERN_PUMPKIN_SOUP = register("lantern_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
     val MOSSKIN_PUMPKIN_SOUP = register("mosskin_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
-    val PALE_PUMPKIN_SOUP = register("pale_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
     val GLOOM_PUMPKIN_SOUP = register("gloom_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
+    val PALE_PUMPKIN_SOUP = register("pale_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
 
-    val LANTERN_PUMPKIN_PIE = register("lantern_pumpkin_pie", foodItem(FoodComponents.PUMPKIN_PIE))
-    val MOSSKIN_PUMPKIN_PIE = register("mosskin_pumpkin_pie", foodItem(FoodComponents.PUMPKIN_PIE))
-    val PALE_PUMPKIN_PIE = register("pale_pumpkin_pie", foodItem(FoodComponents.PUMPKIN_PIE))
-    val GLOOM_PUMPKIN_PIE = register("gloom_pumpkin_pie", foodItem(FoodComponents.PUMPKIN_PIE))
+    val LANTERN_PUMPKIN_PIE_SLICE = register("lantern_pumpkin_pie_slice", foodItem(FoodValues.PIE_SLICE))
+    val MOSSKIN_PUMPKIN_PIE_SLICE = register("mosskin_pumpkin_pie_slice", foodItem(FoodValues.PIE_SLICE))
+    val GLOOM_PUMPKIN_PIE_SLICE = register("gloom_pumpkin_pie_slice", foodItem(FoodValues.PIE_SLICE))
+    val PALE_PUMPKIN_PIE_SLICE = register("pale_pumpkin_pie_slice", foodItem(FoodValues.PIE_SLICE))
 
     val CANDY_BERRY = register("candy_berry", Item(Item.Settings().food(VDFoodComponents.CANDY_BERRY)))
     val MARSHMARROW = register("marshmarrow", Item(Item.Settings().food(VDFoodComponents.MARSHMAROW)))

@@ -4,6 +4,7 @@ import net.minecraft.block.*
 import net.minecraft.block.AbstractBlock.Settings.copy
 import net.minecraft.item.Item
 import vectorwing.farmersdelight.common.block.FeastBlock
+import vectorwing.farmersdelight.common.block.PieBlock
 
 val CUTOUT_BLOCKS = mutableSetOf<Block>()
 
@@ -74,3 +75,5 @@ fun slabOf(block: Block): Block = SlabBlock(copy(block))
 fun wallOf(block: Block): Block = WallBlock(copy(block).solid())
 fun stuffedPumpkinOf(settings: AbstractBlock.Settings, item: Item) =
     FeastBlock(settings, { item }, false)
+
+fun pieOf(settings: AbstractBlock.Settings, item: Item) = PieBlock(settings) { item }
