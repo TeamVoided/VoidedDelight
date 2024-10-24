@@ -1,6 +1,7 @@
 package org.teamvoided.voided_delight.init
 
 import net.minecraft.component.type.AttributeModifiersComponent
+import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
 import net.minecraft.registry.Registries
@@ -24,15 +25,15 @@ object VDItems {
     val PALE_PUMPKIN_SLICE = register("pale_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
     val GLOOM_PUMPKIN_SLICE = register("gloom_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
 
-    val STUFFED_LANTERN_PUMPKIN =
-        register("stuffed_lantern_pumpkin", ConsumableItem(bowlFoodItem(FoodValues.STUFFED_PUMPKIN), true))
-    val STUFFED_MOSSKIN_PUMPKIN =
-        register("stuffed_mosskin_pumpkin", ConsumableItem(bowlFoodItem(FoodValues.STUFFED_PUMPKIN), true))
-    val STUFFED_PALE_PUMPKIN =
-        register("stuffed_pale_pumpkin", ConsumableItem(bowlFoodItem(FoodValues.STUFFED_PUMPKIN), true))
-    val STUFFED_GLOOM_PUMPKIN =
-        register("stuffed_gloom_pumpkin", ConsumableItem(bowlFoodItem(FoodValues.STUFFED_PUMPKIN), true))
+    val STUFFED_LANTERN_PUMPKIN = register("stuffed_lantern_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
+    val STUFFED_MOSSKIN_PUMPKIN = register("stuffed_mosskin_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
+    val STUFFED_PALE_PUMPKIN = register("stuffed_pale_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
+    val STUFFED_GLOOM_PUMPKIN = register("stuffed_gloom_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
 
+    val LANTERN_PUMPKIN_SOUP = register("lantern_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
+    val MOSSKIN_PUMPKIN_SOUP = register("mosskin_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
+    val PALE_PUMPKIN_SOUP = register("pale_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
+    val GLOOM_PUMPKIN_SOUP = register("gloom_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
 
     val CANDY_BERRY = register("candy_berry", Item(Item.Settings().food(VDFoodComponents.CANDY_BERRY)))
     val MARSHMARROW = register("marshmarrow", Item(Item.Settings().food(VDFoodComponents.MARSHMAROW)))
@@ -61,4 +62,6 @@ object VDItems {
 
     @Suppress("FunctionName")
     fun CountSettings(count: Int): Item.Settings = Item.Settings().maxCount(count)
+
+    fun bowlItem(food: FoodComponent) = ConsumableItem(bowlFoodItem(food), true)
 }
