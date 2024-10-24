@@ -1,7 +1,6 @@
 package org.teamvoided.voided_delight.init
 
 
-import net.minecraft.block.AbstractBlock
 import net.minecraft.block.AbstractBlock.Settings.copy
 import net.minecraft.block.Block
 import net.minecraft.block.Blocks
@@ -12,39 +11,36 @@ import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import org.teamvoided.dusk_autumn.init.blocks.DnDFloraBlocks
-import org.teamvoided.dusk_autumn.util.*
 import org.teamvoided.voided_delight.VoidedDelight.id
 import org.teamvoided.voided_delight.item.VDFoodComponents
-import vectorwing.farmersdelight.common.block.FeastBlock
-import vectorwing.farmersdelight.common.registry.ModItems
+import org.teamvoided.voided_delight.util.*
 
 
 @Suppress("LargeClass", "TooManyFunctions", "MemberVisibilityCanBePrivate", "unused")
 object VDBlocks {
     val BLOCKS = mutableSetOf<Block>()
-    val CUTOUT_BLOCKS = mutableSetOf<Block>()
-    val TRANSLUCENT_BLOCKS = mutableSetOf<Block>()
-    val GRASS_TINT_BLOCKS = mutableSetOf<Block>()
-    val FOLIAGE_TINT_BLOCKS = mutableSetOf<Block>()
-    val FLAMMABLE_PLANKS = mutableSetOf<Block>()
-    val FLAMMABLE_LOGS = mutableSetOf<Block>()
-    val FLAMMABLE_LEAVES = mutableSetOf<Block>()
-    val SWORDABLE = mutableSetOf<Block>()
-    val PICKAXABLE = mutableSetOf<Block>()
-    val AXABLE = mutableSetOf<Block>()
-    val SHOVELABLE = mutableSetOf<Block>()
-    val HOEABLE = mutableSetOf<Block>()
-    val SECRET_BLOCKS = mutableSetOf<Block>()
 
-    val STUFFED_LANTERN_PUMPKIN = register(
-        "stuffed_lantern_pumpkin",
-        FeastBlock(copy(DnDFloraBlocks.LANTERN_PUMPKIN), ModItems.STUFFED_PUMPKIN, false)
+    val STUFFED_LANTERN_PUMPKIN = registerMaxStack(
+        "stuffed_lantern_pumpkin_block",
+        stuffedPumpkinOf(copy(DnDFloraBlocks.LANTERN_PUMPKIN), VDItems.STUFFED_LANTERN_PUMPKIN)
+    )
+    val STUFFED_MOSSKIN_PUMPKIN = registerMaxStack(
+        "stuffed_mosskin_pumpkin_block",
+        stuffedPumpkinOf(copy(DnDFloraBlocks.MOSSKIN_PUMPKIN), VDItems.STUFFED_MOSSKIN_PUMPKIN)
+    )
+    val STUFFED_GLOOM_PUMPKIN = registerMaxStack(
+        "stuffed_gloom_pumpkin_block",
+        stuffedPumpkinOf(copy(DnDFloraBlocks.GLOOM_PUMPKIN), VDItems.STUFFED_GLOOM_PUMPKIN)
+    )
+    val STUFFED_PALE_PUMPKIN = registerMaxStack(
+        "stuffed_pale_pumpkin_block",
+        stuffedPumpkinOf(copy(DnDFloraBlocks.PALE_PUMPKIN), VDItems.STUFFED_PALE_PUMPKIN)
     )
 
     val CRYSTAL_CANDY_BLOCK = registerEdible(
         "crystal_candy_block",
         VDFoodComponents.CRYSTAL_CANDY_8,
-        Block(AbstractBlock.Settings.copy(Blocks.CALCITE).mapColor(MapColor.BLUE)).pickaxe()
+        Block(copy(Blocks.CALCITE).mapColor(MapColor.BLUE)).pickaxe()
     )
     val CRYSTAL_CANDY_STAIRS = registerEdible(
         "crystal_candy_stairs",
@@ -74,9 +70,16 @@ object VDBlocks {
         return regBlock
     }
 
-    fun registerEdible(id: String, foodComponent: FoodComponent, block: Block): Block {
+
+    fun registerMaxStack(id: String, block: Block, maxStack: Int = 1): Block =
+        registerCustom(id, Item.Settings().maxCount(maxStack), block)
+
+    fun registerEdible(id: String, foodComponent: FoodComponent, block: Block): Block =
+        registerCustom(id, Item.Settings().food(foodComponent), block)
+
+    fun registerCustom(id: String, settings: Item.Settings, block: Block): Block {
         val regBlock = registerNoItem(id, block)
-        VDItems.register(id, BlockItem(regBlock, Item.Settings().food(foodComponent)))
+        VDItems.register(id, BlockItem(regBlock, settings))
         return regBlock
     }
 

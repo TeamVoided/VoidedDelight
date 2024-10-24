@@ -7,6 +7,7 @@ import org.teamvoided.dusk_autumn.DusksAndDungeons
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
 import org.teamvoided.voided_delight.init.VDTabs
+import vectorwing.farmersdelight.FarmersDelight
 
 @Suppress("unused")
 object VoidedDelight {
@@ -26,4 +27,6 @@ object VoidedDelight {
     }
 
     fun id(path: String) = Identifier.of(MODID, path)
+    fun id(namespace: String, path: String) = Identifier.of(namespace, path)
+    fun fd(path: String) = Identifier.of(FarmersDelight.MODID, path)
 }
