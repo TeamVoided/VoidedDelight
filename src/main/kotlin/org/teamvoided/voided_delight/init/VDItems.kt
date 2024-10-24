@@ -1,7 +1,8 @@
 package org.teamvoided.voided_delight.init
 
 import net.minecraft.component.type.AttributeModifiersComponent
-import net.minecraft.item.*
+import net.minecraft.item.Item
+import net.minecraft.item.ItemGroup
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
@@ -18,8 +19,20 @@ object VDItems {
     val ITEMS = mutableListOf<Item>()
     val SECRET_ITEMS = mutableSetOf<Item>()
 
+    val LANTERN_PUMPKIN_SLICE = register("lantern_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
+    val MOSSKIN_PUMPKIN_SLICE = register("mosskin_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
+    val PALE_PUMPKIN_SLICE = register("pale_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
+    val GLOOM_PUMPKIN_SLICE = register("gloom_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
+
     val STUFFED_LANTERN_PUMPKIN =
         register("stuffed_lantern_pumpkin", ConsumableItem(bowlFoodItem(FoodValues.STUFFED_PUMPKIN), true))
+    val STUFFED_MOSSKIN_PUMPKIN =
+        register("stuffed_mosskin_pumpkin", ConsumableItem(bowlFoodItem(FoodValues.STUFFED_PUMPKIN), true))
+    val STUFFED_PALE_PUMPKIN =
+        register("stuffed_pale_pumpkin", ConsumableItem(bowlFoodItem(FoodValues.STUFFED_PUMPKIN), true))
+    val STUFFED_GLOOM_PUMPKIN =
+        register("stuffed_gloom_pumpkin", ConsumableItem(bowlFoodItem(FoodValues.STUFFED_PUMPKIN), true))
+
 
     val CANDY_BERRY = register("candy_berry", Item(Item.Settings().food(VDFoodComponents.CANDY_BERRY)))
     val MARSHMARROW = register("marshmarrow", Item(Item.Settings().food(VDFoodComponents.MARSHMAROW)))

@@ -17,12 +17,22 @@ class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
     }
 
     private val single = listOf(
+        VDItems.LANTERN_PUMPKIN_SLICE,
+        VDItems.MOSSKIN_PUMPKIN_SLICE,
+        VDItems.PALE_PUMPKIN_SLICE,
+        VDItems.GLOOM_PUMPKIN_SLICE,
+
+        VDItems.STUFFED_LANTERN_PUMPKIN,
+        VDItems.STUFFED_MOSSKIN_PUMPKIN,
+        VDItems.STUFFED_PALE_PUMPKIN,
+        VDItems.STUFFED_GLOOM_PUMPKIN,
+
         VDItems.CANDY_BERRY,
         VDItems.MARSHMARROW,
         VDItems.CANDY_CORN,
         VDItems.CLOUDY_CANDY,
         VDItems.SYRUP_APPLE,
-        VDItems.CRYSTAL_CANDY_SHARD
+        VDItems.CRYSTAL_CANDY_SHARD,
     )
 
     override fun generateItemModels(gen: ItemModelGenerator) {
