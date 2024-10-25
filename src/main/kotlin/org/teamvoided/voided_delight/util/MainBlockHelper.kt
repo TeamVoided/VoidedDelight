@@ -1,8 +1,10 @@
 package org.teamvoided.voided_delight.util
 
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
 import net.minecraft.block.*
 import net.minecraft.block.AbstractBlock.Settings.copy
 import net.minecraft.item.Item
+import net.minecraft.item.ItemConvertible
 import vectorwing.farmersdelight.common.block.FeastBlock
 import vectorwing.farmersdelight.common.block.PieBlock
 
@@ -13,6 +15,7 @@ val PICKAXE_MINEABLE = mutableSetOf<Block>()
 val AXE_MINEABLE = mutableSetOf<Block>()
 val SHOVEL_MINEABLE = mutableSetOf<Block>()
 val HOE_MINEABLE = mutableSetOf<Block>()
+val KNIFE_MINEABLE = mutableListOf<Block>()
 
 val NEEDS_STONE = mutableSetOf<Block>()
 val NEEDS_IRON = mutableSetOf<Block>()
@@ -50,6 +53,11 @@ fun Block.hoe(): Block {
     return this
 }
 
+fun Block.knife(): Block {
+    KNIFE_MINEABLE.add(this)
+    return this
+}
+
 fun Block.needsStone(): Block {
     NEEDS_STONE.add(this)
     return this
@@ -77,3 +85,12 @@ fun stuffedPumpkinOf(settings: AbstractBlock.Settings, item: Item) =
     FeastBlock(settings, { item }, false)
 
 fun pieOf(settings: AbstractBlock.Settings, item: Item) = PieBlock(settings) { item }
+
+fun <T> FabricTagProvider<T>.FabricTagBuilder.addAll(list: Iterable<T>): FabricTagProvider<T>.FabricTagBuilder {
+    list.forEach(this::add)
+    return this
+}
+
+fun FabricTagProvider<Item>.FabricTagBuilder.add(vararg items: ItemConvertible): FabricTagProvider<Item>.FabricTagBuilder {
+    return this.addAll(items.toList().map { it.asItem() })
+}

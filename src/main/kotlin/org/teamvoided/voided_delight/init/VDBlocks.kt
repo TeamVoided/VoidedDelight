@@ -23,47 +23,42 @@ object VDBlocks {
     val STUFFED_LANTERN_PUMPKIN = registerMaxStack(
         "stuffed_lantern_pumpkin_block",
         stuffedPumpkinOf(copy(DnDFloraBlocks.LANTERN_PUMPKIN), VDItems.STUFFED_LANTERN_PUMPKIN)
-    )
+    ).axe()
     val STUFFED_MOSSKIN_PUMPKIN = registerMaxStack(
         "stuffed_mosskin_pumpkin_block",
         stuffedPumpkinOf(copy(DnDFloraBlocks.MOSSKIN_PUMPKIN), VDItems.STUFFED_MOSSKIN_PUMPKIN)
-    )
+    ).axe()
     val STUFFED_GLOOM_PUMPKIN = registerMaxStack(
         "stuffed_gloom_pumpkin_block",
         stuffedPumpkinOf(copy(DnDFloraBlocks.GLOOM_PUMPKIN), VDItems.STUFFED_GLOOM_PUMPKIN)
-    )
+    ).axe()
     val STUFFED_PALE_PUMPKIN = registerMaxStack(
         "stuffed_pale_pumpkin_block",
         stuffedPumpkinOf(copy(DnDFloraBlocks.PALE_PUMPKIN), VDItems.STUFFED_PALE_PUMPKIN)
-    )
+    ).axe()
 
     val LANTERN_PUMPKIN_PIE =
-        register("lantern_pumpkin_pie", pieOf(copy(Blocks.CAKE), VDItems.LANTERN_PUMPKIN_PIE_SLICE))
+        register("lantern_pumpkin_pie", pieOf(copy(Blocks.CAKE), VDItems.LANTERN_PUMPKIN_PIE_SLICE)).knife()
     val MOSSKIN_PUMPKIN_PIE =
-        register("mosskin_pumpkin_pie", pieOf(copy(Blocks.CAKE), VDItems.MOSSKIN_PUMPKIN_PIE_SLICE))
-    val GLOOM_PUMPKIN_PIE = register("gloom_pumpkin_pie", pieOf(copy(Blocks.CAKE), VDItems.GLOOM_PUMPKIN_PIE_SLICE))
-    val PALE_PUMPKIN_PIE = register("pale_pumpkin_pie", pieOf(copy(Blocks.CAKE), VDItems.PALE_PUMPKIN_PIE_SLICE))
+        register("mosskin_pumpkin_pie", pieOf(copy(Blocks.CAKE), VDItems.MOSSKIN_PUMPKIN_PIE_SLICE)).knife()
+    val GLOOM_PUMPKIN_PIE =
+        register("gloom_pumpkin_pie", pieOf(copy(Blocks.CAKE), VDItems.GLOOM_PUMPKIN_PIE_SLICE)).knife()
+    val PALE_PUMPKIN_PIE =
+        register("pale_pumpkin_pie", pieOf(copy(Blocks.CAKE), VDItems.PALE_PUMPKIN_PIE_SLICE)).knife()
 
 
     val CRYSTAL_CANDY_BLOCK = registerEdible(
         "crystal_candy_block",
-        VDFoodComponents.CRYSTAL_CANDY_8,
-        Block(copy(Blocks.CALCITE).mapColor(MapColor.BLUE)).pickaxe()
+        VDFoodComponents.CRYSTAL_CANDY_8, Block(copy(Blocks.CALCITE).mapColor(MapColor.BLUE)).pickaxe()
     )
     val CRYSTAL_CANDY_STAIRS = registerEdible(
-        "crystal_candy_stairs",
-        VDFoodComponents.CRYSTAL_CANDY_6,
-        stairsOf(CRYSTAL_CANDY_BLOCK).pickaxe()
+        "crystal_candy_stairs", VDFoodComponents.CRYSTAL_CANDY_6, stairsOf(CRYSTAL_CANDY_BLOCK).pickaxe()
     )
     val CRYSTAL_CANDY_SLAB = registerEdible(
-        "crystal_candy_slab",
-        VDFoodComponents.CRYSTAL_CANDY_4,
-        slabOf(CRYSTAL_CANDY_BLOCK).pickaxe()
+        "crystal_candy_slab", VDFoodComponents.CRYSTAL_CANDY_4, slabOf(CRYSTAL_CANDY_BLOCK).pickaxe()
     )
     val CRYSTAL_CANDY_WALL = registerEdible(
-        "crystal_candy_wall",
-        VDFoodComponents.CRYSTAL_CANDY_6,
-        wallOf(CRYSTAL_CANDY_BLOCK).pickaxe()
+        "crystal_candy_wall", VDFoodComponents.CRYSTAL_CANDY_6, wallOf(CRYSTAL_CANDY_BLOCK).pickaxe()
     )
 
     fun init() {
