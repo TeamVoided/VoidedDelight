@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "dusk_autumn:lantern_pumpkin"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 4,
+        "id": "voided_delight:lantern_pumpkin_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

@@ -7,9 +7,11 @@ import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.tag.TagKey
 import org.teamvoided.voided_delight.VoidedDelight.id
+import org.teamvoided.voided_delight.data.tags.VDItemTags
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
 import org.teamvoided.voided_delight.util.add
+import vectorwing.farmersdelight.common.registry.ModItems
 import java.util.concurrent.CompletableFuture
 
 @Suppress("MemberVisibilityCanBePrivate")
@@ -74,6 +76,14 @@ class ItemTagProvider(
                 VDBlocks.MOSSKIN_PUMPKIN_PIE,
                 VDBlocks.GLOOM_PUMPKIN_PIE,
                 VDBlocks.PALE_PUMPKIN_PIE,
+            )
+        getOrCreateTagBuilder(VDItemTags.PUMPKIN_SLICES)
+            .add(
+                ModItems.PUMPKIN_SLICE.get(),
+                VDItems.LANTERN_PUMPKIN_SLICE,
+                VDItems.MOSSKIN_PUMPKIN_SLICE,
+                VDItems.GLOOM_PUMPKIN_SLICE,
+                VDItems.PALE_PUMPKIN_SLICE,
             )
     }
 }

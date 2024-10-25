@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "dusk_autumn:gloom_pumpkin"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 4,
+        "id": "voided_delight:gloom_pumpkin_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}

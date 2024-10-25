@@ -4,6 +4,7 @@ import net.minecraft.util.Identifier
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.teamvoided.dusk_autumn.DusksAndDungeons
+import org.teamvoided.voided_delight.events.registerComposting
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
 import org.teamvoided.voided_delight.init.VDTabs
@@ -24,6 +25,8 @@ object VoidedDelight {
         VDBlocks.init()
 //        VDItems.SECRET_ITEMS.addAll(VDBlocks.SECRET_BLOCKS.map { it.asItem() })
         VDTabs.init()
+
+        registerComposting()
     }
 
     fun id(path: String) = Identifier.of(MODID, path)

@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "dusk_autumn:mosskin_pumpkin"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 4,
+        "id": "voided_delight:mosskin_pumpkin_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knife"
+  }
+}
