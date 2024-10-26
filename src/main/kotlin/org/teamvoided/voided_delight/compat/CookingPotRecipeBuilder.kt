@@ -10,13 +10,13 @@ import net.minecraft.data.server.recipe.RecipeJsonFactory
 import net.minecraft.item.Item
 import net.minecraft.item.ItemConvertible
 import net.minecraft.item.ItemStack
+import net.minecraft.item.Items
 import net.minecraft.predicate.item.ItemPredicate
 import net.minecraft.recipe.Ingredient
 import net.minecraft.registry.Registries
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.util.Identifier
 import net.minecraft.util.collection.DefaultedList
-import vectorwing.farmersdelight.FarmersDelight
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab
 import vectorwing.farmersdelight.common.crafting.CookingPotRecipe
 
@@ -25,28 +25,26 @@ class CookingPotRecipeBuilder(
     private val resultStack: ItemStack,
     private val cookingTime: Int,
     private val experience: Float,
-    container: ItemConvertible?
+    container: ItemConvertible = Items.AIR
 ) : RecipeJsonFactory {
-    private var tab: CookingPotRecipeBookTab? = null
+    private var tab: CookingPotRecipeBookTab = CookingPotRecipeBookTab.MEALS
     private val ingredients: DefaultedList<Ingredient> = DefaultedList.of()
     private val result: Item = resultStack.item
-    private val container: ItemStack = if (container != null) ItemStack(container) else ItemStack.EMPTY
+    private val container: ItemStack = ItemStack(container)
     private val criteria: MutableMap<String, AdvancementCriterion<*>> = LinkedHashMap()
 
     constructor(
-        result: ItemConvertible?,
-        count: Int,
-        cookingTime: Int,
-        experience: Float,
-        container: ItemConvertible?
+        result: ItemConvertible,
+        count: Int, cookingTime: Int, experience: Float,
+        container: ItemConvertible = Items.AIR
     ) : this(ItemStack(result, count), cookingTime, experience, container)
 
-    fun addIngredient(tagIn: TagKey<Item?>?): CookingPotRecipeBuilder {
+    fun addIngredient(tagIn: TagKey<Item>): CookingPotRecipeBuilder {
         return addIngredient(Ingredient.ofTag(tagIn))
     }
 
     @JvmOverloads
-    fun addIngredient(itemIn: ItemConvertible?, quantity: Int = 1): CookingPotRecipeBuilder {
+    fun addIngredient(itemIn: ItemConvertible, quantity: Int = 1): CookingPotRecipeBuilder {
         for (i in 0 until quantity) {
             addIngredient(Ingredient.ofItems(itemIn))
         }
@@ -65,7 +63,7 @@ class CookingPotRecipeBuilder(
         return this
     }
 
-    fun setRecipeBookTab(tab: CookingPotRecipeBookTab?): CookingPotRecipeBuilder {
+    fun setRecipeBookTab(tab: CookingPotRecipeBookTab): CookingPotRecipeBuilder {
         this.tab = tab
         return this
     }
@@ -79,11 +77,11 @@ class CookingPotRecipeBuilder(
         return this
     }
 
-    fun unlockedByItems(criterionName: String, vararg items: ItemConvertible?): CookingPotRecipeBuilder {
+    fun unlockedByItems(criterionName: String, vararg items: ItemConvertible): CookingPotRecipeBuilder {
         return criterion(criterionName, InventoryChangedCriterionTrigger.Conditions.create(*items))
     }
 
-    fun unlockedByAnyIngredient(vararg items: ItemConvertible?): CookingPotRecipeBuilder {
+    fun unlockedByAnyIngredient(vararg items: ItemConvertible): CookingPotRecipeBuilder {
         criteria["has_any_ingredient"] =
             InventoryChangedCriterionTrigger.Conditions.create(ItemPredicate.Builder.create().items(*items).build())
         return this
@@ -91,7 +89,7 @@ class CookingPotRecipeBuilder(
 
     override fun offerTo(exporter: RecipeExporter) {
         val id = Registries.ITEM.getId(result)
-        offerTo(exporter, Identifier.of(FarmersDelight.MODID, id.path))
+        offerTo(exporter, id)
     }
 
     override fun offerTo(exporter: RecipeExporter, save: String) {
@@ -106,22 +104,10 @@ class CookingPotRecipeBuilder(
             .putCriteria("has_the_recipe", RecipeUnlockedCriterionTrigger.create(recipeId))
             .rewards(AdvancementRewards.Builder.recipe(recipeId))
             .merger(AdvancementRequirements.RequirementMerger.ANY)
-        criteria.forEach { (name: String?, criterion: AdvancementCriterion<*>?) ->
-            advancementBuilder.putCriteria(
-                name,
-                criterion
-            )
-        }
-        val recipe =
-            CookingPotRecipe(
-                "",
-                this.tab,
-                this.ingredients,
-                this.resultStack,
-                this.container,
-                this.experience,
-                this.cookingTime
-            )
+        criteria.forEach(advancementBuilder::putCriteria)
+        val recipe = CookingPotRecipe(
+            "", this.tab, this.ingredients, this.resultStack, this.container, this.experience, this.cookingTime
+        )
         exporter.accept(recipeId, recipe, advancementBuilder.build(id.withPrefix("recipes/cooking/")))
     }
 
@@ -130,17 +116,8 @@ class CookingPotRecipeBuilder(
             mainResult: ItemConvertible,
             count: Int,
             cookingTime: Int,
-            experience: Float
-        ): CookingPotRecipeBuilder {
-            return CookingPotRecipeBuilder(mainResult, count, cookingTime, experience, null)
-        }
-
-        fun cookingPotRecipe(
-            mainResult: ItemConvertible?,
-            count: Int,
-            cookingTime: Int,
             experience: Float,
-            container: ItemConvertible?
+            container: ItemConvertible = Items.AIR
         ): CookingPotRecipeBuilder {
             return CookingPotRecipeBuilder(mainResult, count, cookingTime, experience, container)
         }

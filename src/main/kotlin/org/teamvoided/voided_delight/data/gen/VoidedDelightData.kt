@@ -17,12 +17,13 @@ object VoidedDelightData : DataGeneratorEntrypoint {
     override fun onInitializeDataGenerator(gen: FabricDataGenerator) {
         log.info("Hello from DataGen")
         val pack = gen.createPack()
-
+        // Assets
         pack.addProvider(::ModelProvider)
         pack.addProvider(::EnglishTranslationProvider)
-        pack.addProvider(::RecipesProvider)
-        pack.addProvider(::BlockLootTableProvider)
 
+        // Data
+        pack.addProvider(::BlockLootTableProvider)
+        pack.addProvider(::RecipesProvider)
         val blockTags = pack.addProvider(::BlockTagProvider)
         pack.addProvider { o, r -> ItemTagProvider(o, r, blockTags) }
     }
