@@ -3,6 +3,7 @@ package org.teamvoided.voided_delight.data.gen.providers
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags
+import net.fabricmc.fabric.impl.recipe.ingredient.builtin.DifferenceIngredient
 import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.data.server.recipe.ShapedRecipeJsonFactory
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonFactory
@@ -22,9 +23,9 @@ import org.teamvoided.voided_delight.compat.CookingPotRecipeBuilder
 import org.teamvoided.voided_delight.data.tags.VDItemTags
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
-import vectorwing.farmersdelight.common.registry.ModItems
 import vectorwing.farmersdelight.common.tag.CommonTags
 import java.util.concurrent.CompletableFuture
+import vectorwing.farmersdelight.common.registry.ModItems as FDItems
 
 @Suppress("MemberVisibilityCanBePrivate")
 class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) : FabricRecipeProvider(o, r) {
@@ -67,7 +68,7 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
         e.make2x2(DnDFloraBlocks.GLOOM_PUMPKIN, VDItems.GLOOM_PUMPKIN_SLICE)
         e.make2x2(DnDFloraBlocks.PALE_PUMPKIN, VDItems.PALE_PUMPKIN_SLICE)
 
-        ShapelessRecipeJsonFactory.create(RecipeCategory.MISC, ModItems.FRUIT_SALAD.get())
+        ShapelessRecipeJsonFactory.create(RecipeCategory.MISC, FDItems.FRUIT_SALAD.get())
             .ingredient(Items.APPLE)
             .ingredient(Items.MELON_SLICE)
             .ingredient(Items.MELON_SLICE)
@@ -82,8 +83,32 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
         e.makeSoup(VDItems.MOSSKIN_PUMPKIN_SOUP, VDItems.MOSSKIN_PUMPKIN_SLICE)
         e.makeSoup(VDItems.GLOOM_PUMPKIN_SOUP, VDItems.GLOOM_PUMPKIN_SLICE)
         e.makeSoup(VDItems.PALE_PUMPKIN_SOUP, VDItems.PALE_PUMPKIN_SLICE)
+
+        e.stuffThePumpkin(VDBlocks.STUFFED_LANTERN_PUMPKIN, DnDFloraBlocks.LANTERN_PUMPKIN)
+        e.stuffThePumpkin(VDBlocks.STUFFED_MOSSKIN_PUMPKIN, DnDFloraBlocks.MOSSKIN_PUMPKIN)
+        e.stuffThePumpkin(VDBlocks.STUFFED_GLOOM_PUMPKIN, DnDFloraBlocks.GLOOM_PUMPKIN)
+        e.stuffThePumpkin(VDBlocks.STUFFED_PALE_PUMPKIN, DnDFloraBlocks.PALE_PUMPKIN)
     }
 }
+
+
+fun RecipeExporter.stuffThePumpkin(output: ItemConvertible, container: ItemConvertible) {
+    CookingPotRecipeBuilder.cookingPotRecipe(output, 1, 200, 1.0f, container)
+        .addIngredient(CommonTags.CROPS_RICE)
+        .addIngredient(CommonTags.CROPS_ONION)
+        .addIngredient(Items.BROWN_MUSHROOM)
+        .addIngredient(Items.POTATO)
+        .addIngredient(ConventionalItemTags.BERRY_FOODS)
+        .addCIngredient(
+            DifferenceIngredient(
+                Ingredient.ofTag(ConventionalItemTags.VEGETABLE_FOODS),
+                Ingredient.ofItems(Items.MELON_SLICE)
+            )
+        )
+        .unlockedByAnyIngredient(container)
+        .offerTo(this)
+}
+
 
 fun RecipeExporter.makeSoup(output: ItemConvertible, input: ItemConvertible) {
     CookingPotRecipeBuilder.cookingPotRecipe(output, 1, 200, 1.0f, Items.BOWL)

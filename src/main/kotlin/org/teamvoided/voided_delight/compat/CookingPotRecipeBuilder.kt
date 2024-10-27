@@ -1,5 +1,6 @@
 package org.teamvoided.voided_delight.compat
 
+import net.fabricmc.fabric.api.recipe.v1.ingredient.CustomIngredient
 import net.minecraft.advancement.AdvancementCriterion
 import net.minecraft.advancement.AdvancementRequirements
 import net.minecraft.advancement.AdvancementRewards
@@ -41,6 +42,11 @@ class CookingPotRecipeBuilder(
 
     fun addIngredient(tagIn: TagKey<Item>): CookingPotRecipeBuilder {
         return addIngredient(Ingredient.ofTag(tagIn))
+    }
+
+    fun addCIngredient(ingredient: CustomIngredient): CookingPotRecipeBuilder {
+        ingredients.add(ingredient.toVanilla())
+        return this
     }
 
     @JvmOverloads
