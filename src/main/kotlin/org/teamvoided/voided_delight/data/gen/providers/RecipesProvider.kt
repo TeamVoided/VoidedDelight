@@ -15,9 +15,7 @@ import net.minecraft.recipe.RecipeCategory
 import net.minecraft.registry.HolderLookup
 import org.teamvoided.dusk_autumn.init.DnDItems
 import org.teamvoided.dusk_autumn.init.blocks.DnDFloraBlocks
-import org.teamvoided.dusk_autumn.util.criterion
-import org.teamvoided.dusk_autumn.util.offerReversibleCompactingRecipes4
-import org.teamvoided.dusk_autumn.util.smeltDefault
+import org.teamvoided.dusk_autumn.util.*
 import org.teamvoided.voided_delight.block.VDFamilies.recipesBlockFamilies
 import org.teamvoided.voided_delight.compat.CookingPotRecipeBuilder
 import org.teamvoided.voided_delight.data.tags.VDItemTags
@@ -38,15 +36,6 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
             RecipeCategory.BUILDING_BLOCKS, VDBlocks.CRYSTAL_CANDY_BLOCK
         )
         pumpkins(e)
-
-//        ShapedRecipeJsonFactory.create(RecipeCategory.MISC, DnDItems.FARMERS_HAT)
-//            .ingredient('#', Ingredient.ofItems(Items.WHEAT))
-//            .ingredient('@', Ingredient.ofItems(Items.STRING))
-//            .ingredient('%', Ingredient.ofItems(Items.LEATHER))
-//            .pattern("###")
-//            .pattern("@%@")
-//            .pattern("# #")
-//            .criterion(DnDItems.FARMERS_HAT).offerTo(e)
     }
 
 
@@ -62,7 +51,6 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
         e.make1to1(DnDItems.MOSSKIN_PUMPKIN_SEEDS, VDItems.MOSSKIN_PUMPKIN_SLICE)
         e.make1to1(DnDItems.GLOOM_PUMPKIN_SEEDS, VDItems.GLOOM_PUMPKIN_SLICE)
         e.make1to1(DnDItems.PALE_PUMPKIN_SEEDS, VDItems.PALE_PUMPKIN_SLICE)
-
         e.make2x2(DnDFloraBlocks.LANTERN_PUMPKIN, VDItems.LANTERN_PUMPKIN_SLICE)
         e.make2x2(DnDFloraBlocks.MOSSKIN_PUMPKIN, VDItems.MOSSKIN_PUMPKIN_SLICE)
         e.make2x2(DnDFloraBlocks.GLOOM_PUMPKIN, VDItems.GLOOM_PUMPKIN_SLICE)
@@ -88,12 +76,21 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
         e.stuffThePumpkin(VDBlocks.STUFFED_MOSSKIN_PUMPKIN, DnDFloraBlocks.MOSSKIN_PUMPKIN)
         e.stuffThePumpkin(VDBlocks.STUFFED_GLOOM_PUMPKIN, DnDFloraBlocks.GLOOM_PUMPKIN)
         e.stuffThePumpkin(VDBlocks.STUFFED_PALE_PUMPKIN, DnDFloraBlocks.PALE_PUMPKIN)
+
+        e.makePie(VDBlocks.LANTERN_PUMPKIN_PIE, DnDFloraBlocks.LANTERN_PUMPKIN)
+        e.makePie(VDBlocks.MOSSKIN_PUMPKIN_PIE, DnDFloraBlocks.MOSSKIN_PUMPKIN)
+        e.makePie(VDBlocks.GLOOM_PUMPKIN_PIE, DnDFloraBlocks.GLOOM_PUMPKIN)
+        e.makePie(VDBlocks.PALE_PUMPKIN_PIE, DnDFloraBlocks.PALE_PUMPKIN)
+
+        e.make2x2(VDBlocks.LANTERN_PUMPKIN_PIE, VDItems.LANTERN_PUMPKIN_PIE_SLICE, 1, "_from_slices")
+        e.make2x2(VDBlocks.MOSSKIN_PUMPKIN_PIE, VDItems.MOSSKIN_PUMPKIN_PIE_SLICE, 1, "_from_slices")
+        e.make2x2(VDBlocks.GLOOM_PUMPKIN_PIE, VDItems.GLOOM_PUMPKIN_PIE_SLICE, 1, "_from_slices")
+        e.make2x2(VDBlocks.PALE_PUMPKIN_PIE, VDItems.PALE_PUMPKIN_PIE_SLICE, 1, "_from_slices")
     }
 }
 
-
 fun RecipeExporter.stuffThePumpkin(output: ItemConvertible, container: ItemConvertible) {
-    CookingPotRecipeBuilder.cookingPotRecipe(output, 1, 200, 1.0f, container)
+    CookingPotRecipeBuilder.cookingPotRecipe(output, 1, 400, 2.0f, container)
         .addIngredient(CommonTags.CROPS_RICE)
         .addIngredient(CommonTags.CROPS_ONION)
         .addIngredient(Items.BROWN_MUSHROOM)
@@ -101,14 +98,23 @@ fun RecipeExporter.stuffThePumpkin(output: ItemConvertible, container: ItemConve
         .addIngredient(ConventionalItemTags.BERRY_FOODS)
         .addCIngredient(
             DifferenceIngredient(
-                Ingredient.ofTag(ConventionalItemTags.VEGETABLE_FOODS),
-                Ingredient.ofItems(Items.MELON_SLICE)
+                Ingredient.ofTag(ConventionalItemTags.VEGETABLE_FOODS), Ingredient.ofItems(Items.MELON_SLICE)
             )
         )
         .unlockedByAnyIngredient(container)
         .offerTo(this)
 }
 
+fun RecipeExporter.makePie(output: ItemConvertible, input: ItemConvertible) {
+    ShapelessRecipeJsonFactory.create(RecipeCategory.MISC, output)
+        .ingredient(input)
+        .ingredient(Items.SUGAR)
+        .ingredient(Items.EGG)
+        .criterion(input)
+        .criterion(Items.SUGAR)
+        .criterion(Items.EGG)
+        .offerTo(this)
+}
 
 fun RecipeExporter.makeSoup(output: ItemConvertible, input: ItemConvertible) {
     CookingPotRecipeBuilder.cookingPotRecipe(output, 1, 200, 1.0f, Items.BOWL)
@@ -140,10 +146,17 @@ fun RecipeExporter.make1to1(output: ItemConvertible, input: ItemConvertible) {
         .offerTo(this)
 }
 
-fun RecipeExporter.make2x2(output: ItemConvertible, input: ItemConvertible, count: Int = 1) {
+fun RecipeExporter.make2x2(
+    output: ItemConvertible,
+    input: ItemConvertible,
+    count: Int = 1,
+    suffix: String = ""
+) {
     ShapedRecipeJsonFactory.create(RecipeCategory.MISC, output, count)
         .pattern("##")
         .pattern("##")
         .ingredient('#', Ingredient.ofItems(input))
-        .criterion(DnDItems.FARMERS_HAT).offerTo(this)
+        .criterion(input)
+        .criterion(output)
+        .offerTo(this, output.id.suffix(suffix))
 }

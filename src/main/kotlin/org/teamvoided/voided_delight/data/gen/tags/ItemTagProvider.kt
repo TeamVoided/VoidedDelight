@@ -11,7 +11,7 @@ import org.teamvoided.voided_delight.data.tags.VDItemTags
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
 import org.teamvoided.voided_delight.util.add
-import vectorwing.farmersdelight.common.registry.ModItems
+import vectorwing.farmersdelight.common.registry.ModItems as FDItems
 import java.util.concurrent.CompletableFuture
 
 @Suppress("MemberVisibilityCanBePrivate")
@@ -66,12 +66,6 @@ class ItemTagProvider(
             )
         getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, id("c", "foods/pie")))
             .add(
-                VDItems.LANTERN_PUMPKIN_PIE_SLICE,
-                VDItems.MOSSKIN_PUMPKIN_PIE_SLICE,
-                VDItems.GLOOM_PUMPKIN_PIE_SLICE,
-                VDItems.PALE_PUMPKIN_PIE_SLICE
-            )
-            .add(
                 VDBlocks.LANTERN_PUMPKIN_PIE,
                 VDBlocks.MOSSKIN_PUMPKIN_PIE,
                 VDBlocks.GLOOM_PUMPKIN_PIE,
@@ -79,11 +73,22 @@ class ItemTagProvider(
             )
         getOrCreateTagBuilder(VDItemTags.PUMPKIN_SLICES)
             .add(
-                ModItems.PUMPKIN_SLICE.get(),
+                FDItems.PUMPKIN_SLICE.get(),
                 VDItems.LANTERN_PUMPKIN_SLICE,
                 VDItems.MOSSKIN_PUMPKIN_SLICE,
                 VDItems.GLOOM_PUMPKIN_SLICE,
                 VDItems.PALE_PUMPKIN_SLICE,
+            )
+        getOrCreateTagBuilder(VDItemTags.PIE_SLICES)
+            .add(
+                VDItems.LANTERN_PUMPKIN_PIE_SLICE,
+                VDItems.MOSSKIN_PUMPKIN_PIE_SLICE,
+                VDItems.GLOOM_PUMPKIN_PIE_SLICE,
+                VDItems.PALE_PUMPKIN_PIE_SLICE
+            )
+            .add(
+                FDItems.APPLE_PIE_SLICE.get(),
+                FDItems.CHOCOLATE_PIE_SLICE.get(),
             )
     }
 }
