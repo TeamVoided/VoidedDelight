@@ -5,16 +5,21 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags
 import net.fabricmc.fabric.impl.recipe.ingredient.builtin.DifferenceIngredient
 import net.minecraft.data.server.recipe.RecipeExporter
+import net.minecraft.data.server.recipe.RecipeJsonFactory
 import net.minecraft.data.server.recipe.ShapedRecipeJsonFactory
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonFactory
 import net.minecraft.feature_flags.FeatureFlags
+import net.minecraft.item.Item
 import net.minecraft.item.ItemConvertible
 import net.minecraft.item.Items
 import net.minecraft.recipe.Ingredient
 import net.minecraft.recipe.RecipeCategory
 import net.minecraft.registry.HolderLookup
+import net.minecraft.registry.tag.TagKey
 import org.teamvoided.dusk_autumn.init.DnDItems
 import org.teamvoided.dusk_autumn.init.blocks.DnDFloraBlocks
+import org.teamvoided.dusk_autumn.util.offerReversibleCompactingRecipes4
+import org.teamvoided.dusk_autumn.util.smeltDefault
 import org.teamvoided.dusk_autumn.util.*
 import org.teamvoided.voided_delight.block.VDFamilies.recipesBlockFamilies
 import org.teamvoided.voided_delight.compat.CookingPotRecipeBuilder
@@ -36,15 +41,48 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
             RecipeCategory.BUILDING_BLOCKS, VDBlocks.CRYSTAL_CANDY_BLOCK
         )
         pumpkins(e)
+
+        e.candied(VDItems.CANDY_BERRY, Ingredient.ofTag(ConventionalItemTags.BERRY_FOODS))
+        e.candied(VDItems.CANDY_CORN, Ingredient.ofItems(DnDItems.CORN_KERNELS))
+        e.candied(VDItems.CANDY_CLOUD, Ingredient.ofItems(Items.WIND_CHARGE))
+
+        ShapedRecipeJsonFactory.create(RecipeCategory.FOOD, VDItems.MARSHMARROW, 4)
+            .ingredient('#', DnDItems.CORN_SYRUP_BOTTLE)
+            .ingredient('X', Items.BONE_MEAL)
+            .pattern("X#X")
+            .pattern("#X#")
+            .pattern("X#X")
+            .criterion(DnDItems.CORN_SYRUP_BOTTLE)
+            .offerTo(e)
+        ShapedRecipeJsonFactory.create(RecipeCategory.FOOD, VDItems.LOLLIPOP)
+            .ingredient('#', DnDItems.CORN_SYRUP_BOTTLE)
+            .ingredient('X', Items.STICK)
+            .ingredient('0', DnDFloraBlocks.CORN_SYRUP_BLOCK)
+            .ingredient('%', Items.RED_DYE)
+            .pattern(" #%")
+            .pattern("#0#")
+            .pattern("X# ")
+            .criterion(DnDItems.CORN_SYRUP_BOTTLE)
+            .offerTo(e)
+        ShapedRecipeJsonFactory.create(RecipeCategory.FOOD, VDItems.SYRUP_APPLE)
+            .ingredient('#', DnDItems.CORN_SYRUP_BOTTLE)
+            .ingredient('X', Items.STICK)
+            .ingredient('0', Items.APPLE)
+            .pattern(" # ")
+            .pattern("#0#")
+            .pattern("X# ")
+            .criterion(DnDItems.CORN_SYRUP_BOTTLE)
+            .offerTo(e)
     }
 
-
-//    private fun generateWinterRecipes(e: RecipeExporter) {
-//        ShapelessRecipeJsonFactory.create(RecipeCategory.MISC, DnDItems.CHILL_CHARGE, 4)
-//            .ingredient(DnDItems.FREEZE_ROD)
-//            .criterion(DnDItems.FREEZE_ROD).offerTo(e)
-//    }
-
+    fun RecipeExporter.candied(output: ItemConvertible, input: Ingredient) {
+        ShapelessRecipeJsonFactory.create(RecipeCategory.FOOD, output, 4)
+            .ingredient(input, 3)
+            .ingredient(Items.PAPER)
+            .ingredient(DnDItems.CORN_SYRUP_BOTTLE, 4)
+            .criterion(DnDItems.CORN_SYRUP_BOTTLE)
+            .offerTo(this)
+    }
 
     fun pumpkins(e: RecipeExporter) {
         e.make1to1(DnDItems.LANTERN_PUMPKIN_SEEDS, VDItems.LANTERN_PUMPKIN_SLICE)
@@ -160,3 +198,11 @@ fun RecipeExporter.make2x2(
         .criterion(output)
         .offerTo(this, output.id.suffix(suffix))
 }
+
+
+
+private fun RecipeJsonFactory.criterion(item: ItemConvertible): RecipeJsonFactory =
+    this.criterion(FabricRecipeProvider.hasItem(item), FabricRecipeProvider.conditionsFromItem(item))
+
+private fun RecipeJsonFactory.criterion(tag: TagKey<Item>): RecipeJsonFactory =
+    this.criterion("has_${tag.id.path}", FabricRecipeProvider.conditionsFromTag(tag))

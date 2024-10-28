@@ -11,7 +11,7 @@ object VDFoodComponents {
     val LOLLIPOP = foodComponent(2, 0.2f, 1.6f)
     val CANDY_CORN = foodComponent(2, 0.2f, 0.8f)
     val LITCHORRICE = foodComponent(2, 0.2f, 0.8f)
-    val CLOUDY_CANDY = foodComponent(2, 0.2f, 0.8f)
+    val CANDY_CLOUD = foodComponent(2, 0.2f, 0.8f)
     val SYRUP_APPLE = foodComponent(26, 0.4f, 1.2f)
 
     val CRYSTAL_CANDY_8 = foodComponent(8, 0.8f, 3f) //full block

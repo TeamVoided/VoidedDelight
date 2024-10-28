@@ -28,10 +28,10 @@ class ItemTagProvider(
         getOrCreateTagBuilder(ConventionalItemTags.CANDY_FOODS)
             .add(
                 VDItems.CANDY_BERRY,
+                VDItems.CANDY_CORN,
+                VDItems.CANDY_CLOUD,
                 VDItems.MARSHMARROW,
                 VDItems.LOLLIPOP,
-                VDItems.CANDY_CORN,
-                VDItems.CLOUDY_CANDY,
                 VDItems.SYRUP_APPLE,
                 VDItems.CRYSTAL_CANDY_SHARD,
             )

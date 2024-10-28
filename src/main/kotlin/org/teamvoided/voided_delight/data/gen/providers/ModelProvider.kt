@@ -67,9 +67,9 @@ class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
         VDBlocks.PALE_PUMPKIN_PIE.asItem(),
 
         VDItems.CANDY_BERRY,
-        VDItems.MARSHMARROW,
         VDItems.CANDY_CORN,
-        VDItems.CLOUDY_CANDY,
+        VDItems.CANDY_CLOUD,
+        VDItems.MARSHMARROW,
         VDItems.SYRUP_APPLE,
         VDItems.CRYSTAL_CANDY_SHARD,
     )

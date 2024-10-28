@@ -41,10 +41,10 @@ object VDItems {
     val PALE_PUMPKIN_PIE_SLICE = register("pale_pumpkin_pie_slice", foodItem(FoodValues.PIE_SLICE))
 
     val CANDY_BERRY = register("candy_berry", Item(Item.Settings().food(VDFoodComponents.CANDY_BERRY)))
+    val CANDY_CORN = register("candy_corn", Item(Item.Settings().food(VDFoodComponents.CANDY_CORN)))
+    val CANDY_CLOUD = register("candy_cloud", Item(Item.Settings().food(VDFoodComponents.CANDY_CLOUD)))
     val MARSHMARROW = register("marshmarrow", Item(Item.Settings().food(VDFoodComponents.MARSHMAROW)))
     val LOLLIPOP = register("lollipop", Item(Item.Settings().food(VDFoodComponents.LOLLIPOP)))
-    val CANDY_CORN = register("candy_corn", Item(Item.Settings().food(VDFoodComponents.CANDY_CORN)))
-    val CLOUDY_CANDY = register("cloudy_candy", Item(Item.Settings().food(VDFoodComponents.CLOUDY_CANDY)))
     val SYRUP_APPLE = register("syrup_apple", Item(Item.Settings().food(VDFoodComponents.SYRUP_APPLE)))
     val CRYSTAL_CANDY_SHARD =
         register("crystal_candy_shard", Item(Item.Settings().food(VDFoodComponents.CRYSTAL_CANDY_2)))
