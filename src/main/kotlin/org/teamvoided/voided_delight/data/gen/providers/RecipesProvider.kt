@@ -18,9 +18,10 @@ import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.tag.TagKey
 import org.teamvoided.dusk_autumn.init.DnDItems
 import org.teamvoided.dusk_autumn.init.blocks.DnDFloraBlocks
+import org.teamvoided.dusk_autumn.util.id
 import org.teamvoided.dusk_autumn.util.offerReversibleCompactingRecipes4
 import org.teamvoided.dusk_autumn.util.smeltDefault
-import org.teamvoided.dusk_autumn.util.*
+import org.teamvoided.dusk_autumn.util.suffix
 import org.teamvoided.voided_delight.block.VDFamilies.recipesBlockFamilies
 import org.teamvoided.voided_delight.compat.CookingPotRecipeBuilder
 import org.teamvoided.voided_delight.data.tags.VDItemTags
@@ -34,19 +35,22 @@ import vectorwing.farmersdelight.common.registry.ModItems as FDItems
 class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) : FabricRecipeProvider(o, r) {
     override fun generateRecipes(e: RecipeExporter) {
         recipesBlockFamilies.forEach { generateFamily(e, it, FeatureFlags.VANILLA_SET) }
+        candy(e)
+        pumpkins(e)
+    }
 
+    fun candy(e: RecipeExporter) {
         e.smeltDefault(VDBlocks.CRYSTAL_CANDY_BLOCK, DnDFloraBlocks.CORN_SYRUP_BLOCK)
         e.offerReversibleCompactingRecipes4(
             RecipeCategory.MISC, VDItems.CRYSTAL_CANDY_SHARD,
             RecipeCategory.BUILDING_BLOCKS, VDBlocks.CRYSTAL_CANDY_BLOCK
         )
-        pumpkins(e)
 
         e.candied(VDItems.CANDY_BERRY, Ingredient.ofTag(ConventionalItemTags.BERRY_FOODS))
         e.candied(VDItems.CANDY_CORN, Ingredient.ofItems(DnDItems.CORN_KERNELS))
         e.candied(VDItems.CANDY_CLOUD, Ingredient.ofItems(Items.WIND_CHARGE))
 
-        ShapedRecipeJsonFactory.create(RecipeCategory.FOOD, VDItems.MARSHMARROW, 4)
+        ShapedRecipeJsonFactory.create(RecipeCategory.FOOD, VDItems.MARSHMARROW, 8)
             .ingredient('#', DnDItems.CORN_SYRUP_BOTTLE)
             .ingredient('X', Items.BONE_MEAL)
             .pattern("X#X")
@@ -60,8 +64,8 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
             .ingredient('0', DnDFloraBlocks.CORN_SYRUP_BLOCK)
             .ingredient('%', Items.RED_DYE)
             .pattern(" #%")
-            .pattern("#0#")
-            .pattern("X# ")
+            .pattern(" 0#")
+            .pattern("X  ")
             .criterion(DnDItems.CORN_SYRUP_BOTTLE)
             .offerTo(e)
         ShapedRecipeJsonFactory.create(RecipeCategory.FOOD, VDItems.SYRUP_APPLE)
@@ -73,15 +77,6 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
             .pattern("X# ")
             .criterion(DnDItems.CORN_SYRUP_BOTTLE)
             .offerTo(e)
-    }
-
-    fun RecipeExporter.candied(output: ItemConvertible, input: Ingredient) {
-        ShapelessRecipeJsonFactory.create(RecipeCategory.FOOD, output, 4)
-            .ingredient(input, 3)
-            .ingredient(Items.PAPER)
-            .ingredient(DnDItems.CORN_SYRUP_BOTTLE, 4)
-            .criterion(DnDItems.CORN_SYRUP_BOTTLE)
-            .offerTo(this)
     }
 
     fun pumpkins(e: RecipeExporter) {
@@ -127,6 +122,22 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
     }
 }
 
+fun RecipeExporter.candied(output: ItemConvertible, input: Ingredient, count: Int = 8) {
+    ShapelessRecipeJsonFactory.create(RecipeCategory.FOOD, output, count)
+        .ingredient(input)
+        .ingredient(DnDItems.CORN_SYRUP_BOTTLE)
+        .ingredient(input)
+        .ingredient(DnDItems.CORN_SYRUP_BOTTLE)
+        .ingredient(Items.PAPER)
+        .ingredient(DnDItems.CORN_SYRUP_BOTTLE)
+        .ingredient(input)
+        .ingredient(DnDItems.CORN_SYRUP_BOTTLE)
+        .ingredient(input)
+        .criterion(DnDItems.CORN_SYRUP_BOTTLE)
+        .offerTo(this)
+}
+
+@Suppress("UnstableApiUsage")
 fun RecipeExporter.stuffThePumpkin(output: ItemConvertible, container: ItemConvertible) {
     CookingPotRecipeBuilder.cookingPotRecipe(output, 1, 400, 2.0f, container)
         .addIngredient(CommonTags.CROPS_RICE)
@@ -184,12 +195,7 @@ fun RecipeExporter.make1to1(output: ItemConvertible, input: ItemConvertible) {
         .offerTo(this)
 }
 
-fun RecipeExporter.make2x2(
-    output: ItemConvertible,
-    input: ItemConvertible,
-    count: Int = 1,
-    suffix: String = ""
-) {
+fun RecipeExporter.make2x2(output: ItemConvertible, input: ItemConvertible, count: Int = 1, suffix: String = "") {
     ShapedRecipeJsonFactory.create(RecipeCategory.MISC, output, count)
         .pattern("##")
         .pattern("##")
@@ -198,8 +204,6 @@ fun RecipeExporter.make2x2(
         .criterion(output)
         .offerTo(this, output.id.suffix(suffix))
 }
-
-
 
 private fun RecipeJsonFactory.criterion(item: ItemConvertible): RecipeJsonFactory =
     this.criterion(FabricRecipeProvider.hasItem(item), FabricRecipeProvider.conditionsFromItem(item))
