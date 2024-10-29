@@ -10,7 +10,7 @@ fabricApiVersion = "0.105.0+1.21.1"
 fabricLangKotlinVersion = "1.12.2+kotlin.2.0.20"
 license = "MIT"
 modules = [ ]
-modDescription = "Template Mod Description"
+modDescription = "Team Voided Farmer's Delight addon. Adding a handful of random stuff and a lot of compatibly with other mods."
 # Modmenu badges, values can be: [ library, deprecated ]
 badges = [ ]
 disableKotlin = false
