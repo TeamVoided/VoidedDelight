@@ -70,13 +70,13 @@ class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
         VDItems.CANDY_CORN,
         VDItems.CANDY_CLOUD,
         VDItems.MARSHMARROW,
-        VDItems.SYRUP_APPLE,
         VDItems.CRYSTAL_CANDY_SHARD,
     )
 
     override fun generateItemModels(gen: ItemModelGenerator) {
         single.forEach { gen.register(it, Models.SINGLE_LAYER_ITEM) }
         gen.register(VDItems.LOLLIPOP, Models.HANDHELD_MACE)
+        gen.register(VDItems.SYRUP_APPLE, Models.HANDHELD_MACE)
     }
 
 }
