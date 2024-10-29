@@ -44,6 +44,8 @@ modSettings {
     entrypoint("client", "org.teamvoided.voided_delight.VoidedDelightClient::init")
     entrypoint("fabric-datagen", "org.teamvoided.voided_delight.data.gen.VoidedDelightData")
 
+    dependency("dusk_autumn", "*")
+    dependency("farmers_delight", "*")
 //    mixinFile("${modId()}.client.mixins.json")
 //    mixinFile("${modId()}.mixins.json")
 //    accessWidener("${modId()}.accesswidener")
