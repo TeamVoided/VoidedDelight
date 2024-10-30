@@ -8,9 +8,9 @@ import net.minecraft.data.client.ItemModelGenerator
 import net.minecraft.data.client.model.*
 import net.minecraft.data.client.model.BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates
 import net.minecraft.data.client.model.TextureKey.*
-import org.teamvoided.dusk_autumn.util.INNER
-import org.teamvoided.dusk_autumn.util.block
-import org.teamvoided.dusk_autumn.util.model
+import org.teamvoided.dusk_autumn.util.datagen.INNER
+import org.teamvoided.dusk_autumn.util.datagen.block
+import org.teamvoided.dusk_autumn.util.datagen.model
 import org.teamvoided.voided_delight.VoidedDelight.fd
 import org.teamvoided.voided_delight.block.VDFamilies
 import org.teamvoided.voided_delight.init.VDBlocks

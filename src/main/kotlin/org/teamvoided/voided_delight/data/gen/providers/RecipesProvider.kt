@@ -18,10 +18,10 @@ import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.tag.TagKey
 import org.teamvoided.dusk_autumn.init.DnDItems
 import org.teamvoided.dusk_autumn.init.blocks.DnDFloraBlocks
-import org.teamvoided.dusk_autumn.util.id
-import org.teamvoided.dusk_autumn.util.offerReversibleCompactingRecipes4
-import org.teamvoided.dusk_autumn.util.smeltDefault
-import org.teamvoided.dusk_autumn.util.suffix
+import org.teamvoided.dusk_autumn.util.datagen.id
+import org.teamvoided.dusk_autumn.util.datagen.offerReversibleCompactingRecipes4
+import org.teamvoided.dusk_autumn.util.datagen.smeltDefault
+import org.teamvoided.dusk_autumn.util.datagen.suffix
 import org.teamvoided.voided_delight.block.VDFamilies.recipesBlockFamilies
 import org.teamvoided.voided_delight.compat.CookingPotRecipeBuilder
 import org.teamvoided.voided_delight.data.tags.VDItemTags
