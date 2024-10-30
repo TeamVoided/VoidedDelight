@@ -1,9 +1,7 @@
-package org.teamvoided.voided_delight.events
+package org.teamvoided.voided_delight.init
 
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry
 import net.minecraft.item.ItemConvertible
-import org.teamvoided.voided_delight.init.VDBlocks
-import org.teamvoided.voided_delight.init.VDItems
 
 
 fun registerComposting() {

@@ -39,46 +39,35 @@ object VDBlocks {
     ).axe()
 
     val LANTERN_PUMPKIN_PIE = registerEdible(
-        "lantern_pumpkin_pie",
-        FoodComponents.PUMPKIN_PIE,
+        "lantern_pumpkin_pie", FoodComponents.PUMPKIN_PIE,
         pieOf(copy(Blocks.CAKE), VDItems.LANTERN_PUMPKIN_PIE_SLICE)
     ).knife()
     val MOSSKIN_PUMPKIN_PIE = registerEdible(
-        "mosskin_pumpkin_pie",
-        FoodComponents.PUMPKIN_PIE,
+        "mosskin_pumpkin_pie", FoodComponents.PUMPKIN_PIE,
         pieOf(copy(Blocks.CAKE), VDItems.MOSSKIN_PUMPKIN_PIE_SLICE)
     ).knife()
     val GLOOM_PUMPKIN_PIE = registerEdible(
-        "gloom_pumpkin_pie",
-        FoodComponents.PUMPKIN_PIE,
+        "gloom_pumpkin_pie", FoodComponents.PUMPKIN_PIE,
         pieOf(copy(Blocks.CAKE), VDItems.GLOOM_PUMPKIN_PIE_SLICE)
     ).knife()
     val PALE_PUMPKIN_PIE = registerEdible(
-        "pale_pumpkin_pie",
-        FoodComponents.PUMPKIN_PIE,
+        "pale_pumpkin_pie", FoodComponents.PUMPKIN_PIE,
         pieOf(copy(Blocks.CAKE), VDItems.PALE_PUMPKIN_PIE_SLICE)
     ).knife()
 
 
     val CRYSTAL_CANDY_BLOCK = registerEdible(
-        "crystal_candy_block",
-        VDFoodComponents.CRYSTAL_CANDY_8,
+        "crystal_candy_block", VDFoodComponents.CRYSTAL_CANDY_8,
         Block(copy(Blocks.CALCITE).mapColor(MapColor.BLUE))
     ).pickaxe()
     val CRYSTAL_CANDY_STAIRS = registerEdible(
-        "crystal_candy_stairs",
-        VDFoodComponents.CRYSTAL_CANDY_6,
-        stairsOf(CRYSTAL_CANDY_BLOCK)
+        "crystal_candy_stairs", VDFoodComponents.CRYSTAL_CANDY_6, stairsOf(CRYSTAL_CANDY_BLOCK)
     ).pickaxe()
     val CRYSTAL_CANDY_SLAB = registerEdible(
-        "crystal_candy_slab",
-        VDFoodComponents.CRYSTAL_CANDY_4,
-        slabOf(CRYSTAL_CANDY_BLOCK)
+        "crystal_candy_slab", VDFoodComponents.CRYSTAL_CANDY_4, slabOf(CRYSTAL_CANDY_BLOCK)
     ).pickaxe()
     val CRYSTAL_CANDY_WALL = registerEdible(
-        "crystal_candy_wall",
-        VDFoodComponents.CRYSTAL_CANDY_6,
-        wallOf(CRYSTAL_CANDY_BLOCK)
+        "crystal_candy_wall", VDFoodComponents.CRYSTAL_CANDY_6, wallOf(CRYSTAL_CANDY_BLOCK)
     ).pickaxe()
 
     fun init() {

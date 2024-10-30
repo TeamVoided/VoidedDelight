@@ -11,8 +11,8 @@ import org.teamvoided.voided_delight.data.tags.VDItemTags
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
 import org.teamvoided.voided_delight.util.add
-import vectorwing.farmersdelight.common.registry.ModItems as FDItems
 import java.util.concurrent.CompletableFuture
+import vectorwing.farmersdelight.common.registry.ModItems as FDItems
 
 @Suppress("MemberVisibilityCanBePrivate")
 class ItemTagProvider(

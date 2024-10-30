@@ -13,25 +13,15 @@ import kotlin.jvm.optionals.getOrNull
 
 
 object VDTabs {
-    val VOIDED_DELIGHT_ITEMS: ItemGroup = register("vd_everything",
+    val VOIDED_DELIGHT_ITEMS: ItemGroup = register("voided_delight",
         FabricItemGroup.builder()
             .icon { ItemStack(VDItems.LOLLIPOP) }
-            .name(Text.translatable("itemGroup.voided_delight.everything"))
-            .entries { _, entries ->
-                entries.addLists(VDItems.ITEMS.filterNot(VDItems.SECRET_ITEMS::contains))
-            }
+            .name(Text.translatable("itemGroup.voided_delight.voided_delight"))
+            .entries { _, entries -> entries.addLists(VDItems.ITEMS) }
             .build()
     )
 
-    fun init() {
-//        if (isDev()) register("dnd_experimental",
-//            FabricItemGroup.builder()
-//                .icon { ItemStack(VDItems.GALLERY_MAPLE_DOOR) }
-//                .name(Text.literal("DnD Experimental"))
-//                .entries { _, entries -> entries.addLists(EVIL_ITEMS) }
-//                .build()
-//        )
-    }
+    fun init() {}
 
     @Suppress("SameParameterValue")
     fun register(name: String, itemGroup: ItemGroup): ItemGroup {

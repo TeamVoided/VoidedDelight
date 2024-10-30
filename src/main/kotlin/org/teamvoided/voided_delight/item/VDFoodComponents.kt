@@ -10,7 +10,7 @@ object VDFoodComponents {
     val MARSHMAROW = foodComponent(2, 0.2f, 0.8f)
     val LOLLIPOP = foodComponent(16, 0.4f, 1.6f)
     val CANDY_CORN = foodComponent(2, 0.2f, 0.8f)
-    val LITCHORRICE = foodComponent(2, 0.2f, 0.8f)
+//    val LITCHORRICE = foodComponent(2, 0.2f, 0.8f)
     val CANDY_CLOUD = foodComponent(2, 0.2f, 0.6f)
     val SYRUP_APPLE = foodComponent(12, 0.3f, 1.2f)
 
@@ -23,5 +23,4 @@ object VDFoodComponents {
         val saturationButComponent: Float = HungerConstants.calculateSaturation(hunger, saturation)
         return FoodComponent(hunger, saturationButComponent, false, eatSeconds, Optional.empty(), listOf())
     }
-    //1.6
 }

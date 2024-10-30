@@ -18,7 +18,6 @@ import vectorwing.farmersdelight.common.registry.ModItems.bowlFoodItem
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 object VDItems {
     val ITEMS = mutableListOf<Item>()
-    val SECRET_ITEMS = mutableSetOf<Item>()
 
     val LANTERN_PUMPKIN_SLICE = register("lantern_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
     val MOSSKIN_PUMPKIN_SLICE = register("mosskin_pumpkin_slice", Item(Item.Settings().food(FoodValues.PUMPKIN_SLICE)))
