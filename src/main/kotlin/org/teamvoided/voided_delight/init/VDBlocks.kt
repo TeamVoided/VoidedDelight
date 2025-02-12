@@ -11,7 +11,6 @@ import net.minecraft.item.FoodComponents
 import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
-import org.teamvoided.dusk_autumn.init.blocks.DnDFloraBlocks
 import org.teamvoided.voided_delight.VoidedDelight.id
 import org.teamvoided.voided_delight.item.VDFoodComponents
 import org.teamvoided.voided_delight.util.*
@@ -23,19 +22,19 @@ object VDBlocks {
 
     val STUFFED_LANTERN_PUMPKIN = registerMaxStack(
         "stuffed_lantern_pumpkin_block",
-        stuffedPumpkinOf(copy(DnDFloraBlocks.LANTERN_PUMPKIN), VDItems.STUFFED_LANTERN_PUMPKIN)
+        stuffedPumpkinOf(copy(Blocks.PUMPKIN/*DnDFloraBlocks.LANTERN_PUMPKIN*/), VDItems.STUFFED_LANTERN_PUMPKIN)
     ).axe()
     val STUFFED_MOSSKIN_PUMPKIN = registerMaxStack(
         "stuffed_mosskin_pumpkin_block",
-        stuffedPumpkinOf(copy(DnDFloraBlocks.MOSSKIN_PUMPKIN), VDItems.STUFFED_MOSSKIN_PUMPKIN)
+        stuffedPumpkinOf(copy(Blocks.PUMPKIN/*DnDFloraBlocks.MOSSKIN_PUMPKIN*/), VDItems.STUFFED_MOSSKIN_PUMPKIN)
     ).axe()
     val STUFFED_GLOOM_PUMPKIN = registerMaxStack(
         "stuffed_gloom_pumpkin_block",
-        stuffedPumpkinOf(copy(DnDFloraBlocks.GLOOM_PUMPKIN), VDItems.STUFFED_GLOOM_PUMPKIN)
+        stuffedPumpkinOf(copy(Blocks.PUMPKIN/*DnDFloraBlocks.GLOOM_PUMPKIN*/), VDItems.STUFFED_GLOOM_PUMPKIN)
     ).axe()
     val STUFFED_PALE_PUMPKIN = registerMaxStack(
         "stuffed_pale_pumpkin_block",
-        stuffedPumpkinOf(copy(DnDFloraBlocks.PALE_PUMPKIN), VDItems.STUFFED_PALE_PUMPKIN)
+        stuffedPumpkinOf(copy(Blocks.PUMPKIN/*DnDFloraBlocks.PALE_PUMPKIN*/), VDItems.STUFFED_PALE_PUMPKIN)
     ).axe()
 
     val LANTERN_PUMPKIN_PIE = registerEdible(
