@@ -32,6 +32,7 @@ repositories {
         content { includeGroup("com.jamieswhiteshirt") }
     }
     maven("https://repo.greenhouse.house/snapshots/")
+    maven("https://maven.fzzyhmstrs.me/") { name = "FzzyMaven" }
     maven("https://jitpack.io/")
 
     mavenCentral()
@@ -44,7 +45,7 @@ modSettings {
     entrypoint("client", "org.teamvoided.voided_delight.VoidedDelightClient::init")
     entrypoint("fabric-datagen", "org.teamvoided.voided_delight.data.gen.VoidedDelightData")
 
-    dependency("dusk_autumn", "*")
+//    dependency("dusk_autumn", "*")
     dependency("farmersdelight", "*")
 //    mixinFile("${modId()}.client.mixins.json")
 //    mixinFile("${modId()}.mixins.json")

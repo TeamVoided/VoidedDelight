@@ -2,7 +2,7 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "dusk_autumn:mosskin_pumpkin"
+      "item": "dusks_and_dungeons:mosskin_pumpkin"
     }
   ],
   "result": [

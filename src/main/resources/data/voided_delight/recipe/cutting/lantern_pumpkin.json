@@ -2,7 +2,7 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "dusk_autumn:lantern_pumpkin"
+      "item": "dusks_and_dungeons:lantern_pumpkin"
     }
   ],
   "result": [

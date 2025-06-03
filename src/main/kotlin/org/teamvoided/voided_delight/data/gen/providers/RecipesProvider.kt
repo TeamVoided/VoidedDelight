@@ -16,12 +16,12 @@ import net.minecraft.recipe.Ingredient
 import net.minecraft.recipe.RecipeCategory
 import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.tag.TagKey
-import org.teamvoided.dusk_autumn.init.DnDItems
-import org.teamvoided.dusk_autumn.init.blocks.DnDFloraBlocks
-import org.teamvoided.dusk_autumn.util.datagen.id
-import org.teamvoided.dusk_autumn.util.datagen.offerReversibleCompactingRecipes4
-import org.teamvoided.dusk_autumn.util.datagen.smeltDefault
-import org.teamvoided.dusk_autumn.util.datagen.suffix
+import org.teamvoided.dusks_and_dungeons.init.DnDBlocks
+import org.teamvoided.dusks_and_dungeons.init.DnDItems
+import org.teamvoided.dusks_and_dungeons.util.datagen.id
+import org.teamvoided.dusks_and_dungeons.util.datagen.offerReversibleCompactingRecipes4
+import org.teamvoided.dusks_and_dungeons.util.datagen.smeltDefault
+import org.teamvoided.dusks_and_dungeons.util.datagen.suffix
 import org.teamvoided.voided_delight.block.VDFamilies.recipesBlockFamilies
 import org.teamvoided.voided_delight.compat.CookingPotRecipeBuilder
 import org.teamvoided.voided_delight.data.tags.VDItemTags
@@ -40,7 +40,7 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
     }
 
     fun candy(e: RecipeExporter) {
-        e.smeltDefault(VDBlocks.CRYSTAL_CANDY_BLOCK, DnDFloraBlocks.CORN_SYRUP_BLOCK)
+        e.smeltDefault(VDBlocks.CRYSTAL_CANDY_BLOCK, DnDBlocks.CORN_SYRUP_BLOCK)
         e.offerReversibleCompactingRecipes4(
             RecipeCategory.MISC, VDItems.CRYSTAL_CANDY_SHARD,
             RecipeCategory.BUILDING_BLOCKS, VDBlocks.CRYSTAL_CANDY_BLOCK
@@ -61,7 +61,7 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
         ShapedRecipeJsonFactory.create(RecipeCategory.FOOD, VDItems.LOLLIPOP)
             .ingredient('#', DnDItems.CORN_SYRUP_BOTTLE)
             .ingredient('X', Items.STICK)
-            .ingredient('0', DnDFloraBlocks.CORN_SYRUP_BLOCK)
+            .ingredient('0', DnDBlocks.CORN_SYRUP_BLOCK)
             .ingredient('%', Items.RED_DYE)
             .pattern(" #%")
             .pattern(" 0#")
@@ -84,10 +84,10 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
         e.make1to1(DnDItems.MOSSKIN_PUMPKIN_SEEDS, VDItems.MOSSKIN_PUMPKIN_SLICE)
         e.make1to1(DnDItems.GLOOM_PUMPKIN_SEEDS, VDItems.GLOOM_PUMPKIN_SLICE)
         e.make1to1(DnDItems.PALE_PUMPKIN_SEEDS, VDItems.PALE_PUMPKIN_SLICE)
-        e.make2x2(DnDFloraBlocks.LANTERN_PUMPKIN, VDItems.LANTERN_PUMPKIN_SLICE)
-        e.make2x2(DnDFloraBlocks.MOSSKIN_PUMPKIN, VDItems.MOSSKIN_PUMPKIN_SLICE)
-        e.make2x2(DnDFloraBlocks.GLOOM_PUMPKIN, VDItems.GLOOM_PUMPKIN_SLICE)
-        e.make2x2(DnDFloraBlocks.PALE_PUMPKIN, VDItems.PALE_PUMPKIN_SLICE)
+        e.make2x2(DnDBlocks.LANTERN_PUMPKIN, VDItems.LANTERN_PUMPKIN_SLICE)
+        e.make2x2(DnDBlocks.MOSSKIN_PUMPKIN, VDItems.MOSSKIN_PUMPKIN_SLICE)
+        e.make2x2(DnDBlocks.GLOOM_PUMPKIN, VDItems.GLOOM_PUMPKIN_SLICE)
+        e.make2x2(DnDBlocks.PALE_PUMPKIN, VDItems.PALE_PUMPKIN_SLICE)
 
         ShapelessRecipeJsonFactory.create(RecipeCategory.MISC, FDItems.FRUIT_SALAD.get())
             .ingredient(Items.APPLE)
@@ -105,15 +105,15 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
         e.makeSoup(VDItems.GLOOM_PUMPKIN_SOUP, VDItems.GLOOM_PUMPKIN_SLICE)
         e.makeSoup(VDItems.PALE_PUMPKIN_SOUP, VDItems.PALE_PUMPKIN_SLICE)
 
-        e.stuffThePumpkin(VDBlocks.STUFFED_LANTERN_PUMPKIN, DnDFloraBlocks.LANTERN_PUMPKIN)
-        e.stuffThePumpkin(VDBlocks.STUFFED_MOSSKIN_PUMPKIN, DnDFloraBlocks.MOSSKIN_PUMPKIN)
-        e.stuffThePumpkin(VDBlocks.STUFFED_GLOOM_PUMPKIN, DnDFloraBlocks.GLOOM_PUMPKIN)
-        e.stuffThePumpkin(VDBlocks.STUFFED_PALE_PUMPKIN, DnDFloraBlocks.PALE_PUMPKIN)
+        e.stuffThePumpkin(VDBlocks.STUFFED_LANTERN_PUMPKIN, VDItems.LANTERN_PUMPKIN_SLICE, DnDBlocks.LANTERN_PUMPKIN)
+        e.stuffThePumpkin(VDBlocks.STUFFED_MOSSKIN_PUMPKIN, VDItems.MOSSKIN_PUMPKIN_SLICE, DnDBlocks.MOSSKIN_PUMPKIN)
+        e.stuffThePumpkin(VDBlocks.STUFFED_GLOOM_PUMPKIN, VDItems.GLOOM_PUMPKIN_SLICE, DnDBlocks.GLOOM_PUMPKIN)
+        e.stuffThePumpkin(VDBlocks.STUFFED_PALE_PUMPKIN, VDItems.PALE_PUMPKIN_SLICE, DnDBlocks.PALE_PUMPKIN)
 
-        e.makePie(VDBlocks.LANTERN_PUMPKIN_PIE, DnDFloraBlocks.LANTERN_PUMPKIN)
-        e.makePie(VDBlocks.MOSSKIN_PUMPKIN_PIE, DnDFloraBlocks.MOSSKIN_PUMPKIN)
-        e.makePie(VDBlocks.GLOOM_PUMPKIN_PIE, DnDFloraBlocks.GLOOM_PUMPKIN)
-        e.makePie(VDBlocks.PALE_PUMPKIN_PIE, DnDFloraBlocks.PALE_PUMPKIN)
+        e.makePie(VDBlocks.LANTERN_PUMPKIN_PIE, DnDBlocks.LANTERN_PUMPKIN)
+        e.makePie(VDBlocks.MOSSKIN_PUMPKIN_PIE, DnDBlocks.MOSSKIN_PUMPKIN)
+        e.makePie(VDBlocks.GLOOM_PUMPKIN_PIE, DnDBlocks.GLOOM_PUMPKIN)
+        e.makePie(VDBlocks.PALE_PUMPKIN_PIE, DnDBlocks.PALE_PUMPKIN)
 
         e.make2x2(VDBlocks.LANTERN_PUMPKIN_PIE, VDItems.LANTERN_PUMPKIN_PIE_SLICE, 1, "_from_slices")
         e.make2x2(VDBlocks.MOSSKIN_PUMPKIN_PIE, VDItems.MOSSKIN_PUMPKIN_PIE_SLICE, 1, "_from_slices")
@@ -138,12 +138,12 @@ fun RecipeExporter.candied(output: ItemConvertible, input: Ingredient, count: In
 }
 
 @Suppress("UnstableApiUsage")
-fun RecipeExporter.stuffThePumpkin(output: ItemConvertible, container: ItemConvertible) {
+fun RecipeExporter.stuffThePumpkin(output: ItemConvertible, slice: ItemConvertible, container: ItemConvertible) {
     CookingPotRecipeBuilder.cookingPotRecipe(output, 1, 400, 2.0f, container)
         .addIngredient(CommonTags.CROPS_RICE)
         .addIngredient(CommonTags.CROPS_ONION)
         .addIngredient(Items.BROWN_MUSHROOM)
-        .addIngredient(Items.POTATO)
+        .addIngredient(slice)
         .addIngredient(ConventionalItemTags.BERRY_FOODS)
         .addCIngredient(
             DifferenceIngredient(
@@ -180,7 +180,7 @@ fun RecipeExporter.makePotBowl(output: ItemConvertible, vararg input: ItemConver
 
 fun RecipeExporter.potRecipe(
     output: ItemConvertible, count: Int, cookingTime: Int, experience: Float, container: ItemConvertible,
-    vararg input: ItemConvertible
+    vararg input: ItemConvertible,
 ) {
     val recipe = CookingPotRecipeBuilder.cookingPotRecipe(output, count, cookingTime, experience, container)
     input.forEach { recipe.addIngredient(it) }

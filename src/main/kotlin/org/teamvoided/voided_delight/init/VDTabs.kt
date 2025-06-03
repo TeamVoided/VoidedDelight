@@ -7,7 +7,7 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.text.Text
-import org.teamvoided.dusk_autumn.util.addLists
+import org.teamvoided.voidlib.helpers.mc.addLists
 import org.teamvoided.voided_delight.VoidedDelight.id
 import kotlin.jvm.optionals.getOrNull
 
