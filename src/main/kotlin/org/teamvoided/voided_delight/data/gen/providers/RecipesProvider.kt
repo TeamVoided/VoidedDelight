@@ -169,7 +169,7 @@ fun RecipeExporter.makeSoup(output: ItemConvertible, input: ItemConvertible) {
     CookingPotRecipeBuilder.cookingPotRecipe(output, 1, 200, 1.0f, Items.BOWL)
         .addIngredient(input)
         .addIngredient(CommonTags.FOODS_CABBAGE)
-        .addIngredient(CommonTags.FOODS_RAW_BACON)
+        .addIngredient(CommonTags.FOODS_RAW_PORK)
         .addIngredient(CommonTags.FOODS_MILK)
         .unlockedByAnyIngredient(input)
         .offerTo(this)
