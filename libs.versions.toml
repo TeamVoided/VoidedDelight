@@ -1,25 +1,35 @@
 [versions]
-kotlin = "2.0.20"
-fabric-loom = "1.7-SNAPSHOT"
-iridium = "3.3.2"
+kotlin = "2.2.21"
+fabric-loom = "1.11-SNAPSHOT"
+iridium = "3.5.0"
+# Dependencies
+fzzy-config = "0.7.2+1.21"
+farmers-delight = "1.21.1-3.2.2+refabricated"
+dusks-and-dungeons = "1.0.0-beta.3-no_biome"
 
-#farrow = "1.0.0+arrow.1.2.4"
-modmenu = "11.0.2"
-emi = "1.1.16+1.21.1"
-farmers-felight = "1.21-2.1.9+refabricated"
-dusks-and-dungeons = "1.0.0-beta.1"
+# QoL
+modmenu = "11.0.3"
+emi = "1.1.22+1.21.1"
 appleskin = "mc1.21-3.0.5"
 clothconfig = "15.0.127"
+# Testing
+creative-works = "0.5.0"
+imguimc = "1.21.1-1.0.8"
 
 [libraries]
-#farrow = { module = "net.wiredtomato:farrow", version.ref = "farrow" }
+# Dependencies
+fzzy-config = { module = "me.fzzyhmstrs:fzzy_config", version.ref = "fzzy-config" }
+
+farmers-delight = { module = "vectorwing:FarmersDelight", version.ref = "farmers-delight" }
+dusks-and-dungeons = { module = "org.teamvoided:dusks_and_dungeons", version.ref = "dusks-and-dungeons"}
+# QoL
 modmenu = { module = "com.terraformersmc:modmenu", version.ref = "modmenu" }
 emi = { module = "dev.emi:emi-fabric", version.ref = "emi" }
-farmers-felight = { module = "vectorwing:FarmersDelight", version.ref = "farmers-felight" }
-
-dusks-and-dungeons = { module = "org.teamvoided:dusks_and_dungeons", version.ref = "dusks-and-dungeons" }
 appleskin = { module = "squeek.appleskin:appleskin-fabric", version.ref = "appleskin" }
 clothconfig = {module="me.shedaniel.cloth:cloth-config-fabric", version.ref= "clothconfig"}
+# Testing
+creative-works = { module = "org.teamvoided:creative_works", version.ref = "creative-works" }
+imguimc = { module = "maven.modrinth:imgui-mc", version.ref = "imguimc" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

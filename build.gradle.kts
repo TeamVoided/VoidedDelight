@@ -12,33 +12,29 @@ plugins {
     alias(libs.plugins.iridium.upload)
 }
 
-group = property("maven_group")!!
-version = property("mod_version")!!
-base.archivesName.set(modSettings.modId())
-
-val modrinth_id: String? by project
-val curse_id: String? by project
-
 repositories {
-    maven("https://teamvoided.org/releases")
-    maven("https://teamvoided.org/snapshots")
+    maven("https://teamvoided.org/releases") { content { includeGroup("org.teamvoided") } }
+    maven("https://teamvoided.org/snapshots") { content { includeGroup("org.teamvoided") } }
+    maven("https://maven.fzzyhmstrs.me/") { name = "FzzyMaven"; content { includeGroup("me.fzzyhmstrs") } }
+    maven("https://maven.terraformersmc.com/") {
+        name = "Terraformers"
+        content {
+            includeGroup("com.terraformersmc")
+            includeGroup("dev.emi")
+        }
+    }
     maven("https://maven.ryanliptak.com")
     maven("https://maven.shedaniel.me/")
-    maven("https://maven.terraformersmc.com/") { name = "Terraformers" }
 
-    maven("https://repo.greenhouse.house/releases/") { name = "Greenhouse Maven" }
+    maven("https://maven.greenhouse.lgbt/releases/") { name = "Greenhouse Maven" }
     maven("https://mvn.devos.one/releases/") // Porting Lib
     maven("https://maven.jamieswhiteshirt.com/libs-release") {
         content { includeGroup("com.jamieswhiteshirt") }
     }
-    maven("https://repo.greenhouse.house/snapshots/")
-    maven("https://maven.fzzyhmstrs.me/") { name = "FzzyMaven" }
+    maven("https://api.modrinth.com/maven") { content { includeGroup("maven.modrinth") } }
     maven("https://jitpack.io/")
-
     mavenCentral()
 }
-
-println("Task: " + gradle.startParameter.taskNames.joinToString(","))
 
 modSettings {
     entrypoint("main", "org.teamvoided.voided_delight.VoidedDelight::init")
@@ -54,22 +50,40 @@ modSettings {
 
 dependencies {
     modImplementation(fileTree("libs"))
-    modImplementation(libs.modmenu)
+    modImplementation(libs.farmers.delight)
+    modImplementation(libs.dusks.and.dungeons)
+    modImplementation(libs.fzzy.config)
 
+    modImplementation(libs.modmenu)
     modCompileOnly("${libs.emi.get()}:api")
     modLocalRuntime(libs.emi)
-
-    modImplementation(libs.farmers.felight)
-    modImplementation(libs.dusks.and.dungeons)
 
     modImplementation(libs.appleskin)
     modImplementation(libs.clothconfig)
 
+    // Testing
+    modImplementation(libs.creative.works)
+    modImplementation(libs.imguimc)
 }
+val username = "vDev"
+val uuid: String? = null
 
 loom {
     splitEnvironmentSourceSets()
     runs {
+        named("client") {
+            programArgs("--username", username)
+            uuid?.let { programArgs("--uuid", uuid) }
+        }
+
+        create("TestWorld") {
+            client()
+            ideConfigGenerated(true)
+            runDir("run")
+            programArgs("--quickPlaySingleplayer", "test", "--username", username)
+            uuid?.let { programArgs("--uuid", uuid) }
+        }
+
         create("DataGen") {
             client()
             ideConfigGenerated(true)
@@ -77,13 +91,6 @@ loom {
             vmArg("-Dfabric-api.datagen.output-dir=${file("src/main/generated")}")
             vmArg("-Dfabric-api.datagen.modid=${modSettings.modId()}")
             runDir("build/datagen")
-        }
-
-        create("TestWorld") {
-            client()
-            ideConfigGenerated(true)
-            runDir("run")
-            programArgs("--quickPlaySingleplayer", "test")
         }
     }
 }
@@ -105,14 +112,6 @@ tasks {
         toolchain.languageVersion.set(JavaLanguageVersion.of(JavaVersion.toVersion(targetJavaVersion).toString()))
         withSourcesJar()
     }
-    jar {
-        val valTaskNames = gradle.startParameter.taskNames
-        if (!valTaskNames.contains("runDataGen")) {
-            exclude("org/teamvoided/template/data/gen/*")
-        } else {
-            println("Running datagen for task ${valTaskNames.joinToString(" ")}")
-        }
-    }
 }
 
 publishScript {
@@ -123,8 +122,8 @@ publishScript {
 
 uploadConfig {
 //    debugMode = true
-    modrinthId = modrinth_id
-    curseId = curse_id
+    modrinthId = ""
+    curseId = ""
 
     // FabricApi
     modrinthDependency("P7dR8mSH", uploadConfig.REQUIRED)
@@ -132,4 +131,9 @@ uploadConfig {
     // Fabric Language Kotlin
     modrinthDependency("Ha28R6CL", uploadConfig.REQUIRED)
     curseDependency("fabric-language-kotlin", uploadConfig.REQUIRED)
+
+    // TODO
+    // Farmers Delight
+    modrinthDependency("null", uploadConfig.REQUIRED)
+    curseDependency("null-farmersdelight", uploadConfig.REQUIRED)
 }
