@@ -11,17 +11,19 @@ import org.teamvoided.voided_delight.data.tags.VDItemTags
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
 import org.teamvoided.voided_delight.util.add
+import vectorwing.farmersdelight.common.tag.ModTags
 import java.util.concurrent.CompletableFuture
 import vectorwing.farmersdelight.common.registry.ModItems as FDItems
 
 @Suppress("MemberVisibilityCanBePrivate")
 class ItemTagProvider(
-    output: FabricDataOutput, completableFuture: CompletableFuture<HolderLookup.Provider>,
-    blockTagProvider: BlockTagProvider
-) : FabricTagProvider.ItemTagProvider(output, completableFuture, blockTagProvider) {
+    output: FabricDataOutput, completableFuture: CompletableFuture<HolderLookup.Provider>, blockTag: BlockTagProvider,
+) : FabricTagProvider.ItemTagProvider(output, completableFuture, blockTag) {
     override fun configure(wrapperLookup: HolderLookup.Provider) {
         candy()
         pumpkins()
+        getOrCreateTagBuilder(ModTags.MEALS)
+            .addTag(VDItemTags.MEALS)
     }
 
     fun candy() {
@@ -90,5 +92,17 @@ class ItemTagProvider(
                 FDItems.APPLE_PIE_SLICE.get(),
                 FDItems.CHOCOLATE_PIE_SLICE.get(),
             )
+        getOrCreateTagBuilder(VDItemTags.MEALS).add(
+            // Soup
+            VDItems.LANTERN_PUMPKIN_SOUP,
+            VDItems.MOSSKIN_PUMPKIN_SOUP,
+            VDItems.GLOOM_PUMPKIN_SOUP,
+            VDItems.PALE_PUMPKIN_SOUP,
+            // Stuffed Pumpkin
+            VDItems.STUFFED_LANTERN_PUMPKIN,
+            VDItems.STUFFED_MOSSKIN_PUMPKIN,
+            VDItems.STUFFED_GLOOM_PUMPKIN,
+            VDItems.STUFFED_PALE_PUMPKIN,
+        )
     }
 }

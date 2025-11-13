@@ -13,6 +13,8 @@ object VDItemTags {
     val PUMPKIN_SLICES = create("pumpkin_slices")
     val PIE_SLICES = create("pie_slices")
 
+    val MEALS = create("meals")
+
     private fun create(name: String): TagKey<Item> {
         val tag = TagKey.of(RegistryKeys.ITEM, id(name))
         ITEM_TAGS.add(tag)
