@@ -25,7 +25,7 @@ object VoidedDelight {
         registerComposting()
     }
 
-    fun id(path: String) = Identifier.of(MODID, path)
-    fun id(namespace: String, path: String) = Identifier.of(namespace, path)
-    fun fd(path: String) = Identifier.of(FarmersDelight.MODID, path)
+    fun id(namespace: String, path: String): Identifier = Identifier.of(namespace, path)
+    fun fd(path: String): Identifier = Identifier.of(FarmersDelight.MODID, path)
+    fun id(path: String) = id(MODID, path)
 }
