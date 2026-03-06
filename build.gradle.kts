@@ -113,6 +113,13 @@ tasks {
         toolchain.languageVersion.set(JavaLanguageVersion.of(JavaVersion.toVersion(targetJavaVersion).toString()))
         withSourcesJar()
     }
+
+    register("runDataAndWorld") {
+
+        dependsOn("runDataGen")
+        dependsOn("runTestWorld")
+        findByName("runTestWorld")!!.mustRunAfter("runDataGen")
+    }
 }
 
 publishScript {
