@@ -22,8 +22,8 @@ class ItemTagProvider(
     override fun configure(wrapperLookup: HolderLookup.Provider) {
         candy()
         pumpkins()
-        getOrCreateTagBuilder(ModTags.MEALS)
-            .addTag(VDItemTags.MEALS)
+        getOrCreateTagBuilder(ModTags.MEALS).addTag(VDItemTags.MEALS)
+        getOrCreateTagBuilder(ConventionalItemTags.FOODS).addTag(VDItemTags.PIE_SLICES)
     }
 
     fun candy() {
@@ -57,7 +57,6 @@ class ItemTagProvider(
             .add(
                 VDBlocks.LANTERN_PUMPKIN_PIE,
                 VDBlocks.MOSSKIN_PUMPKIN_PIE,
-                VDItems.WHITE_PUMPKIN_PIE_SLICE,
                 VDBlocks.GLOOM_PUMPKIN_PIE,
                 VDBlocks.PALE_PUMPKIN_PIE,
             )
