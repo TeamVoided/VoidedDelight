@@ -10,4 +10,7 @@ object VDCompat {
     val HAS_WHITE_PUMPKINS = mod(WHITE_PUMPKINS)
 
     fun mod(id: String) = FabricLoader.getInstance().isModLoaded(id)
+
+    @JvmStatic
+    fun isDev() = FabricLoader.getInstance().isDevelopmentEnvironment
 }

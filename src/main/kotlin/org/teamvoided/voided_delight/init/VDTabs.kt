@@ -8,11 +8,10 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.text.Text
-import org.teamvoided.dusks_and_dungeons.DusksAndDungeons.isDev
 import org.teamvoided.voided_delight.VDCompat.HAS_DND
 import org.teamvoided.voided_delight.VDCompat.HAS_WHITE_PUMPKINS
+import org.teamvoided.voided_delight.VDCompat.isDev
 import org.teamvoided.voided_delight.VoidedDelight.id
-import org.teamvoided.voidlib.helpers.mc.addItems
 import kotlin.jvm.optionals.getOrNull
 
 
@@ -91,7 +90,7 @@ object VDTabs {
             "voided_delight_debug", FabricItemGroup.builder()
                 .icon { ItemStack(VDItems.ITEMS.random()) }
                 .name(Text.literal("Voided Delight Debug"))
-                .entries { _, entries -> entries.addItems(VDItems.ITEMS) }
+                .entries { _, entries -> entries.add(*VDItems.ITEMS.toTypedArray()) }
                 .build()
         )
     }
