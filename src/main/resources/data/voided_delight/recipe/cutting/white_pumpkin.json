@@ -3,21 +3,21 @@
     {
       "condition": "fabric:any_mods_loaded",
       "values": [
-        "dusks_and_dungeons"
+        "white_pumpkins"
       ]
     }
   ],
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "voided_delight:lantern_pumpkin_pie"
+      "item": "white_pumpkins:white_pumpkin"
     }
   ],
   "result": [
     {
       "item": {
         "count": 4,
-        "id": "voided_delight:lantern_pumpkin_pie_slice"
+        "id": "voided_delight:white_pumpkin_slice"
       }
     }
   ],

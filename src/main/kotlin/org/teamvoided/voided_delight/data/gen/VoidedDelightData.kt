@@ -7,7 +7,7 @@ import org.teamvoided.voided_delight.VoidedDelight.log
 import org.teamvoided.voided_delight.data.gen.providers.BlockLootTableProvider
 import org.teamvoided.voided_delight.data.gen.providers.EnglishTranslationProvider
 import org.teamvoided.voided_delight.data.gen.providers.ModelProvider
-import org.teamvoided.voided_delight.data.gen.providers.RecipesProvider
+import org.teamvoided.voided_delight.data.gen.providers.recipe.RecipesProvider
 import org.teamvoided.voided_delight.data.gen.tags.BlockTagProvider
 import org.teamvoided.voided_delight.data.gen.tags.ItemTagProvider
 

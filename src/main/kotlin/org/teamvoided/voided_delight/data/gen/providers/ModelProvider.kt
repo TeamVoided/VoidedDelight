@@ -33,9 +33,11 @@ class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
         gen.registerPie(VDBlocks.MOSSKIN_PUMPKIN_PIE)
         gen.registerPie(VDBlocks.GLOOM_PUMPKIN_PIE)
         gen.registerPie(VDBlocks.PALE_PUMPKIN_PIE)
+
+        gen.registerStuffedPumpkin(VDBlocks.STUFFED_WHITE_PUMPKIN)
     }
 
-    private val single = listOf(
+    val single = listOf(
         VDItems.LANTERN_PUMPKIN_SLICE,
         VDItems.MOSSKIN_PUMPKIN_SLICE,
         VDItems.GLOOM_PUMPKIN_SLICE,
@@ -71,6 +73,12 @@ class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
         VDItems.CANDY_CLOUD,
         VDItems.MARSHMARROW,
         VDItems.CRYSTAL_CANDY_SHARD,
+
+        VDItems.WHITE_PUMPKIN_SLICE,
+        VDItems.STUFFED_WHITE_PUMPKIN,
+        VDBlocks.STUFFED_WHITE_PUMPKIN.asItem(),
+        VDItems.WHITE_PUMPKIN_SOUP,
+        VDItems.WHITE_PUMPKIN_PIE_SLICE,
     )
 
     override fun generateItemModels(gen: ItemModelGenerator) {
@@ -97,9 +105,9 @@ fun BlockStateModelGenerator.registerStuffedPumpkin(block: Block) {
         .put(SIDE, block.model("_side"))
         .put(TOP, block.model("_top"))
         .put(PARTICLE, block.model("_bottom"))
-    var models = pumpkinModelList.map { it.upload(block, texture, this.modelCollector) }
+    var models = pumpkinModelList.map { it.upload(block, texture, modelCollector) }
     models = listOf(models.first()) + models
-    this.blockStateCollector.accept(
+    blockStateCollector.accept(
         VariantsBlockStateSupplier.create(block)
             .coordinate(createNorthDefaultHorizontalRotationStates())
             .coordinate(BlockStateVariantMap.create(FeastBlock.SERVINGS).register {
@@ -123,12 +131,12 @@ fun BlockStateModelGenerator.registerPie(block: Block) {
         .put(TOP, block.model("_top"))
         .put(INNER, block.model("_inner"))
 
-    this.blockStateCollector.accept(
+    blockStateCollector.accept(
         VariantsBlockStateSupplier.create(block)
             .coordinate(createNorthDefaultHorizontalRotationStates())
             .coordinate(BlockStateVariantMap.create(PieBlock.BITES).register {
                 BlockStateVariant.create()
-                    .put(VariantSettings.MODEL, pieModelList[it].upload(block, texture, this.modelCollector))
+                    .put(VariantSettings.MODEL, pieModelList[it].upload(block, texture, modelCollector))
             })
     )
 }

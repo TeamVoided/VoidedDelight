@@ -52,6 +52,7 @@ dependencies {
     modImplementation(fileTree("libs"))
     modImplementation(libs.farmers.delight)
     modImplementation(libs.dusks.and.dungeons)
+    modImplementation(libs.white.pumpkins)
     modImplementation(libs.fzzy.config)
 
     modImplementation(libs.modmenu)

@@ -52,10 +52,12 @@ class ItemTagProvider(
                 VDBlocks.STUFFED_MOSSKIN_PUMPKIN,
                 VDBlocks.STUFFED_GLOOM_PUMPKIN,
                 VDBlocks.STUFFED_PALE_PUMPKIN,
+                VDBlocks.STUFFED_WHITE_PUMPKIN,
             )
             .add(
                 VDBlocks.LANTERN_PUMPKIN_PIE,
                 VDBlocks.MOSSKIN_PUMPKIN_PIE,
+                VDItems.WHITE_PUMPKIN_PIE_SLICE,
                 VDBlocks.GLOOM_PUMPKIN_PIE,
                 VDBlocks.PALE_PUMPKIN_PIE,
             )
@@ -64,7 +66,8 @@ class ItemTagProvider(
                 VDItems.LANTERN_PUMPKIN_SOUP,
                 VDItems.MOSSKIN_PUMPKIN_SOUP,
                 VDItems.GLOOM_PUMPKIN_SOUP,
-                VDItems.PALE_PUMPKIN_SOUP
+                VDItems.PALE_PUMPKIN_SOUP,
+                VDItems.WHITE_PUMPKIN_SOUP,
             )
         getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, id("c", "foods/pie")))
             .add(
@@ -73,6 +76,7 @@ class ItemTagProvider(
                 VDBlocks.GLOOM_PUMPKIN_PIE,
                 VDBlocks.PALE_PUMPKIN_PIE,
             )
+            .addOptional(id("white_pumpkins", "white_pumpkin_pie"))
         getOrCreateTagBuilder(VDItemTags.PUMPKIN_SLICES)
             .add(
                 FDItems.PUMPKIN_SLICE.get(),
@@ -80,13 +84,15 @@ class ItemTagProvider(
                 VDItems.MOSSKIN_PUMPKIN_SLICE,
                 VDItems.GLOOM_PUMPKIN_SLICE,
                 VDItems.PALE_PUMPKIN_SLICE,
+                VDItems.WHITE_PUMPKIN_SLICE,
             )
         getOrCreateTagBuilder(VDItemTags.PIE_SLICES)
             .add(
                 VDItems.LANTERN_PUMPKIN_PIE_SLICE,
                 VDItems.MOSSKIN_PUMPKIN_PIE_SLICE,
                 VDItems.GLOOM_PUMPKIN_PIE_SLICE,
-                VDItems.PALE_PUMPKIN_PIE_SLICE
+                VDItems.PALE_PUMPKIN_PIE_SLICE,
+                VDItems.WHITE_PUMPKIN_PIE_SLICE,
             )
             .add(
                 FDItems.APPLE_PIE_SLICE.get(),
@@ -98,11 +104,13 @@ class ItemTagProvider(
             VDItems.MOSSKIN_PUMPKIN_SOUP,
             VDItems.GLOOM_PUMPKIN_SOUP,
             VDItems.PALE_PUMPKIN_SOUP,
+            VDItems.WHITE_PUMPKIN_SOUP,
             // Stuffed Pumpkin
             VDItems.STUFFED_LANTERN_PUMPKIN,
             VDItems.STUFFED_MOSSKIN_PUMPKIN,
             VDItems.STUFFED_GLOOM_PUMPKIN,
             VDItems.STUFFED_PALE_PUMPKIN,
+            VDItems.STUFFED_WHITE_PUMPKIN,
         )
     }
 }

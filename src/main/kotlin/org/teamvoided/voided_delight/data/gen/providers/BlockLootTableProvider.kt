@@ -22,19 +22,18 @@ class BlockLootTableProvider(o: FabricDataOutput, r: CompletableFuture<HolderLoo
     val manualList: List<Block> = listOf()
 
     override fun generate() {
-        VDBlocks.BLOCKS.filterNot(manualList::contains).forEach {
-            when (it) {
-                is SlabBlock -> add(it, ::slabDrops)
-                is DoorBlock -> add(it, ::doorDrops)
-                is FeastBlock -> add(it, ::feastDrops)
-                is PieBlock -> add(it) { dropsNothing() }
-                else -> addDrop(it)
+        for (block in VDBlocks.BLOCKS.filterNot(manualList::contains)) {
+            when (block) {
+                is SlabBlock -> add(block, ::slabDrops)
+                is DoorBlock -> add(block, ::doorDrops)
+                is FeastBlock -> add(block, ::feastDrops)
+                is PieBlock -> add(block) { dropsNothing() }
+                else -> addDrop(block)
             }
         }
-
     }
 
-    private fun feastDrops(it: Block): LootTable.Builder {
+    fun feastDrops(it: Block): LootTable.Builder {
         return LootTable.builder().pool(
             applySurvivesExplosionCondition(
                 it, LootPool.builder()
@@ -46,6 +45,5 @@ class BlockLootTableProvider(o: FabricDataOutput, r: CompletableFuture<HolderLoo
                     .with(ItemEntry.builder(it))
             )
         )
-
     }
 }

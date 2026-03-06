@@ -18,56 +18,53 @@ import org.teamvoided.voided_delight.util.*
 
 @Suppress("LargeClass", "TooManyFunctions", "MemberVisibilityCanBePrivate", "unused")
 object VDBlocks {
-    val BLOCKS = mutableSetOf<Block>()
+    val BLOCKS get() = getModEntries(Registries.BLOCK)
 
+    // region Dusks and Dungeons
     val STUFFED_LANTERN_PUMPKIN = registerMaxStack(
-        "stuffed_lantern_pumpkin_block",
-        stuffedPumpkinOf(copy(Blocks.PUMPKIN/*DnDFloraBlocks.LANTERN_PUMPKIN*/), VDItems.STUFFED_LANTERN_PUMPKIN)
+        "stuffed_lantern_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN), VDItems.STUFFED_LANTERN_PUMPKIN)
     ).axe()
     val STUFFED_MOSSKIN_PUMPKIN = registerMaxStack(
-        "stuffed_mosskin_pumpkin_block",
-        stuffedPumpkinOf(copy(Blocks.PUMPKIN/*DnDFloraBlocks.MOSSKIN_PUMPKIN*/), VDItems.STUFFED_MOSSKIN_PUMPKIN)
+        "stuffed_mosskin_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN), VDItems.STUFFED_MOSSKIN_PUMPKIN)
     ).axe()
     val STUFFED_GLOOM_PUMPKIN = registerMaxStack(
-        "stuffed_gloom_pumpkin_block",
-        stuffedPumpkinOf(copy(Blocks.PUMPKIN/*DnDFloraBlocks.GLOOM_PUMPKIN*/), VDItems.STUFFED_GLOOM_PUMPKIN)
+        "stuffed_gloom_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN), VDItems.STUFFED_GLOOM_PUMPKIN)
     ).axe()
     val STUFFED_PALE_PUMPKIN = registerMaxStack(
-        "stuffed_pale_pumpkin_block",
-        stuffedPumpkinOf(copy(Blocks.PUMPKIN/*DnDFloraBlocks.PALE_PUMPKIN*/), VDItems.STUFFED_PALE_PUMPKIN)
+        "stuffed_pale_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN), VDItems.STUFFED_PALE_PUMPKIN)
     ).axe()
 
     val LANTERN_PUMPKIN_PIE = registerEdible(
-        "lantern_pumpkin_pie", FoodComponents.PUMPKIN_PIE,
-        pieOf(copy(Blocks.CAKE), VDItems.LANTERN_PUMPKIN_PIE_SLICE)
+        "lantern_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE), VDItems.LANTERN_PUMPKIN_PIE_SLICE)
     ).knife()
     val MOSSKIN_PUMPKIN_PIE = registerEdible(
-        "mosskin_pumpkin_pie", FoodComponents.PUMPKIN_PIE,
-        pieOf(copy(Blocks.CAKE), VDItems.MOSSKIN_PUMPKIN_PIE_SLICE)
+        "mosskin_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE), VDItems.MOSSKIN_PUMPKIN_PIE_SLICE)
     ).knife()
     val GLOOM_PUMPKIN_PIE = registerEdible(
-        "gloom_pumpkin_pie", FoodComponents.PUMPKIN_PIE,
-        pieOf(copy(Blocks.CAKE), VDItems.GLOOM_PUMPKIN_PIE_SLICE)
+        "gloom_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE), VDItems.GLOOM_PUMPKIN_PIE_SLICE)
     ).knife()
     val PALE_PUMPKIN_PIE = registerEdible(
-        "pale_pumpkin_pie", FoodComponents.PUMPKIN_PIE,
-        pieOf(copy(Blocks.CAKE), VDItems.PALE_PUMPKIN_PIE_SLICE)
+        "pale_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE), VDItems.PALE_PUMPKIN_PIE_SLICE)
     ).knife()
 
 
     val CRYSTAL_CANDY_BLOCK = registerEdible(
-        "crystal_candy_block", VDFoodComponents.CRYSTAL_CANDY_8,
-        Block(copy(Blocks.CALCITE).mapColor(MapColor.BLUE))
+        "crystal_candy_block", VDFoodComponents.CRYSTAL_CANDY_8, Block(copy(Blocks.CALCITE).mapColor(MapColor.BLUE))
     ).pickaxe()
     val CRYSTAL_CANDY_STAIRS = registerEdible(
         "crystal_candy_stairs", VDFoodComponents.CRYSTAL_CANDY_6, stairsOf(CRYSTAL_CANDY_BLOCK)
     ).pickaxe()
-    val CRYSTAL_CANDY_SLAB = registerEdible(
-        "crystal_candy_slab", VDFoodComponents.CRYSTAL_CANDY_4, slabOf(CRYSTAL_CANDY_BLOCK)
-    ).pickaxe()
-    val CRYSTAL_CANDY_WALL = registerEdible(
-        "crystal_candy_wall", VDFoodComponents.CRYSTAL_CANDY_6, wallOf(CRYSTAL_CANDY_BLOCK)
-    ).pickaxe()
+    val CRYSTAL_CANDY_SLAB =
+        registerEdible("crystal_candy_slab", VDFoodComponents.CRYSTAL_CANDY_4, slabOf(CRYSTAL_CANDY_BLOCK)).pickaxe()
+    val CRYSTAL_CANDY_WALL =
+        registerEdible("crystal_candy_wall", VDFoodComponents.CRYSTAL_CANDY_6, wallOf(CRYSTAL_CANDY_BLOCK)).pickaxe()
+    // endregion
+
+    // region White Pumpkins
+    val STUFFED_WHITE_PUMPKIN = registerMaxStack(
+        "stuffed_white_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN), VDItems.STUFFED_WHITE_PUMPKIN)
+    ).axe()
+    // endregion
 
     fun init() {
 //        FlammableBlockRegistry.getInstance(FIRE).add(DnDBlockTags.FLAMMABLE_PLANKS, 5, 20)
@@ -91,9 +88,5 @@ object VDBlocks {
         return regBlock
     }
 
-    fun registerNoItem(id: String, block: Block): Block {
-        val regBlock = Registry.register(Registries.BLOCK, id(id), block)
-        BLOCKS.add(regBlock)
-        return regBlock
-    }
+    fun registerNoItem(id: String, block: Block): Block = Registry.register(Registries.BLOCK, id(id), block)
 }
