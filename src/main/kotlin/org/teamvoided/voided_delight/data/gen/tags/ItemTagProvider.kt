@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags
 import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.RegistryKeys
+import net.minecraft.registry.tag.ItemTags
 import net.minecraft.registry.tag.TagKey
 import org.teamvoided.voided_delight.VoidedDelight.id
 import org.teamvoided.voided_delight.data.tags.VDItemTags
@@ -43,6 +44,8 @@ class ItemTagProvider(
                 VDBlocks.CRYSTAL_CANDY_SLAB,
                 VDBlocks.CRYSTAL_CANDY_WALL,
             )
+
+        getOrCreateTagBuilder(ItemTags.MACE_ENCHANTABLE).add(VDItems.LOLLIPOP)
     }
 
     fun pumpkins() {
