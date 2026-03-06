@@ -13,9 +13,6 @@ import vectorwing.farmersdelight.FarmersDelight
 object VoidedDelight {
     const val MODID = "voided_delight"
 
-    const val DND = "dusks_and_dungeons"
-    const val WHITE_PUMPKINS = "white_pumpkins"
-
     @JvmField
     val log: Logger = LoggerFactory.getLogger(VoidedDelight::class.simpleName)
 
