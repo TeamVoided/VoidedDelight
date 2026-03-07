@@ -1,4 +1,4 @@
-package org.teamvoided.voided_delight.data.gen.providers.recipe
+package org.teamvoided.voided_delight.data.gen.data.recipe
 
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags

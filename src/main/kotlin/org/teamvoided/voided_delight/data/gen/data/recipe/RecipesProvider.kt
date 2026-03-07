@@ -1,8 +1,8 @@
-package org.teamvoided.voided_delight.data.gen.providers.recipe
+package org.teamvoided.voided_delight.data.gen.data.recipe
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
-import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions
+import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions.anyModsLoaded
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags
 import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonFactory
@@ -31,7 +31,6 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
             .offerTo(conditional(e, VDCompat.DND, VDCompat.WHITE_PUMPKINS))
     }
 
-    fun conditional(e: RecipeExporter, vararg id: String): RecipeExporter =
-        withConditions(e, ResourceConditions.anyModsLoaded(*id))
+    fun conditional(e: RecipeExporter, vararg id: String): RecipeExporter = withConditions(e, anyModsLoaded(*id))
 
 }

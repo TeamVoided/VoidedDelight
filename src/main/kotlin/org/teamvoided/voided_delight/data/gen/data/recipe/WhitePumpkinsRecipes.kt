@@ -1,4 +1,4 @@
-package org.teamvoided.voided_delight.data.gen.providers.recipe
+package org.teamvoided.voided_delight.data.gen.data.recipe
 
 import einstein.white_pumpkins.ModInit as WPInit
 import net.minecraft.data.server.recipe.RecipeExporter

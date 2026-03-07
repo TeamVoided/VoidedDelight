@@ -4,12 +4,12 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.minecraft.registry.RegistrySetBuilder
 import org.teamvoided.voided_delight.VoidedDelight.log
-import org.teamvoided.voided_delight.data.gen.providers.BlockLootTableProvider
-import org.teamvoided.voided_delight.data.gen.providers.EnglishTranslationProvider
-import org.teamvoided.voided_delight.data.gen.providers.ModelProvider
-import org.teamvoided.voided_delight.data.gen.providers.recipe.RecipesProvider
-import org.teamvoided.voided_delight.data.gen.tags.BlockTagProvider
-import org.teamvoided.voided_delight.data.gen.tags.ItemTagProvider
+import org.teamvoided.voided_delight.data.gen.data.BlockLootTableProvider
+import org.teamvoided.voided_delight.data.gen.assets.EnglishTranslationProvider
+import org.teamvoided.voided_delight.data.gen.assets.ModelProvider
+import org.teamvoided.voided_delight.data.gen.data.recipe.RecipesProvider
+import org.teamvoided.voided_delight.data.gen.data.tags.BlockTagProvider
+import org.teamvoided.voided_delight.data.gen.data.tags.ItemTagProvider
 
 
 @Suppress("unused")

@@ -1,4 +1,4 @@
-package org.teamvoided.voided_delight.data.gen.providers
+package org.teamvoided.voided_delight.data.gen.assets
 
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput

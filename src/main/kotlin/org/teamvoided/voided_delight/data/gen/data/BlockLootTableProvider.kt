@@ -1,8 +1,8 @@
-package org.teamvoided.voided_delight.data.gen.providers
+package org.teamvoided.voided_delight.data.gen.data
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
-import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions
+import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions.anyModsLoaded
 import net.minecraft.block.Block
 import net.minecraft.block.DoorBlock
 import net.minecraft.block.SlabBlock
@@ -24,7 +24,9 @@ class BlockLootTableProvider(o: FabricDataOutput, r: CompletableFuture<HolderLoo
     FabricBlockLootTableProvider(o, r) {
     val manualList: List<Block> = listOf()
 
+    @Suppress("unused")
     val dndGen = conditional(VDCompat.DND)
+    @Suppress("unused")
     val whitePumpkinsGen = conditional(VDCompat.DND)
 
     override fun generate() {
@@ -33,7 +35,7 @@ class BlockLootTableProvider(o: FabricDataOutput, r: CompletableFuture<HolderLoo
         }
     }
 
-    fun conditional(vararg id: String): BlockLootTableGenerator = withConditions(ResourceConditions.anyModsLoaded(*id))
+    fun conditional(vararg id: String): BlockLootTableGenerator = withConditions(anyModsLoaded(*id))
 }
 
 fun BlockLootTableGenerator.feastDrops(it: Block): LootTable.Builder {
