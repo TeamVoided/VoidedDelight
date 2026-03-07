@@ -28,9 +28,7 @@ repositories {
 
     maven("https://maven.greenhouse.lgbt/releases/") { name = "Greenhouse Maven" }
     maven("https://mvn.devos.one/releases/") // Porting Lib
-    maven("https://maven.jamieswhiteshirt.com/libs-release") {
-        content { includeGroup("com.jamieswhiteshirt") }
-    }
+    maven("https://maven.jamieswhiteshirt.com/libs-release") { content { includeGroup("com.jamieswhiteshirt") } }
     maven("https://api.modrinth.com/maven") { content { includeGroup("maven.modrinth") } }
     maven("https://jitpack.io/")
     mavenCentral()
