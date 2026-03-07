@@ -13,7 +13,6 @@ import vectorwing.farmersdelight.common.tag.CommonTags
 import vectorwing.farmersdelight.common.tag.ModTags
 import java.util.concurrent.CompletableFuture
 
-@Suppress("MemberVisibilityCanBePrivate")
 class BlockTagProvider(output: FabricDataOutput, completableFuture: CompletableFuture<HolderLookup.Provider>) :
     FabricTagProvider.BlockTagProvider(output, completableFuture) {
     override fun configure(wrapperLookup: HolderLookup.Provider) {

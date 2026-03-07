@@ -16,7 +16,6 @@ import vectorwing.farmersdelight.common.tag.ModTags
 import java.util.concurrent.CompletableFuture
 import vectorwing.farmersdelight.common.registry.ModItems as FDItems
 
-@Suppress("MemberVisibilityCanBePrivate")
 class ItemTagProvider(
     output: FabricDataOutput, completableFuture: CompletableFuture<HolderLookup.Provider>, blockTag: BlockTagProvider,
 ) : FabricTagProvider.ItemTagProvider(output, completableFuture, blockTag) {

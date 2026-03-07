@@ -9,7 +9,6 @@ import org.teamvoided.voided_delight.init.VDTabs
 import org.teamvoided.voided_delight.init.registerComposting
 import vectorwing.farmersdelight.FarmersDelight
 
-@Suppress("unused")
 object VoidedDelight {
     const val MODID = "voided_delight"
 

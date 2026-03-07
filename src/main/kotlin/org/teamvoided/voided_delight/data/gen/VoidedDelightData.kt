@@ -12,7 +12,6 @@ import org.teamvoided.voided_delight.data.gen.data.tags.BlockTagProvider
 import org.teamvoided.voided_delight.data.gen.data.tags.ItemTagProvider
 
 
-@Suppress("unused")
 object VoidedDelightData : DataGeneratorEntrypoint {
     override fun onInitializeDataGenerator(gen: FabricDataGenerator) {
         log.info("Hello from DataGen")

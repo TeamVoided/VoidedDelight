@@ -4,7 +4,6 @@ import net.minecraft.entity.player.HungerConstants
 import net.minecraft.item.FoodComponent
 import java.util.*
 
-@Suppress("MagicNumber")
 object VDFoodComponents {
     val CANDY_BERRY = foodComponent(2, 0.2f, 0.8f)
     val MARSHMAROW = foodComponent(2, 0.2f, 0.8f)

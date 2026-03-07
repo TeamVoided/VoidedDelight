@@ -16,7 +16,6 @@ import org.teamvoided.voided_delight.item.VDFoodComponents
 import org.teamvoided.voided_delight.util.*
 
 
-@Suppress("LargeClass", "TooManyFunctions", "MemberVisibilityCanBePrivate", "unused")
 object VDBlocks {
     val BLOCKS get() = getModEntries(Registries.BLOCK)
 

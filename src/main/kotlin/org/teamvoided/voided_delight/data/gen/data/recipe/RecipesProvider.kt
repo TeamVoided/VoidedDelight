@@ -14,7 +14,6 @@ import org.teamvoided.voided_delight.data.tags.VDItemTags
 import java.util.concurrent.CompletableFuture
 import vectorwing.farmersdelight.common.registry.ModItems as FDItems
 
-@Suppress("MemberVisibilityCanBePrivate")
 class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) : FabricRecipeProvider(o, r) {
     override fun generateRecipes(e: RecipeExporter) {
         dnd(conditional(e, VDCompat.DND))

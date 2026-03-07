@@ -12,7 +12,6 @@ import org.teamvoided.voided_delight.init.VDItems
 import org.teamvoided.voided_delight.init.VDTabs
 import java.util.concurrent.CompletableFuture
 
-@Suppress("MemberVisibilityCanBePrivate")
 class EnglishTranslationProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
     FabricLanguageProvider(o, r) {
     override fun generateTranslations(lookup: HolderLookup.Provider, gen: TranslationBuilder) {
