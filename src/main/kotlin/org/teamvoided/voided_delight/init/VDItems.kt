@@ -7,7 +7,7 @@ import net.minecraft.registry.Registry
 import org.teamvoided.voided_delight.VoidedDelight.id
 import org.teamvoided.voided_delight.item.VDFoodComponents
 import org.teamvoided.voided_delight.util.getModEntries
-import vectorwing.farmersdelight.common.FoodValues
+import vectorwing.farmersdelight.common.FoodValues.*
 import vectorwing.farmersdelight.common.item.ConsumableItem
 import vectorwing.farmersdelight.common.registry.ModItems.bowlFoodItem
 
@@ -16,25 +16,25 @@ object VDItems {
     val ITEMS get() = getModEntries(Registries.ITEM)
 
     // region Dusks and Dungeons
-    val LANTERN_PUMPKIN_SLICE = register("lantern_pumpkin_slice", foodItem(FoodValues.PUMPKIN_SLICE))
-    val MOSSKIN_PUMPKIN_SLICE = register("mosskin_pumpkin_slice", foodItem(FoodValues.PUMPKIN_SLICE))
-    val GLOOM_PUMPKIN_SLICE = register("gloom_pumpkin_slice", foodItem(FoodValues.PUMPKIN_SLICE))
-    val PALE_PUMPKIN_SLICE = register("pale_pumpkin_slice", foodItem(FoodValues.PUMPKIN_SLICE))
+    val LANTERN_PUMPKIN_SLICE = register("lantern_pumpkin_slice", foodItem(PUMPKIN_SLICE))
+    val MOSSKIN_PUMPKIN_SLICE = register("mosskin_pumpkin_slice", foodItem(PUMPKIN_SLICE))
+    val GLOOM_PUMPKIN_SLICE = register("gloom_pumpkin_slice", foodItem(PUMPKIN_SLICE))
+    val PALE_PUMPKIN_SLICE = register("pale_pumpkin_slice", foodItem(PUMPKIN_SLICE))
 
-    val STUFFED_LANTERN_PUMPKIN = register("stuffed_lantern_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
-    val STUFFED_MOSSKIN_PUMPKIN = register("stuffed_mosskin_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
-    val STUFFED_GLOOM_PUMPKIN = register("stuffed_gloom_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
-    val STUFFED_PALE_PUMPKIN = register("stuffed_pale_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
+    val STUFFED_LANTERN_PUMPKIN = register("stuffed_lantern_pumpkin", bowlItem(STUFFED_PUMPKIN))
+    val STUFFED_MOSSKIN_PUMPKIN = register("stuffed_mosskin_pumpkin", bowlItem(STUFFED_PUMPKIN))
+    val STUFFED_GLOOM_PUMPKIN = register("stuffed_gloom_pumpkin", bowlItem(STUFFED_PUMPKIN))
+    val STUFFED_PALE_PUMPKIN = register("stuffed_pale_pumpkin", bowlItem(STUFFED_PUMPKIN))
 
-    val LANTERN_PUMPKIN_SOUP = register("lantern_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
-    val MOSSKIN_PUMPKIN_SOUP = register("mosskin_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
-    val GLOOM_PUMPKIN_SOUP = register("gloom_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
-    val PALE_PUMPKIN_SOUP = register("pale_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
+    val LANTERN_PUMPKIN_SOUP = register("lantern_pumpkin_soup", bowlItem(PUMPKIN_SOUP))
+    val MOSSKIN_PUMPKIN_SOUP = register("mosskin_pumpkin_soup", bowlItem(PUMPKIN_SOUP))
+    val GLOOM_PUMPKIN_SOUP = register("gloom_pumpkin_soup", bowlItem(PUMPKIN_SOUP))
+    val PALE_PUMPKIN_SOUP = register("pale_pumpkin_soup", bowlItem(PUMPKIN_SOUP))
 
-    val LANTERN_PUMPKIN_PIE_SLICE = register("lantern_pumpkin_pie_slice", foodItem(FoodValues.PIE_SLICE))
-    val MOSSKIN_PUMPKIN_PIE_SLICE = register("mosskin_pumpkin_pie_slice", foodItem(FoodValues.PIE_SLICE))
-    val GLOOM_PUMPKIN_PIE_SLICE = register("gloom_pumpkin_pie_slice", foodItem(FoodValues.PIE_SLICE))
-    val PALE_PUMPKIN_PIE_SLICE = register("pale_pumpkin_pie_slice", foodItem(FoodValues.PIE_SLICE))
+    val LANTERN_PUMPKIN_PIE_SLICE = register("lantern_pumpkin_pie_slice", foodItem(PIE_SLICE))
+    val MOSSKIN_PUMPKIN_PIE_SLICE = register("mosskin_pumpkin_pie_slice", foodItem(PIE_SLICE))
+    val GLOOM_PUMPKIN_PIE_SLICE = register("gloom_pumpkin_pie_slice", foodItem(PIE_SLICE))
+    val PALE_PUMPKIN_PIE_SLICE = register("pale_pumpkin_pie_slice", foodItem(PIE_SLICE))
 
     val CANDY_BERRY = register("candy_berry", foodItem(VDFoodComponents.CANDY_BERRY))
     val CANDY_CORN = register("candy_corn", foodItem(VDFoodComponents.CANDY_CORN))
@@ -46,10 +46,10 @@ object VDItems {
     // endregion
 
     // region White Pumpkins
-    val WHITE_PUMPKIN_SLICE = register("white_pumpkin_slice", foodItem(FoodValues.PUMPKIN_SLICE))
-    val STUFFED_WHITE_PUMPKIN = register("stuffed_white_pumpkin", bowlItem(FoodValues.STUFFED_PUMPKIN))
-    val WHITE_PUMPKIN_SOUP = register("white_pumpkin_soup", bowlItem(FoodValues.PUMPKIN_SOUP))
-    val WHITE_PUMPKIN_PIE_SLICE = register("white_pumpkin_pie_slice", foodItem(FoodValues.PIE_SLICE))
+    val WHITE_PUMPKIN_SLICE = register("white_pumpkin_slice", foodItem(PUMPKIN_SLICE))
+    val STUFFED_WHITE_PUMPKIN = register("stuffed_white_pumpkin", bowlItem(STUFFED_PUMPKIN))
+    val WHITE_PUMPKIN_SOUP = register("white_pumpkin_soup", bowlItem(PUMPKIN_SOUP))
+    val WHITE_PUMPKIN_PIE_SLICE = register("white_pumpkin_pie_slice", foodItem(PIE_SLICE))
     // endregion
 
     fun init() {}
