@@ -47,8 +47,8 @@ modSettings {
     entrypoint("rei_client", "org.teamvoided.voided_delight.integration.ClientREIPlugin")
 
     dependency("farmersdelight", "*")
+    mixinFile("${modId()}.client.mixins.json")
     mixinFile("${modId()}.mixins.json")
-//    mixinFile("${modId()}.client.mixins.json")
 //    accessWidener("${modId()}.accesswidener")
 }
 
