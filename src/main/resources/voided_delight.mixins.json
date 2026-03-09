@@ -7,7 +7,8 @@
     "AdvancementAccessor",
     "CookingPotBlockEntityMixin",
     "FoodServingRecipeMixin",
-    "ServerAdvancementLoaderMixin"
+    "ServerAdvancementLoaderMixin",
+    "SkilletEventsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

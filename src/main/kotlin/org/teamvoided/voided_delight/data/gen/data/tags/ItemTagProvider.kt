@@ -28,6 +28,12 @@ class ItemTagProvider(
         getOrCreateTagBuilder(ConventionalItemTags.FOODS).addTag(VDItemTags.PIE_SLICES)
         copy(FDBlockTags.COOKING_POTS, FDItemTags.COOKING_POTS)
         copy(FDBlockTags.SKILLETS, FDItemTags.SKILLETS)
+
+        getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE).addOptionalTag(FDItemTags.SKILLETS)
+        getOrCreateTagBuilder(ItemTags.WEAPON_ENCHANTABLE).addOptionalTag(FDItemTags.SKILLETS)
+        getOrCreateTagBuilder(ItemTags.SHARP_WEAPON_ENCHANTABLE).addOptionalTag(FDItemTags.SKILLETS)
+        getOrCreateTagBuilder(ItemTags.FIRE_ASPECT_ENCHANTABLE).addOptionalTag(FDItemTags.SKILLETS)
+        getOrCreateTagBuilder(ItemTags.SWORD_ENCHANTABLE).addOptionalTag(FDItemTags.SKILLETS)
     }
 
     fun candy() {
