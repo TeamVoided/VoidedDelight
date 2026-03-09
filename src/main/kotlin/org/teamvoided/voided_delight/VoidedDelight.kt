@@ -26,5 +26,6 @@ object VoidedDelight {
 
     fun id(namespace: String, path: String): Identifier = Identifier.of(namespace, path)
     fun fd(path: String): Identifier = Identifier.of(FarmersDelight.MODID, path)
+    fun mc(path: String): Identifier = Identifier.ofDefault(path)
     fun id(path: String) = id(MODID, path)
 }

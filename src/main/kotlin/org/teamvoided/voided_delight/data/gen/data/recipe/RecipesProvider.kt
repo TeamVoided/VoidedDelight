@@ -11,11 +11,16 @@ import net.minecraft.recipe.RecipeCategory
 import net.minecraft.registry.HolderLookup
 import org.teamvoided.voided_delight.VDCompat
 import org.teamvoided.voided_delight.data.tags.VDItemTags
+import org.teamvoided.voided_delight.init.VDItems
 import java.util.concurrent.CompletableFuture
 import vectorwing.farmersdelight.common.registry.ModItems as FDItems
 
 class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) : FabricRecipeProvider(o, r) {
     override fun generateRecipes(e: RecipeExporter) {
+
+        offerNetheriteUpgradeRecipe(e, FDItems.COOKING_POT.get(), RecipeCategory.MISC, VDItems.NETHERITE_COOKING_POT)
+        offerNetheriteUpgradeRecipe(e, FDItems.SKILLET.get(), RecipeCategory.MISC, VDItems.NETHERITE_SKILLET)
+
         dnd(conditional(e, VDCompat.DND))
         whitePumpkins(conditional(e, VDCompat.WHITE_PUMPKINS))
         ShapelessRecipeJsonFactory.create(RecipeCategory.MISC, FDItems.FRUIT_SALAD.get())

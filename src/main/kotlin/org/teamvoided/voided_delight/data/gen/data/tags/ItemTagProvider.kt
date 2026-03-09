@@ -8,6 +8,8 @@ import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.tag.ItemTags
 import net.minecraft.registry.tag.TagKey
 import org.teamvoided.voided_delight.VoidedDelight.id
+import org.teamvoided.voided_delight.data.tags.FDBlockTags
+import org.teamvoided.voided_delight.data.tags.FDItemTags
 import org.teamvoided.voided_delight.data.tags.VDItemTags
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
@@ -24,6 +26,8 @@ class ItemTagProvider(
         pumpkins()
         getOrCreateTagBuilder(ModTags.MEALS).addTag(VDItemTags.MEALS)
         getOrCreateTagBuilder(ConventionalItemTags.FOODS).addTag(VDItemTags.PIE_SLICES)
+        copy(FDBlockTags.COOKING_POTS, FDItemTags.COOKING_POTS)
+        copy(FDBlockTags.SKILLETS, FDItemTags.SKILLETS)
     }
 
     fun candy() {

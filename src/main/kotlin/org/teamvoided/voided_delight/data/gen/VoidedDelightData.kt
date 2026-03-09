@@ -6,7 +6,7 @@ import net.minecraft.registry.RegistrySetBuilder
 import org.teamvoided.voided_delight.VoidedDelight.log
 import org.teamvoided.voided_delight.data.gen.data.BlockLootTableProvider
 import org.teamvoided.voided_delight.data.gen.assets.EnglishTranslationProvider
-import org.teamvoided.voided_delight.data.gen.assets.ModelProvider
+import org.teamvoided.voided_delight.data.gen.assets.models.ModelProvider
 import org.teamvoided.voided_delight.data.gen.data.recipe.RecipesProvider
 import org.teamvoided.voided_delight.data.gen.data.tags.BlockTagProvider
 import org.teamvoided.voided_delight.data.gen.data.tags.ItemTagProvider
