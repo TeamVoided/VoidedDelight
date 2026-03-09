@@ -1,4 +1,4 @@
-package org.teamvoided.voided_delight.mixin;
+package org.teamvoided.voided_delight.mixin.pot;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;

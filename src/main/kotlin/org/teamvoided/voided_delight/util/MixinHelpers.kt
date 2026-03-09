@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier
 import org.teamvoided.voided_delight.VoidedDelight.fd
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
-import org.teamvoided.voided_delight.mixin.AdvancementAccessor
+import org.teamvoided.voided_delight.mixin.advancement.AdvancementAccessor
 
 var Advancement.mutableCriteria: Map<String, AdvancementCriterion<*>>
     get() = (this as AdvancementAccessor).vd_getCriteria()

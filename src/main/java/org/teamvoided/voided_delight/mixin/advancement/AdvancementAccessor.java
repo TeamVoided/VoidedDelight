@@ -1,4 +1,4 @@
-package org.teamvoided.voided_delight.mixin;
+package org.teamvoided.voided_delight.mixin.advancement;
 
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementCriterion;

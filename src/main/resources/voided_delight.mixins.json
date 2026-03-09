@@ -4,11 +4,11 @@
   "package": "org.teamvoided.voided_delight.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "AdvancementAccessor",
-    "CookingPotBlockEntityMixin",
-    "FoodServingRecipeMixin",
-    "ServerAdvancementLoaderMixin",
-    "SkilletEventsMixin"
+    "advancement.AdvancementAccessor",
+    "pot.CookingPotBlockEntityMixin",
+    "pot.FoodServingRecipeMixin",
+    "advancement.ServerAdvancementLoaderMixin",
+    "skillet.SkilletEventsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
