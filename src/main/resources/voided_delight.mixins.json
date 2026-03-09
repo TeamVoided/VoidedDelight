@@ -5,10 +5,12 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "advancement.AdvancementAccessor",
+    "advancement.ServerAdvancementLoaderMixin",
     "pot.CookingPotBlockEntityMixin",
     "pot.FoodServingRecipeMixin",
-    "advancement.ServerAdvancementLoaderMixin",
-    "skillet.SkilletEventsMixin"
+    "skillet.SkilletBlockEntityMixin",
+    "skillet.SkilletEventsMixin",
+    "skillet.SkilletItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -7,6 +7,7 @@ import net.minecraft.advancement.AdvancementCriterion
 import net.minecraft.advancement.AdvancementRequirements
 import net.minecraft.advancement.criterion.ConsumeItemCriterionTrigger
 import net.minecraft.advancement.criterion.ItemUsedOnLocationCriterionTrigger
+import net.minecraft.item.Item
 import net.minecraft.util.Identifier
 import org.teamvoided.voided_delight.VoidedDelight.fd
 import org.teamvoided.voided_delight.init.VDBlocks
@@ -35,11 +36,13 @@ fun injectVDCriteria(id: Identifier, advancement: Advancement) {
             patchMap["netherite_pot"] =
                 ItemUsedOnLocationCriterionTrigger.Conditions.create(VDBlocks.NETHERITE_COOKING_POT)
         }
-        USE_SKILLET->{
+
+        USE_SKILLET -> {
             patchMap["netherite_skillet"] =
                 ConsumeItemCriterionTrigger.Conditions.create(VDItems.NETHERITE_SKILLET)
         }
-        PLACE_SKILLET->{
+
+        PLACE_SKILLET -> {
             patchMap["netherite_skillet"] =
                 ItemUsedOnLocationCriterionTrigger.Conditions.create(VDBlocks.NETHERITE_SKILLET)
         }
@@ -52,5 +55,11 @@ fun injectVDCriteria(id: Identifier, advancement: Advancement) {
         advancement.mutableRequirements =
             AdvancementRequirements.anyOf(advancement.mutableRequirements.requirements.flatten() + patchMap.keys)
     }
-
 }
+
+
+var COOKING_TIME_MODIFIERS = mutableMapOf(
+    VDItems.NETHERITE_SKILLET to 0.5f
+)
+
+fun getSkilletCookingTimeModifier(item: Item): Float = COOKING_TIME_MODIFIERS[item] ?: 1f
