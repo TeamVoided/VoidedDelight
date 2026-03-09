@@ -4,7 +4,8 @@
   "package": "org.teamvoided.voided_delight.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "SkilletItemRendererMixin"
+    "SkilletItemRendererMixin",
+    "SkilletRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
