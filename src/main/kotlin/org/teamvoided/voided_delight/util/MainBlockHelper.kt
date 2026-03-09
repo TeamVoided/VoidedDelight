@@ -81,10 +81,10 @@ fun Block.silkTouchOrNothing(): Block {
 fun stairsOf(block: Block): Block = StairsBlock(block.defaultState, copy(block))
 fun slabOf(block: Block): Block = SlabBlock(copy(block))
 fun wallOf(block: Block): Block = WallBlock(copy(block).solid())
-fun stuffedPumpkinOf(settings: AbstractBlock.Settings, item: Item) =
-    FeastBlock(settings, { item }, false)
+fun stuffedPumpkinOf(settings: AbstractBlock.Settings, item: () -> Item) =
+    FeastBlock(settings, item, false)
 
-fun pieOf(settings: AbstractBlock.Settings, item: Item) = PieBlock(settings) { item }
+fun pieOf(settings: AbstractBlock.Settings, item: () -> Item) = PieBlock(settings, item)
 
 fun <T> FabricTagProvider<T>.FabricTagBuilder.addAll(list: Iterable<T>): FabricTagProvider<T>.FabricTagBuilder {
     list.forEach(this::add)

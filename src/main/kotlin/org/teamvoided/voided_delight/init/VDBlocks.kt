@@ -1,6 +1,7 @@
 package org.teamvoided.voided_delight.init
 
 
+import net.minecraft.block.AbstractBlock
 import net.minecraft.block.AbstractBlock.Settings.copy
 import net.minecraft.block.Block
 import net.minecraft.block.Blocks
@@ -11,39 +12,52 @@ import net.minecraft.item.FoodComponents
 import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
+import net.minecraft.sound.BlockSoundGroup
 import org.teamvoided.voided_delight.VoidedDelight.id
 import org.teamvoided.voided_delight.item.VDFoodComponents
 import org.teamvoided.voided_delight.util.*
+import vectorwing.farmersdelight.common.block.CookingPotBlock
+import vectorwing.farmersdelight.common.block.SkilletBlock
+import vectorwing.farmersdelight.common.registry.ModBlockEntityTypes
 
 
 object VDBlocks {
     val BLOCKS get() = getModEntries(Registries.BLOCK)
 
+    val netheriteProps: AbstractBlock.Settings = AbstractBlock.Settings.create()
+        .mapColor(MapColor.BLACK)
+        .strength(1.0F, 1200.0F)
+        .sounds(BlockSoundGroup.NETHERITE)
+
+    val NETHERITE_COOKING_POT =
+        registerNoItem("netherite_cooking_pot", CookingPotBlock(netheriteProps)).cutout().pickaxe()
+    val NETHERITE_SKILLET = registerNoItem("netherite_skillet", SkilletBlock(netheriteProps)).pickaxe()
+
     // region Dusks and Dungeons
     val STUFFED_LANTERN_PUMPKIN = registerMaxStack(
-        "stuffed_lantern_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN), VDItems.STUFFED_LANTERN_PUMPKIN)
+        "stuffed_lantern_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN)) { VDItems.STUFFED_LANTERN_PUMPKIN }
     ).axe()
     val STUFFED_MOSSKIN_PUMPKIN = registerMaxStack(
-        "stuffed_mosskin_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN), VDItems.STUFFED_MOSSKIN_PUMPKIN)
+        "stuffed_mosskin_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN)) { VDItems.STUFFED_MOSSKIN_PUMPKIN }
     ).axe()
     val STUFFED_GLOOM_PUMPKIN = registerMaxStack(
-        "stuffed_gloom_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN), VDItems.STUFFED_GLOOM_PUMPKIN)
+        "stuffed_gloom_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN)) { VDItems.STUFFED_GLOOM_PUMPKIN }
     ).axe()
     val STUFFED_PALE_PUMPKIN = registerMaxStack(
-        "stuffed_pale_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN), VDItems.STUFFED_PALE_PUMPKIN)
+        "stuffed_pale_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN)) { VDItems.STUFFED_PALE_PUMPKIN }
     ).axe()
 
     val LANTERN_PUMPKIN_PIE = registerEdible(
-        "lantern_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE), VDItems.LANTERN_PUMPKIN_PIE_SLICE)
+        "lantern_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE)) { VDItems.LANTERN_PUMPKIN_PIE_SLICE }
     ).knife()
     val MOSSKIN_PUMPKIN_PIE = registerEdible(
-        "mosskin_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE), VDItems.MOSSKIN_PUMPKIN_PIE_SLICE)
+        "mosskin_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE)) { VDItems.MOSSKIN_PUMPKIN_PIE_SLICE }
     ).knife()
     val GLOOM_PUMPKIN_PIE = registerEdible(
-        "gloom_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE), VDItems.GLOOM_PUMPKIN_PIE_SLICE)
+        "gloom_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE)) { VDItems.GLOOM_PUMPKIN_PIE_SLICE }
     ).knife()
     val PALE_PUMPKIN_PIE = registerEdible(
-        "pale_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE), VDItems.PALE_PUMPKIN_PIE_SLICE)
+        "pale_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE)) { VDItems.PALE_PUMPKIN_PIE_SLICE }
     ).knife()
 
 
@@ -61,12 +75,13 @@ object VDBlocks {
 
     // region White Pumpkins
     val STUFFED_WHITE_PUMPKIN = registerMaxStack(
-        "stuffed_white_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN), VDItems.STUFFED_WHITE_PUMPKIN)
+        "stuffed_white_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN)) { VDItems.STUFFED_WHITE_PUMPKIN }
     ).axe()
     // endregion
 
     fun init() {
-//        FlammableBlockRegistry.getInstance(FIRE).add(DnDBlockTags.FLAMMABLE_PLANKS, 5, 20)
+        ModBlockEntityTypes.COOKING_POT.get().addSupportedBlock(NETHERITE_COOKING_POT)
+        ModBlockEntityTypes.SKILLET.get().addSupportedBlock(NETHERITE_SKILLET)
     }
 
     fun register(id: String, block: Block): Block {

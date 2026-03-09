@@ -9,11 +9,22 @@ import org.teamvoided.voided_delight.item.VDFoodComponents
 import org.teamvoided.voided_delight.util.getModEntries
 import vectorwing.farmersdelight.common.FoodValues.*
 import vectorwing.farmersdelight.common.item.ConsumableItem
+import vectorwing.farmersdelight.common.item.CookingPotItem
+import vectorwing.farmersdelight.common.item.SkilletItem
 import vectorwing.farmersdelight.common.registry.ModItems.bowlFoodItem
 
 
 object VDItems {
     val ITEMS get() = getModEntries(Registries.ITEM)
+
+    val NETHERITE_COOKING_POT =
+        register("netherite_cooking_pot", CookingPotItem(VDBlocks.NETHERITE_COOKING_POT, Item.Settings().maxCount(1)))
+    val NETHERITE_SKILLET = register(
+        "netherite_skillet", SkilletItem(
+            VDBlocks.NETHERITE_SKILLET, Item.Settings().maxCount(1)
+                .attributeModifiersComponent(SkilletItem.createAttributes(SkilletItem.SKILLET_TIER, 5.0f, -3.1f))
+        )
+    )
 
     // region Dusks and Dungeons
     val LANTERN_PUMPKIN_SLICE = register("lantern_pumpkin_slice", foodItem(PUMPKIN_SLICE))
