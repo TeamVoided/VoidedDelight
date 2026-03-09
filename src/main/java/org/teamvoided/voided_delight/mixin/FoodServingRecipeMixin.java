@@ -4,14 +4,12 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.teamvoided.voided_delight.data.tags.FDItemTags;
 import vectorwing.farmersdelight.common.crafting.FoodServingRecipe;
 
 
-@Debug(export = true)
 @Mixin(FoodServingRecipe.class)
 public abstract class FoodServingRecipeMixin {
 

@@ -3,7 +3,12 @@
   "minVersion": "0.8",
   "package": "org.teamvoided.voided_delight.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "AdvancementAccessor",
+    "CookingPotBlockEntityMixin",
+    "FoodServingRecipeMixin",
+    "ServerAdvancementLoaderMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }
