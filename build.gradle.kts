@@ -29,8 +29,12 @@ repositories {
     maven("https://maven.greenhouse.lgbt/releases/") { name = "Greenhouse Maven" }
     maven("https://mvn.devos.one/releases/") // Porting Lib
     maven("https://maven.jamieswhiteshirt.com/libs-release") { content { includeGroup("com.jamieswhiteshirt") } }
+    maven("https://maven.blamejared.com/") { name = "BlameJared" }
+    maven("https://maven.architectury.dev/") // REI and deps
+    maven("https://maven.shedaniel.me/") // REI and deps
     maven("https://api.modrinth.com/maven") { content { includeGroup("maven.modrinth") } }
     maven("https://jitpack.io/")
+
     mavenCentral()
 }
 
@@ -38,11 +42,13 @@ modSettings {
     entrypoint("main", "org.teamvoided.voided_delight.VoidedDelight::init")
     entrypoint("client", "org.teamvoided.voided_delight.VoidedDelightClient::init")
     entrypoint("fabric-datagen", "org.teamvoided.voided_delight.data.gen.VoidedDelightData")
+    entrypoint("emi", "org.teamvoided.voided_delight.integration.EMIPlugin")
+    entrypoint("jei_mod_plugin", "org.teamvoided.voided_delight.integration.JEIPlugin")
+    entrypoint("rei_client", "org.teamvoided.voided_delight.integration.ClientREIPlugin")
 
-//    dependency("dusk_autumn", "*")
     dependency("farmersdelight", "*")
+    mixinFile("${modId()}.mixins.json")
 //    mixinFile("${modId()}.client.mixins.json")
-//    mixinFile("${modId()}.mixins.json")
 //    accessWidener("${modId()}.accesswidener")
 }
 
@@ -54,8 +60,19 @@ dependencies {
     modImplementation(libs.fzzy.config)
 
     modImplementation(libs.modmenu)
+
+    // region Recipe Viewer Compat
+    // EMI
     modCompileOnly("${libs.emi.get()}:api")
-    modLocalRuntime(libs.emi)
+    modLocalRuntime(libs.emi) // runtime
+    modCompileOnly(libs.jei.api)
+//    modLocalRuntime(libs.jei) // runtime
+    modCompileOnly(libs.basic.math)
+    modCompileOnly(libs.architectury)
+    modCompileOnly(libs.rei.api)
+    modCompileOnly(libs.rei.defualt)
+//    modLocalRuntime(libs.rei) // runtime
+    // endregion
 
     modImplementation(libs.appleskin)
     modImplementation(libs.clothconfig)
