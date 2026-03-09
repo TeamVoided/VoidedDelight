@@ -18,10 +18,10 @@ object VDItems {
     val ITEMS get() = getModEntries(Registries.ITEM)
 
     val NETHERITE_COOKING_POT =
-        register("netherite_cooking_pot", CookingPotItem(VDBlocks.NETHERITE_COOKING_POT, Item.Settings().maxCount(1)))
+        register("netherite_cooking_pot", CookingPotItem(VDBlocks.NETHERITE_COOKING_POT, Item.Settings().maxCount(1).fireproof()))
     val NETHERITE_SKILLET = register(
         "netherite_skillet", SkilletItem(
-            VDBlocks.NETHERITE_SKILLET, Item.Settings().maxCount(1)
+            VDBlocks.NETHERITE_SKILLET, Item.Settings().maxCount(1).fireproof()
                 .attributeModifiersComponent(SkilletItem.createAttributes(SkilletItem.SKILLET_TIER, 5.0f, -3.1f))
         )
     )
