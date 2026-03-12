@@ -16,11 +16,16 @@ import kotlin.jvm.optionals.getOrNull
 
 
 object VDTabs {
-    val VOIDED_DELIGHT_ITEMS: ItemGroup = register(
+    val VOIDED_DELIGHT_ITEMS = register(
         "voided_delight", FabricItemGroup.builder()
-            .icon { ItemStack(VDItems.GLOOM_PUMPKIN_PIE_SLICE) }
+            .icon { ItemStack(VDItems.NETHERITE_SKILLET) }
             .name(Text.translatable("itemGroup.voided_delight.voided_delight"))
             .entries { _ ->
+                add(
+                    VDItems.NETHERITE_SKILLET,
+                    VDItems.NETHERITE_COOKING_POT,
+                )
+
                 if (HAS_WHITE_PUMPKINS) add(VDItems.WHITE_PUMPKIN_SLICE)
                 if (HAS_DND) add(
                     VDItems.LANTERN_PUMPKIN_SLICE,
