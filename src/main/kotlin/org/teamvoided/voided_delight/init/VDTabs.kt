@@ -21,53 +21,54 @@ object VDTabs {
             .icon { ItemStack(VDItems.GLOOM_PUMPKIN_PIE_SLICE) }
             .name(Text.translatable("itemGroup.voided_delight.voided_delight"))
             .entries { _ ->
+                if (HAS_WHITE_PUMPKINS) add(VDItems.WHITE_PUMPKIN_SLICE)
                 if (HAS_DND) add(
                     VDItems.LANTERN_PUMPKIN_SLICE,
                     VDItems.MOSSKIN_PUMPKIN_SLICE,
                     VDItems.GLOOM_PUMPKIN_SLICE,
                     VDItems.PALE_PUMPKIN_SLICE,
                 )
-                if (HAS_WHITE_PUMPKINS) add(VDItems.WHITE_PUMPKIN_SLICE)
 
-
+                if (HAS_WHITE_PUMPKINS) add(VDItems.WHITE_PUMPKIN_SOUP)
                 if (HAS_DND) add(
                     VDItems.LANTERN_PUMPKIN_SOUP,
                     VDItems.MOSSKIN_PUMPKIN_SOUP,
                     VDItems.GLOOM_PUMPKIN_SOUP,
                     VDItems.PALE_PUMPKIN_SOUP,
                 )
-                if (HAS_WHITE_PUMPKINS) add(VDItems.WHITE_PUMPKIN_SOUP)
 
                 if (HAS_DND) add(
                     VDBlocks.LANTERN_PUMPKIN_PIE,
                     VDBlocks.MOSSKIN_PUMPKIN_PIE,
                     VDBlocks.GLOOM_PUMPKIN_PIE,
                     VDBlocks.PALE_PUMPKIN_PIE,
-                    // Pie Slice
+                )
+                if (HAS_WHITE_PUMPKINS) add(VDItems.WHITE_PUMPKIN_PIE_SLICE)
+                if (HAS_DND) add(
                     VDItems.LANTERN_PUMPKIN_PIE_SLICE,
                     VDItems.MOSSKIN_PUMPKIN_PIE_SLICE,
                     VDItems.GLOOM_PUMPKIN_PIE_SLICE,
                     VDItems.PALE_PUMPKIN_PIE_SLICE,
                 )
-                if (HAS_WHITE_PUMPKINS) add(VDItems.WHITE_PUMPKIN_PIE_SLICE)
 
+                if (HAS_WHITE_PUMPKINS) add(VDBlocks.STUFFED_WHITE_PUMPKIN)
                 if (HAS_DND) add(
                     VDBlocks.STUFFED_LANTERN_PUMPKIN,
                     VDBlocks.STUFFED_MOSSKIN_PUMPKIN,
                     VDBlocks.STUFFED_GLOOM_PUMPKIN,
                     VDBlocks.STUFFED_PALE_PUMPKIN,
                 )
-                if (HAS_WHITE_PUMPKINS) add(VDBlocks.STUFFED_WHITE_PUMPKIN)
 
+                if (HAS_WHITE_PUMPKINS) add(VDItems.STUFFED_WHITE_PUMPKIN)
                 if (HAS_DND) add(
                     VDItems.STUFFED_LANTERN_PUMPKIN,
                     VDItems.STUFFED_MOSSKIN_PUMPKIN,
                     VDItems.STUFFED_GLOOM_PUMPKIN,
                     VDItems.STUFFED_PALE_PUMPKIN,
                 )
-                if (HAS_WHITE_PUMPKINS) add(VDItems.STUFFED_WHITE_PUMPKIN)
 
                 if (HAS_DND) add(
+                    VDItems.GOLDEN_BEETROOT_SOUP,
                     VDItems.SYRUP_APPLE,
                     VDItems.LOLLIPOP,
                     VDItems.MARSHMARROW,

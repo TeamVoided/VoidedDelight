@@ -69,6 +69,8 @@ class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
         VDItems.MARSHMARROW,
         VDItems.CRYSTAL_CANDY_SHARD,
 
+        VDItems.GOLDEN_BEETROOT_SOUP,
+
         VDItems.WHITE_PUMPKIN_SLICE,
         VDItems.STUFFED_WHITE_PUMPKIN,
         VDBlocks.STUFFED_WHITE_PUMPKIN.asItem(),

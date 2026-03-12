@@ -1,9 +1,11 @@
 package org.teamvoided.voided_delight.data.gen.data.recipe
 
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags
+import net.minecraft.data.server.RecipesProvider.conditionsFromItem
 import net.minecraft.data.server.RecipesProvider.generateFamily
 import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.data.server.recipe.ShapedRecipeJsonFactory
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonFactory
 import net.minecraft.feature_flags.FeatureFlags
 import net.minecraft.item.Items
 import net.minecraft.recipe.Ingredient
@@ -13,6 +15,7 @@ import org.teamvoided.dusks_and_dungeons.init.DnDItems
 import org.teamvoided.dusks_and_dungeons.util.datagen.offerReversibleCompactingRecipes4
 import org.teamvoided.dusks_and_dungeons.util.datagen.smeltDefault
 import org.teamvoided.voided_delight.block.VDFamilies.CRYSTAL_CANDY_FAMILY
+import org.teamvoided.voided_delight.compat.CookingPotRecipeBuilder
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
 
@@ -70,10 +73,10 @@ fun dnd(e: RecipeExporter) {
     e.make2x2(DnDBlocks.GLOOM_PUMPKIN, VDItems.GLOOM_PUMPKIN_SLICE)
     e.make2x2(DnDBlocks.PALE_PUMPKIN, VDItems.PALE_PUMPKIN_SLICE)
 
-    e.makeSoup(VDItems.LANTERN_PUMPKIN_SOUP, VDItems.LANTERN_PUMPKIN_SLICE)
-    e.makeSoup(VDItems.MOSSKIN_PUMPKIN_SOUP, VDItems.MOSSKIN_PUMPKIN_SLICE)
-    e.makeSoup(VDItems.GLOOM_PUMPKIN_SOUP, VDItems.GLOOM_PUMPKIN_SLICE)
-    e.makeSoup(VDItems.PALE_PUMPKIN_SOUP, VDItems.PALE_PUMPKIN_SLICE)
+    e.makePumpkinSoup(VDItems.LANTERN_PUMPKIN_SOUP, VDItems.LANTERN_PUMPKIN_SLICE)
+    e.makePumpkinSoup(VDItems.MOSSKIN_PUMPKIN_SOUP, VDItems.MOSSKIN_PUMPKIN_SLICE)
+    e.makePumpkinSoup(VDItems.GLOOM_PUMPKIN_SOUP, VDItems.GLOOM_PUMPKIN_SLICE)
+    e.makePumpkinSoup(VDItems.PALE_PUMPKIN_SOUP, VDItems.PALE_PUMPKIN_SLICE)
 
     e.stuffThePumpkin(VDBlocks.STUFFED_LANTERN_PUMPKIN, VDItems.LANTERN_PUMPKIN_SLICE, DnDBlocks.LANTERN_PUMPKIN)
     e.stuffThePumpkin(VDBlocks.STUFFED_MOSSKIN_PUMPKIN, VDItems.MOSSKIN_PUMPKIN_SLICE, DnDBlocks.MOSSKIN_PUMPKIN)
@@ -90,5 +93,18 @@ fun dnd(e: RecipeExporter) {
     e.make2x2(VDBlocks.GLOOM_PUMPKIN_PIE, VDItems.GLOOM_PUMPKIN_PIE_SLICE, 1, "_from_slices")
     e.make2x2(VDBlocks.PALE_PUMPKIN_PIE, VDItems.PALE_PUMPKIN_PIE_SLICE, 1, "_from_slices")
     // endregion
+
+    ShapelessRecipeJsonFactory.create(RecipeCategory.FOOD, VDItems.GOLDEN_BEETROOT_SOUP)
+        .ingredient(Items.BOWL)
+        .ingredient(DnDItems.GOLDEN_BEETROOT, 6)
+        .criterion("has_golden_beetroot", conditionsFromItem(DnDItems.GOLDEN_BEETROOT))
+        .offerTo(e)
+
+    CookingPotRecipeBuilder.cookingPotRecipe(VDItems.GOLDEN_BEETROOT_SOUP, 1, 200, 1.0f, Items.BOWL)
+        .addIngredient(DnDItems.GOLDEN_BEETROOT)
+        .addIngredient(DnDItems.GOLDEN_BEETROOT)
+        .addIngredient(DnDItems.GOLDEN_BEETROOT)
+        .unlockedByAnyIngredient(DnDItems.GOLDEN_BEETROOT)
+        .offerTo(e)
 }
 

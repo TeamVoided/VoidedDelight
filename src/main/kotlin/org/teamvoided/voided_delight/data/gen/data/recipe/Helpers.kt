@@ -62,7 +62,7 @@ fun RecipeExporter.makePie(output: ItemConvertible, input: ItemConvertible) {
         .offerTo(this)
 }
 
-fun RecipeExporter.makeSoup(output: ItemConvertible, input: ItemConvertible) {
+fun RecipeExporter.makePumpkinSoup(output: ItemConvertible, input: ItemConvertible) {
     CookingPotRecipeBuilder.cookingPotRecipe(output, 1, 200, 1.0f, Items.BOWL)
         .addIngredient(input)
         .addIngredient(CommonTags.FOODS_CABBAGE)

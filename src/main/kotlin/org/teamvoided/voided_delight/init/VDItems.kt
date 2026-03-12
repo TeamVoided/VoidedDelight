@@ -54,6 +54,8 @@ object VDItems {
     val LOLLIPOP = register("lollipop", foodItem(VDFoodComponents.LOLLIPOP))
     val SYRUP_APPLE = register("syrup_apple", foodItem(VDFoodComponents.SYRUP_APPLE))
     val CRYSTAL_CANDY_SHARD = register("crystal_candy_shard", foodItem(VDFoodComponents.CRYSTAL_CANDY_2))
+
+    val GOLDEN_BEETROOT_SOUP = register("golden_beetroot_soup", bowlItem(VDFoodComponents.GOLDEN_BEETROOT_SOUP))
     // endregion
 
     // region White Pumpkins

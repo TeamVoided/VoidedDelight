@@ -29,6 +29,15 @@ class ItemTagProvider(
         copy(FDBlockTags.COOKING_POTS, FDItemTags.COOKING_POTS)
         copy(FDBlockTags.SKILLETS, FDItemTags.SKILLETS)
 
+        getOrCreateTagBuilder(ConventionalItemTags.SOUP_FOODS).add(
+            VDItems.LANTERN_PUMPKIN_SOUP,
+            VDItems.MOSSKIN_PUMPKIN_SOUP,
+            VDItems.GLOOM_PUMPKIN_SOUP,
+            VDItems.PALE_PUMPKIN_SOUP,
+            VDItems.WHITE_PUMPKIN_SOUP,
+            VDItems.GOLDEN_BEETROOT_SOUP
+        )
+
         getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE).addOptionalTag(FDItemTags.SKILLETS)
         getOrCreateTagBuilder(ItemTags.WEAPON_ENCHANTABLE).addOptionalTag(FDItemTags.SKILLETS)
         getOrCreateTagBuilder(ItemTags.SHARP_WEAPON_ENCHANTABLE).addOptionalTag(FDItemTags.SKILLETS)
@@ -72,14 +81,7 @@ class ItemTagProvider(
                 VDBlocks.GLOOM_PUMPKIN_PIE,
                 VDBlocks.PALE_PUMPKIN_PIE,
             )
-        getOrCreateTagBuilder(ConventionalItemTags.SOUP_FOODS)
-            .add(
-                VDItems.LANTERN_PUMPKIN_SOUP,
-                VDItems.MOSSKIN_PUMPKIN_SOUP,
-                VDItems.GLOOM_PUMPKIN_SOUP,
-                VDItems.PALE_PUMPKIN_SOUP,
-                VDItems.WHITE_PUMPKIN_SOUP,
-            )
+
         getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, id("c", "foods/pie")))
             .add(
                 VDBlocks.LANTERN_PUMPKIN_PIE,
