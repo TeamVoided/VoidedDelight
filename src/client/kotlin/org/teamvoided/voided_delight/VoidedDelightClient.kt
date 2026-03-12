@@ -8,13 +8,17 @@ import org.teamvoided.voided_delight.VoidedDelight.mc
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
 import vectorwing.farmersdelight.client.renderer.SkilletItemRenderer
+import vectorwing.farmersdelight.common.registry.ModBlocks
 import vectorwing.farmersdelight.common.registry.ModDataComponents
 import vectorwing.farmersdelight.common.item.component.ItemStackWrapper.EMPTY as EMPTY_ITEM
 
 object VoidedDelightClient {
     @Suppress("unused")
     fun init() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), VDBlocks.NETHERITE_COOKING_POT)
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+            RenderLayer.getCutout(),
+            VDBlocks.NETHERITE_COOKING_POT, VDBlocks.NETHERITE_SKILLET, ModBlocks.SKILLET.get()
+        )
 
         BuiltinItemRendererRegistry.INSTANCE.register(VDItems.NETHERITE_SKILLET, SkilletItemRenderer())
         ModelPredicateProviderRegistry.register(VDItems.NETHERITE_SKILLET, mc("cooking")) { stack, _, _, _ ->
