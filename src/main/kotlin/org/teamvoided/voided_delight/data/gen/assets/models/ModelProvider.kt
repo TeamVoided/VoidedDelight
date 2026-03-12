@@ -30,6 +30,8 @@ class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
         gen.registerPie(VDBlocks.PALE_PUMPKIN_PIE)
 
         gen.registerStuffedPumpkin(VDBlocks.STUFFED_WHITE_PUMPKIN)
+        
+        gen.registerCrate(VDBlocks.GOLDEN_BEETROOT_CRATE)
     }
 
     val single = listOf(

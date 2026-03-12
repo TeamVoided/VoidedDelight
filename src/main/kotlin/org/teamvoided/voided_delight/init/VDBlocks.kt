@@ -19,6 +19,7 @@ import org.teamvoided.voided_delight.util.*
 import vectorwing.farmersdelight.common.block.CookingPotBlock
 import vectorwing.farmersdelight.common.block.SkilletBlock
 import vectorwing.farmersdelight.common.registry.ModBlockEntityTypes
+import vectorwing.farmersdelight.common.registry.ModBlocks as FDBlocks
 
 
 object VDBlocks {
@@ -60,6 +61,9 @@ object VDBlocks {
         "pale_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE)) { VDItems.PALE_PUMPKIN_PIE_SLICE }
     ).knife()
 
+    val GOLDEN_BEETROOT_CRATE = register(
+        "golden_beetroot_crate", Block(copy(FDBlocks.BEETROOT_CRATE.get()))
+    ).axe()
 
     val CRYSTAL_CANDY_BLOCK = registerEdible(
         "crystal_candy_block", VDFoodComponents.CRYSTAL_CANDY_8, Block(copy(Blocks.CALCITE).mapColor(MapColor.BLUE))

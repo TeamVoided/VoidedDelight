@@ -25,6 +25,7 @@ object VDTabs {
                     VDItems.NETHERITE_SKILLET,
                     VDItems.NETHERITE_COOKING_POT,
                 )
+                if (HAS_DND) add(VDBlocks.GOLDEN_BEETROOT_CRATE)
 
                 if (HAS_WHITE_PUMPKINS) add(VDItems.WHITE_PUMPKIN_SLICE)
                 if (HAS_DND) add(

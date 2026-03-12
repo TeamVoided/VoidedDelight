@@ -3,6 +3,7 @@ package org.teamvoided.voided_delight.data.gen.assets.models
 import net.minecraft.block.Block
 import net.minecraft.data.client.model.*
 import net.minecraft.data.client.model.BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates
+import net.minecraft.data.client.model.BlockStateModelGenerator.createSingletonBlockState
 import net.minecraft.data.client.model.TextureKey.*
 import net.minecraft.util.Identifier
 import org.teamvoided.dusks_and_dungeons.util.datagen.INNER
@@ -136,5 +137,19 @@ fun BlockStateModelGenerator.registerSkillet(block: Block, trayTexture: Identifi
                 }
             )
     )
+}
+// endregion
+
+val FD_CRATE_BOTTOM = fd("block/crate_bottom")
+
+// region Crate
+fun BlockStateModelGenerator.registerCrate(block: Block, bottomTexture: Identifier = FD_CRATE_BOTTOM) {
+    val texture = Texture()
+        .put(BOTTOM, bottomTexture)
+        .put(SIDE, block.model("_side"))
+        .put(TOP, block.model("_top"))
+
+    val model = Models.CUBE_BOTTOM_TOP.upload(block, texture, modelCollector)
+    blockStateCollector.accept(createSingletonBlockState(block, model))
 }
 // endregion

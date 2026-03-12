@@ -1,8 +1,7 @@
 package org.teamvoided.voided_delight.data.gen.data.recipe
 
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags
-import net.minecraft.data.server.RecipesProvider.conditionsFromItem
-import net.minecraft.data.server.RecipesProvider.generateFamily
+import net.minecraft.data.server.RecipesProvider.*
 import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.data.server.recipe.ShapedRecipeJsonFactory
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonFactory
@@ -106,5 +105,15 @@ fun dnd(e: RecipeExporter) {
         .addIngredient(DnDItems.GOLDEN_BEETROOT)
         .unlockedByAnyIngredient(DnDItems.GOLDEN_BEETROOT)
         .offerTo(e)
+
+    offerReversibleCompactingRecipesWithInputItemGroup(
+        e,
+        RecipeCategory.MISC,
+        DnDItems.GOLDEN_BEETROOT,
+        RecipeCategory.BUILDING_BLOCKS,
+        VDBlocks.GOLDEN_BEETROOT_CRATE,
+        "golden_beetroot_from_golden_beetroot_crate",
+        "golden_beetroot"
+    )
 }
 

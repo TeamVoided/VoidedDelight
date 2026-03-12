@@ -2,11 +2,13 @@ package org.teamvoided.voided_delight.data.gen.data.tags
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags
 import net.minecraft.block.SlabBlock
 import net.minecraft.block.StairsBlock
 import net.minecraft.block.WallBlock
 import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.tag.BlockTags
+import org.teamvoided.voided_delight.data.tags.CBlockTags
 import org.teamvoided.voided_delight.data.tags.FDBlockTags
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.util.*
@@ -42,6 +44,9 @@ class BlockTagProvider(output: FabricDataOutput, completableFuture: CompletableF
             .add(FDBlocks.SKILLET.get(), VDBlocks.NETHERITE_SKILLET)
         getOrCreateTagBuilder(FDBlockTags.COOKING_POTS)
             .add(FDBlocks.COOKING_POT.get(), VDBlocks.NETHERITE_COOKING_POT)
+
+        getOrCreateTagBuilder(CBlockTags.STORAGE_GOLDEN_BEETROOT).add(VDBlocks.GOLDEN_BEETROOT_CRATE)
+        getOrCreateTagBuilder(ConventionalBlockTags.STORAGE_BLOCKS).forceAddTag(CBlockTags.STORAGE_GOLDEN_BEETROOT)
     }
 
     fun shapedBlocks() {
