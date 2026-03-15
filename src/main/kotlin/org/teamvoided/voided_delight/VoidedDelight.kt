@@ -3,10 +3,7 @@ package org.teamvoided.voided_delight
 import net.minecraft.util.Identifier
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.teamvoided.voided_delight.init.VDBlocks
-import org.teamvoided.voided_delight.init.VDItems
-import org.teamvoided.voided_delight.init.VDTabs
-import org.teamvoided.voided_delight.init.registerComposting
+import org.teamvoided.voided_delight.init.*
 import vectorwing.farmersdelight.FarmersDelight
 
 object VoidedDelight {
@@ -21,6 +18,7 @@ object VoidedDelight {
         VDBlocks.init()
         VDTabs.init()
 
+        modifyItemComponents()
         registerComposting()
     }
 

@@ -5,7 +5,9 @@ import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import org.teamvoided.voided_delight.VoidedDelight.id
+import org.teamvoided.voided_delight.item.CustomSkillet
 import org.teamvoided.voided_delight.item.VDFoodComponents
+import org.teamvoided.voided_delight.item.VDTiers
 import org.teamvoided.voided_delight.util.getModEntries
 import vectorwing.farmersdelight.common.FoodValues.*
 import vectorwing.farmersdelight.common.item.ConsumableItem
@@ -18,11 +20,15 @@ object VDItems {
     val ITEMS get() = getModEntries(Registries.ITEM)
 
     val NETHERITE_COOKING_POT =
-        register("netherite_cooking_pot", CookingPotItem(VDBlocks.NETHERITE_COOKING_POT, Item.Settings().maxCount(1).fireproof()))
+        register(
+            "netherite_cooking_pot",
+            CookingPotItem(VDBlocks.NETHERITE_COOKING_POT, Item.Settings().maxCount(1).fireproof())
+        )
     val NETHERITE_SKILLET = register(
-        "netherite_skillet", SkilletItem(
-            VDBlocks.NETHERITE_SKILLET, Item.Settings().maxCount(1).fireproof()
-                .attributeModifiersComponent(SkilletItem.createAttributes(SkilletItem.SKILLET_TIER, 5.0f, -3.1f))
+        "netherite_skillet", CustomSkillet(
+            VDTiers.NETHERITE_SKILLET, VDBlocks.NETHERITE_SKILLET,
+            Item.Settings().maxCount(1).fireproof()
+                .attributeModifiersComponent(SkilletItem.createAttributes(VDTiers.NETHERITE_SKILLET, 5.0f, -3.1f))
         )
     )
 

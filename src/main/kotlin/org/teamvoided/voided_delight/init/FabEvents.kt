@@ -1,8 +1,18 @@
 package org.teamvoided.voided_delight.init
 
+import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry
+import net.minecraft.component.DataComponentTypes
 import net.minecraft.item.ItemConvertible
+import org.teamvoided.voided_delight.item.CustomSkillet
 
+fun modifyItemComponents() {
+    DefaultItemComponentEvents.MODIFY.register { context ->
+        context.modify({ it is CustomSkillet }) { builder, item ->
+            if (item is CustomSkillet) builder.put(DataComponentTypes.MAX_DAMAGE, item.tier.durability)
+        }
+    }
+}
 
 fun registerComposting() {
 
