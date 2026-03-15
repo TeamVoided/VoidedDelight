@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "minecraft:honeycomb_block"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 4,
+        "id": "minecraft:honeycomb"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/shears"
+  }
+}
