@@ -5,6 +5,7 @@ iridium = "3.5.0"
 # Dependencies
 fzzy-config = "0.7.6+1.21"
 farmers-delight = "1.21.1-3.2.2+refabricated"
+voidlib = "0.1.1"
 # Compat Dependencies
 dusks-and-dungeons = "1.0.0-beta.3-no_biome"
 white-pumpkins = "aAabTuRk"
@@ -24,6 +25,7 @@ imguimc = "1.21.1-1.0.8"
 # Dependencies
 fzzy-config = { module = "me.fzzyhmstrs:fzzy_config", version.ref = "fzzy-config" }
 farmers-delight = { module = "vectorwing:FarmersDelight", version.ref = "farmers-delight" }
+voidlib = { module = "org.teamvoided:voidcore", version.ref = "voidlib" }
 # Compat Dependencies
 white-pumpkins = { module = "maven.modrinth:white-pumpkins", version.ref = "white-pumpkins" }
 dusks-and-dungeons = { module = "org.teamvoided:dusks_and_dungeons", version.ref = "dusks-and-dungeons" }

@@ -61,6 +61,10 @@ dependencies {
 
     modImplementation(libs.modmenu)
 
+
+    modImplementation(libs.voidlib)
+    include(libs.voidlib)
+
     // region Recipe Viewer Compat
     // EMI
     modCompileOnly("${libs.emi.get()}:api")
