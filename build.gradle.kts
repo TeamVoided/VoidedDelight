@@ -47,6 +47,7 @@ modSettings {
     entrypoint("rei_client", "org.teamvoided.voided_delight.integration.ClientREIPlugin")
 
     dependency("farmersdelight", "*")
+    dependency("fzzy_config", "*")
     mixinFile("${modId()}.client.mixins.json")
     mixinFile("${modId()}.mixins.json")
 //    accessWidener("${modId()}.accesswidener")
@@ -149,8 +150,8 @@ publishScript {
 
 uploadConfig {
 //    debugMode = true
-    modrinthId = ""
-    curseId = ""
+    modrinthId = "KbU9jcgj"
+//    curseId = ""
 
     // FabricApi
     modrinthDependency("P7dR8mSH", uploadConfig.REQUIRED)
@@ -158,9 +159,10 @@ uploadConfig {
     // Fabric Language Kotlin
     modrinthDependency("Ha28R6CL", uploadConfig.REQUIRED)
     curseDependency("fabric-language-kotlin", uploadConfig.REQUIRED)
-
-    // TODO
-    // Farmers Delight
-    modrinthDependency("null", uploadConfig.REQUIRED)
-    curseDependency("null-farmersdelight", uploadConfig.REQUIRED)
+    // Fzzy Config
+    modrinthDependency("hYykXjDp", uploadConfig.REQUIRED)
+    curseDependency("fzzy-config", uploadConfig.REQUIRED)
+    // Farmers Delight Refabricated
+    modrinthDependency("7vxePowz", uploadConfig.REQUIRED)
+    curseDependency("not-found", uploadConfig.REQUIRED)
 }
