@@ -15,6 +15,11 @@ object VDItemTags {
 
     val MEALS = create("meals")
 
+    init {
+        CItemTags.init()
+        FDItemTags.init()
+    }
+
     private fun create(name: String): TagKey<Item> {
         val tag = TagKey.of(RegistryKeys.ITEM, id(name))
         ITEM_TAGS.add(tag)

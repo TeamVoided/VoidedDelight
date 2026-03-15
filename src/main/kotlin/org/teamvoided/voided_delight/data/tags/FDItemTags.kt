@@ -12,6 +12,7 @@ object FDItemTags {
     @JvmField
     val SKILLETS = create("skillets")
 
+    fun init() = Unit
     private fun create(name: String): TagKey<Item> {
         val tag = TagKey.of(RegistryKeys.ITEM, fd(name))
         VDItemTags.ITEM_TAGS.add(tag)
