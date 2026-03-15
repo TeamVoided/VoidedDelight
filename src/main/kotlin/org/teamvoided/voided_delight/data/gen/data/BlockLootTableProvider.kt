@@ -20,13 +20,15 @@ import org.teamvoided.voided_delight.VDCompat
 import org.teamvoided.voided_delight.init.VDBlocks
 import vectorwing.farmersdelight.common.block.FeastBlock
 import vectorwing.farmersdelight.common.block.PieBlock
+import vectorwing.farmersdelight.common.loot.function.CopySkilletFunction
 import vectorwing.farmersdelight.common.registry.ModDataComponents
 import java.util.concurrent.CompletableFuture
 
 class BlockLootTableProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
     FabricBlockLootTableProvider(o, r) {
     val manualList: List<Block> = listOf(
-        VDBlocks.NETHERITE_COOKING_POT
+        VDBlocks.NETHERITE_COOKING_POT,
+        VDBlocks.NETHERITE_SKILLET
     )
 
     @Suppress("unused")
@@ -51,6 +53,15 @@ class BlockLootTableProvider(o: FabricDataOutput, r: CompletableFuture<HolderLoo
                                 .method_58730(ModDataComponents.MEAL.get())
                                 .method_58730(ModDataComponents.CONTAINER.get())
                         )
+                    )
+                )
+            )
+        }
+        add(VDBlocks.NETHERITE_SKILLET) {
+            LootTable.builder().pool(
+                applySurvivesExplosionCondition(
+                    it, LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f)).with(
+                        ItemEntry.builder(it).apply(CopySkilletFunction.builder())
                     )
                 )
             )
