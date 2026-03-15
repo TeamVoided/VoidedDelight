@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.teamvoided.voided_delight.VoidedDelightClient;
 import vectorwing.farmersdelight.client.renderer.SkilletRenderer;
 import vectorwing.farmersdelight.common.block.SkilletBlock;
 import vectorwing.farmersdelight.common.block.entity.SkilletBlockEntity;
@@ -17,7 +18,7 @@ import vectorwing.farmersdelight.common.block.entity.SkilletBlockEntity;
 public class SkilletRendererMixin {
     @Inject(method = "render(Lvectorwing/farmersdelight/common/block/entity/SkilletBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isEmpty()Z", ordinal = 0))
     void renderGlintOnBlock(SkilletBlockEntity skilletEntity, float partialTicks, MatrixStack poseStack, VertexConsumerProvider buffer, int light, int overlay, CallbackInfo ci) {
-        if (skilletEntity.getSkilletAsItem().hasGlint() /*TODO add config for this*/) {
+        if (skilletEntity.getSkilletAsItem().hasGlint() && VoidedDelightClient.config.skilletBlockRendersAsEnchanted) {
             poseStack.push();
             poseStack.translate(-0.0005f, -0.0001f, -0.0005f);
             poseStack.scale(1.001f, 1.002f, 1.001f);

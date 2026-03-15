@@ -1,5 +1,7 @@
 package org.teamvoided.voided_delight
 
+import me.fzzyhmstrs.fzzy_config.api.ConfigApi
+import me.fzzyhmstrs.fzzy_config.api.RegisterType
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry
 import net.minecraft.client.item.ModelPredicateProviderRegistry
@@ -13,6 +15,10 @@ import vectorwing.farmersdelight.common.registry.ModDataComponents
 import vectorwing.farmersdelight.common.item.component.ItemStackWrapper.EMPTY as EMPTY_ITEM
 
 object VoidedDelightClient {
+
+    @JvmField
+    var config = ConfigApi.registerAndLoadConfig(::VDClientConfig, RegisterType.CLIENT)
+
     @Suppress("unused")
     fun init() {
         BlockRenderLayerMap.INSTANCE.putBlocks(
