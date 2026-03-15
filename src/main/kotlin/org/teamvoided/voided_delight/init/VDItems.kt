@@ -28,7 +28,7 @@ object VDItems {
         "netherite_skillet", CustomSkillet(
             VDTiers.NETHERITE_SKILLET, VDBlocks.NETHERITE_SKILLET,
             Item.Settings().maxCount(1).fireproof()
-                .attributeModifiersComponent(SkilletItem.createAttributes(VDTiers.NETHERITE_SKILLET, 5.0f, -3.1f))
+                .attributeModifiersComponent(SkilletItem.createAttributes(VDTiers.NETHERITE_SKILLET, 5.0f, -3f))
         )
     )
 
