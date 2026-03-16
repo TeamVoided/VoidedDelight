@@ -24,7 +24,7 @@ fun modifyItemComponents() {
 fun injectSpawns() {
     BiomeModifications.addSpawn(
         BiomeSelectors.spawnsOneOf(EntityType.SKELETON, EntityType.STRAY, EntityType.BOGGED),
-        SpawnGroup.MONSTER, VDEntityTypes.SKILLETON, 25, 4, 4
+        SpawnGroup.MONSTER, VDEntityTypes.SKILLETON, config.skilletonSpawnWeight, 4, 4
     )
 }
 
