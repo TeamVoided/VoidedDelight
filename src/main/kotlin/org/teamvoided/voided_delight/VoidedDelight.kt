@@ -1,7 +1,6 @@
 package org.teamvoided.voided_delight
 
 import me.fzzyhmstrs.fzzy_config.api.ConfigApi
-import me.fzzyhmstrs.fzzy_config.api.RegisterType
 import net.minecraft.util.Identifier
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -15,7 +14,7 @@ object VoidedDelight {
     val log: Logger = LoggerFactory.getLogger(VoidedDelight::class.simpleName)
 
     @JvmField
-    var config = ConfigApi.registerAndLoadConfig(::VDConfig, RegisterType.SERVER)
+    var config = ConfigApi.registerAndLoadConfig(::VDConfig)
 
 
     fun init() {
@@ -28,6 +27,7 @@ object VoidedDelight {
 
         modifyItemComponents()
         injectSpawns()
+        modifyEnchanting()
         registerComposting()
     }
 

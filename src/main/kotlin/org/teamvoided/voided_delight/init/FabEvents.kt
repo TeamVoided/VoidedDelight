@@ -3,11 +3,14 @@ package org.teamvoided.voided_delight.init
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents
+import net.fabricmc.fabric.api.item.v1.EnchantmentEvents
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry
+import net.fabricmc.fabric.api.util.TriState
 import net.minecraft.component.DataComponentTypes
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.SpawnGroup
 import net.minecraft.item.ItemConvertible
+import org.teamvoided.voided_delight.VoidedDelight.config
 import org.teamvoided.voided_delight.item.CustomSkillet
 
 fun modifyItemComponents() {
@@ -23,6 +26,15 @@ fun injectSpawns() {
         BiomeSelectors.spawnsOneOf(EntityType.SKELETON, EntityType.STRAY, EntityType.BOGGED),
         SpawnGroup.MONSTER, VDEntityTypes.SKILLETON, 25, 4, 4
     )
+}
+
+fun modifyEnchanting() {
+    EnchantmentEvents.ALLOW_ENCHANTING.register { _, stack, _ ->
+        if (stack.isOf(VDItems.LOLLIPOP))
+            if (config.canEnchantLollipop) TriState.TRUE
+            else TriState.FALSE
+        else TriState.DEFAULT
+    }
 }
 
 

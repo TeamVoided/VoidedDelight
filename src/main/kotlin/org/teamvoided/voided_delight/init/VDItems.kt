@@ -8,6 +8,8 @@ import net.minecraft.item.*
 import net.minecraft.item.Item.Settings
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
+import net.minecraft.sound.SoundEvent
+import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPointer
 import org.teamvoided.voided_delight.VoidedDelight.id
 import org.teamvoided.voided_delight.item.CustomSkillet
@@ -41,18 +43,18 @@ object VDItems {
     val SKILLETON_SPAWN_EGG = register(
         "skilleton_spawn_egg", SpawnEggItem(VDEntityTypes.SKILLETON, 0x3a3a3a, 0xc66851, Settings())
     )
+
     val SKILLETON_SKULL = register(
         "skilleton_skull", SkullItem(
-            VDBlocks.SKILLETON_SKULL, VDBlocks.SKILLETON_WALL_SKULL, Settings().component(
-                NOTE_BLOCK_SOUND, ModSounds.ITEM_SKILLET_ATTACK_WEAK.get().id
-            )
+            VDBlocks.SKILLETON_SKULL,
+            VDBlocks.SKILLETON_WALL_SKULL,
+            Settings().noteBlockSound(ModSounds.ITEM_SKILLET_ATTACK_WEAK.get())
         )
     )
     val NETHERITE_SKILLETON_SKULL = register(
         "netherite_skilleton_skull", SkullItem(
-            VDBlocks.NETHERITE_SKILLETON_SKULL, VDBlocks.NETHERITE_SKILLETON_WALL_SKULL, Settings().component(
-                NOTE_BLOCK_SOUND, ModSounds.ITEM_SKILLET_ATTACK_STRONG.get().id
-            )
+            VDBlocks.NETHERITE_SKILLETON_SKULL, VDBlocks.NETHERITE_SKILLETON_WALL_SKULL,
+            Settings().noteBlockSound(ModSounds.ITEM_SKILLET_ATTACK_STRONG.get())
         )
     )
 
@@ -100,17 +102,23 @@ object VDItems {
             it.addAfter(Items.SKELETON_HORSE_SPAWN_EGG, SKILLETON_SPAWN_EGG)
         }
 
-        val equipArmor = object : FallibleItemDispenserBehavior() {
-            override fun dispenseSilently(pointer: BlockPointer, stack: ItemStack): ItemStack {
-                isSuccess = ArmorItem.dispenseArmor(pointer, stack)
-                return stack
-            }
-        }
-        DispenserBlock.registerBehavior(SKILLETON_SKULL, equipArmor)
-        DispenserBlock.registerBehavior(NETHERITE_SKILLETON_SKULL, equipArmor)
+        DispenserBlock.registerBehavior(SKILLETON_SKULL, EquipArmorBehavior)
+        DispenserBlock.registerBehavior(NETHERITE_SKILLETON_SKULL, EquipArmorBehavior)
     }
 
     fun register(id: String, item: Item): Item = Registry.register(Registries.ITEM, id(id), item)
     fun bowlItem(food: FoodComponent) = ConsumableItem(bowlFoodItem(food), true)
     fun foodItem(food: FoodComponent) = Item(Settings().food(food))
+}
+
+fun Settings.noteBlockSound(sound: SoundEvent): Settings = noteBlockSound(sound.id)
+fun Settings.noteBlockSound(soundId: Identifier): Settings = component(NOTE_BLOCK_SOUND, soundId)
+
+
+// TODO move to Voidlib
+object EquipArmorBehavior : FallibleItemDispenserBehavior() {
+    override fun dispenseSilently(pointer: BlockPointer, stack: ItemStack): ItemStack {
+        isSuccess = ArmorItem.dispenseArmor(pointer, stack)
+        return stack
+    }
 }

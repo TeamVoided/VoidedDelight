@@ -7,4 +7,5 @@ import org.teamvoided.voided_delight.VoidedDelight.id
 class VDConfig : Config(id(MODID)) {
     @JvmField
     var skilletonCanSpawn = true
+    var canEnchantLollipop = true
 }
