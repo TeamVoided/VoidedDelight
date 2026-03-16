@@ -4,7 +4,7 @@ import me.fzzyhmstrs.fzzy_config.config.Config
 import org.teamvoided.voided_delight.VoidedDelight.MODID
 import org.teamvoided.voided_delight.VoidedDelight.id
 
-class VDClientConfig : Config(id("${MODID}_client")) {
+class VDConfig : Config(id(MODID)) {
     @JvmField
-    var skilletBlockRendersAsEnchanted = true
+    var skilletonCanSpawn = true
 }

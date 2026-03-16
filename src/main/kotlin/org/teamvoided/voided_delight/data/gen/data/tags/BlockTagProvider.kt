@@ -47,6 +47,10 @@ class BlockTagProvider(output: FabricDataOutput, completableFuture: CompletableF
 
         getOrCreateTagBuilder(CBlockTags.STORAGE_GOLDEN_BEETROOT).add(VDBlocks.GOLDEN_BEETROOT_CRATE)
         getOrCreateTagBuilder(ConventionalBlockTags.STORAGE_BLOCKS).forceAddTag(CBlockTags.STORAGE_GOLDEN_BEETROOT)
+        getOrCreateTagBuilder(ConventionalBlockTags.SKULLS).add(
+            VDBlocks.SKILLETON_SKULL, VDBlocks.SKILLETON_WALL_SKULL,
+            VDBlocks.NETHERITE_SKILLETON_SKULL, VDBlocks.NETHERITE_SKILLETON_WALL_SKULL
+        )
     }
 
     fun shapedBlocks() {

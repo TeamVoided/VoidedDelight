@@ -1,8 +1,12 @@
 package org.teamvoided.voided_delight.init
 
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors
 import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry
 import net.minecraft.component.DataComponentTypes
+import net.minecraft.entity.EntityType
+import net.minecraft.entity.SpawnGroup
 import net.minecraft.item.ItemConvertible
 import org.teamvoided.voided_delight.item.CustomSkillet
 
@@ -13,6 +17,14 @@ fun modifyItemComponents() {
         }
     }
 }
+
+fun injectSpawns() {
+    BiomeModifications.addSpawn(
+        BiomeSelectors.spawnsOneOf(EntityType.SKELETON, EntityType.STRAY, EntityType.BOGGED),
+        SpawnGroup.MONSTER, VDEntityTypes.SKILLETON, 25, 4, 4
+    )
+}
+
 
 fun registerComposting() {
 

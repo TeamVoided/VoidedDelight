@@ -6,6 +6,8 @@ import net.minecraft.block.AbstractBlock.Settings.copy
 import net.minecraft.block.Block
 import net.minecraft.block.Blocks
 import net.minecraft.block.MapColor
+import net.minecraft.block.enums.NoteBlockInstrument
+import net.minecraft.block.piston.PistonBehavior
 import net.minecraft.item.BlockItem
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.FoodComponents
@@ -13,6 +15,8 @@ import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.sound.BlockSoundGroup
+import org.teamvoided.headless.block.HeadlessSkull
+import org.teamvoided.headless.block.HeadlessWallSkull
 import org.teamvoided.voided_delight.VoidedDelight.id
 import org.teamvoided.voided_delight.item.VDFoodComponents
 import org.teamvoided.voided_delight.util.*
@@ -34,6 +38,33 @@ object VDBlocks {
         registerNoItem("netherite_cooking_pot", CookingPotBlock(netheriteProps)).cutout().pickaxe()
     val NETHERITE_SKILLET = registerNoItem("netherite_skillet", SkilletBlock(netheriteProps)).pickaxe()
 
+    var SKULL_PROS: AbstractBlock.Settings = AbstractBlock.Settings.create()
+        .instrument(NoteBlockInstrument.CUSTOM_HEAD)
+        .strength(0.75F, 6.0F)
+        .sounds(BlockSoundGroup.LANTERN)
+        .pistonBehavior(PistonBehavior.DESTROY)
+
+    val SKILLETON_SKULL =
+        registerNoItem("skilleton_skull", HeadlessSkull(VDSkulls.SKILLETON, SKULL_PROS))
+    val SKILLETON_WALL_SKULL = registerNoItem(
+        "skilleton_wall_skull",
+        HeadlessWallSkull(VDSkulls.SKILLETON, copy(SKILLETON_SKULL).dropsLike(SKILLETON_SKULL))
+    )
+
+    var N_SKULL_PROS: AbstractBlock.Settings = AbstractBlock.Settings.create()
+        .instrument(NoteBlockInstrument.CUSTOM_HEAD)
+        .strength(0.75F, 1200.0F)
+        .sounds(BlockSoundGroup.NETHERITE)
+        .pistonBehavior(PistonBehavior.DESTROY)
+    val NETHERITE_SKILLETON_SKULL =
+        registerNoItem("netherite_skilleton_skull", HeadlessSkull(VDSkulls.NETHERITE_SKILLETON, N_SKULL_PROS))
+    val NETHERITE_SKILLETON_WALL_SKULL = registerNoItem(
+        "netherite_skilleton_wall_skull", HeadlessWallSkull(
+            VDSkulls.NETHERITE_SKILLETON, copy(NETHERITE_SKILLETON_SKULL).dropsLike(NETHERITE_SKILLETON_SKULL)
+        )
+    )
+
+
     // region Dusks and Dungeons
     val STUFFED_LANTERN_PUMPKIN = registerMaxStack(
         "stuffed_lantern_pumpkin_block", stuffedPumpkinOf(copy(Blocks.PUMPKIN)) { VDItems.STUFFED_LANTERN_PUMPKIN }
@@ -49,10 +80,14 @@ object VDBlocks {
     ).axe()
 
     val LANTERN_PUMPKIN_PIE = registerEdible(
-        "lantern_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE)) { VDItems.LANTERN_PUMPKIN_PIE_SLICE }
+        "lantern_pumpkin_pie",
+        FoodComponents.PUMPKIN_PIE,
+        pieOf(copy(Blocks.CAKE)) { VDItems.LANTERN_PUMPKIN_PIE_SLICE }
     ).knife()
     val MOSSKIN_PUMPKIN_PIE = registerEdible(
-        "mosskin_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE)) { VDItems.MOSSKIN_PUMPKIN_PIE_SLICE }
+        "mosskin_pumpkin_pie",
+        FoodComponents.PUMPKIN_PIE,
+        pieOf(copy(Blocks.CAKE)) { VDItems.MOSSKIN_PUMPKIN_PIE_SLICE }
     ).knife()
     val GLOOM_PUMPKIN_PIE = registerEdible(
         "gloom_pumpkin_pie", FoodComponents.PUMPKIN_PIE, pieOf(copy(Blocks.CAKE)) { VDItems.GLOOM_PUMPKIN_PIE_SLICE }

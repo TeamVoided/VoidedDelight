@@ -44,6 +44,16 @@ class ItemTagProvider(
         getOrCreateTagBuilder(ItemTags.SHARP_WEAPON_ENCHANTABLE).addOptionalTag(FDItemTags.SKILLETS)
         getOrCreateTagBuilder(ItemTags.FIRE_ASPECT_ENCHANTABLE).addOptionalTag(FDItemTags.SKILLETS)
         getOrCreateTagBuilder(ItemTags.SWORD_ENCHANTABLE).addOptionalTag(FDItemTags.SKILLETS)
+
+        getOrCreateTagBuilder(ConventionalItemTags.HIDDEN_FROM_RECIPE_VIEWERS).add(VDItems.NETHERITE_SKILLETON_SKULL)
+        getOrCreateTagBuilder(ItemTags.SKULLS).add(
+            VDItems.SKILLETON_SKULL,
+//            VDItems.NETHERITE_SKILLETON_SKULL
+        )
+        getOrCreateTagBuilder(ItemTags.NOTEBLOCK_TOP_INSTRUMENTS).add(
+            VDItems.SKILLETON_SKULL,
+//            VDItems.NETHERITE_SKILLETON_SKULL
+        )
     }
 
     fun candy() {

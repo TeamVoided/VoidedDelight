@@ -1,11 +1,10 @@
-package org.teamvoided.voided_delight.data.gen.data
+package org.teamvoided.voided_delight.data.gen.data.loot.tables
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions.anyModsLoaded
-import net.minecraft.block.Block
-import net.minecraft.block.DoorBlock
-import net.minecraft.block.SlabBlock
+import net.minecraft.block.*
+import net.minecraft.block.AbstractSkullBlock
 import net.minecraft.component.DataComponentTypes
 import net.minecraft.data.server.loot_table.BlockLootTableGenerator
 import net.minecraft.loot.LootPool
@@ -85,12 +84,26 @@ fun BlockLootTableGenerator.feastDrops(it: Block): LootTable.Builder {
     )
 }
 
+fun BlockLootTableGenerator.skullDrops(block: Block): LootTable.Builder = LootTable.builder().pool(
+    applySurvivesExplosionCondition(
+        block, LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f)).with(
+            ItemEntry.builder(block).apply(
+                CopyComponentsLootFunction.method_57637(CopyComponentsLootFunction.C_zcqyfuyv.BLOCK_ENTITY)
+                    .method_58730(DataComponentTypes.NOTE_BLOCK_SOUND)
+                    .method_58730(DataComponentTypes.CUSTOM_NAME)
+            )
+        )
+    )
+)
+
 fun BlockLootTableGenerator.processBlock(block: Block) {
     when (block) {
         is SlabBlock -> add(block, ::slabDrops)
         is DoorBlock -> add(block, ::doorDrops)
         is FeastBlock -> add(block, ::feastDrops)
         is PieBlock -> add(block) { BlockLootTableGenerator.dropsNothing() }
+        is AbstractSkullBlock -> add(block, ::skullDrops)
+        is BlockEntityProvider -> add(block, ::nameableBlockEntityDrops)
         else -> addDrop(block)
     }
 }

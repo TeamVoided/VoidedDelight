@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.data.client.ItemModelGenerator
 import net.minecraft.data.client.model.BlockStateModelGenerator
+import net.minecraft.data.client.model.ModelIds
 import net.minecraft.data.client.model.Models
 import org.teamvoided.voided_delight.block.VDFamilies
 import org.teamvoided.voided_delight.init.VDBlocks
@@ -30,8 +31,18 @@ class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
         gen.registerPie(VDBlocks.PALE_PUMPKIN_PIE)
 
         gen.registerStuffedPumpkin(VDBlocks.STUFFED_WHITE_PUMPKIN)
-        
+
         gen.registerCrate(VDBlocks.GOLDEN_BEETROOT_CRATE)
+        gen.registerParentedItemModel(
+            VDItems.SKILLETON_SPAWN_EGG,
+            ModelIds.getMinecraftNamespacedItem("template_spawn_egg")
+        )
+        gen.skullModels("skillet_skull", VDBlocks.SKILLETON_SKULL)
+            .skullWithItems(VDBlocks.SKILLETON_SKULL)
+            .includeWithoutItem(VDBlocks.SKILLETON_WALL_SKULL)
+        gen.skullModels("netherite_skull", VDBlocks.NETHERITE_SKILLETON_SKULL)
+            .skullWithItems(VDBlocks.NETHERITE_SKILLETON_SKULL)
+            .includeWithoutItem(VDBlocks.NETHERITE_SKILLETON_WALL_SKULL)
     }
 
     val single = listOf(

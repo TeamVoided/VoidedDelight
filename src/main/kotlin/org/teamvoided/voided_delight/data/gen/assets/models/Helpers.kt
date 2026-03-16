@@ -11,6 +11,7 @@ import org.teamvoided.dusks_and_dungeons.util.datagen.block
 import org.teamvoided.dusks_and_dungeons.util.datagen.model
 import org.teamvoided.dusks_and_dungeons.util.datagen.suffix
 import org.teamvoided.voided_delight.VoidedDelight.fd
+import org.teamvoided.voided_delight.VoidedDelight.id
 import vectorwing.farmersdelight.common.block.CookingPotBlock
 import vectorwing.farmersdelight.common.block.FeastBlock
 import vectorwing.farmersdelight.common.block.PieBlock
@@ -152,4 +153,13 @@ fun BlockStateModelGenerator.registerCrate(block: Block, bottomTexture: Identifi
     val model = Models.CUBE_BOTTOM_TOP.upload(block, texture, modelCollector)
     blockStateCollector.accept(createSingletonBlockState(block, model))
 }
+// endregion
+
+// region Skulls
+fun BlockStateModelGenerator.skullModels(id: String, particle: Block): BlockStateModelGenerator.BuiltinModelPool =
+    registerBuiltin(id("block/$id"), particle)
+
+fun BlockStateModelGenerator.BuiltinModelPool.skullWithItems(vararg blocks: Block): BlockStateModelGenerator.BuiltinModelPool =
+    includeWithItem(Models.TEMPLATE_SKULL, *blocks)
+
 // endregion
