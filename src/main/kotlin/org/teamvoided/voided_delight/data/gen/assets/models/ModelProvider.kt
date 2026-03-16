@@ -33,6 +33,7 @@ class ModelProvider(o: FabricDataOutput) : FabricModelProvider(o) {
         gen.registerStuffedPumpkin(VDBlocks.STUFFED_WHITE_PUMPKIN)
 
         gen.registerCrate(VDBlocks.GOLDEN_BEETROOT_CRATE)
+        gen.registerCrate(VDBlocks.GOLDEN_CARROT_CRATE)
         gen.registerParentedItemModel(
             VDItems.SKILLETON_SPAWN_EGG,
             ModelIds.getMinecraftNamespacedItem("template_spawn_egg")

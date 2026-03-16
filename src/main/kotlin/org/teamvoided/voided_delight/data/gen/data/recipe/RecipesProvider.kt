@@ -9,8 +9,10 @@ import net.minecraft.data.server.recipe.ShapelessRecipeJsonFactory
 import net.minecraft.item.Items
 import net.minecraft.recipe.RecipeCategory
 import net.minecraft.registry.HolderLookup
+import org.teamvoided.dusks_and_dungeons.init.DnDItems
 import org.teamvoided.voided_delight.VDCompat
 import org.teamvoided.voided_delight.data.tags.VDItemTags
+import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
 import java.util.concurrent.CompletableFuture
 import vectorwing.farmersdelight.common.registry.ModItems as FDItems
@@ -20,6 +22,16 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
 
         offerNetheriteUpgradeRecipe(e, FDItems.COOKING_POT.get(), RecipeCategory.MISC, VDItems.NETHERITE_COOKING_POT)
         offerNetheriteUpgradeRecipe(e, FDItems.SKILLET.get(), RecipeCategory.MISC, VDItems.NETHERITE_SKILLET)
+
+        offerReversibleCompactingRecipesWithInputItemGroup(
+            e,
+            RecipeCategory.MISC,
+            Items.GOLDEN_CARROT,
+            RecipeCategory.BUILDING_BLOCKS,
+            VDBlocks.GOLDEN_CARROT_CRATE,
+            "golden_carrot_from_golden_carrot_crate",
+            "golden_carrot"
+        )
 
         dnd(conditional(e, VDCompat.DND))
         whitePumpkins(conditional(e, VDCompat.WHITE_PUMPKINS))

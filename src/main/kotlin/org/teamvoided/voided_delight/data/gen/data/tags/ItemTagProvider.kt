@@ -27,7 +27,10 @@ class ItemTagProvider(
         copy(FDBlockTags.COOKING_POTS, FDItemTags.COOKING_POTS)
         copy(FDBlockTags.SKILLETS, FDItemTags.SKILLETS)
         copy(CBlockTags.STORAGE_GOLDEN_BEETROOT, CItemTags.STORAGE_GOLDEN_BEETROOT)
-        getOrCreateTagBuilder(ConventionalItemTags.STORAGE_BLOCKS).forceAddTag(CItemTags.STORAGE_GOLDEN_BEETROOT)
+        copy(CBlockTags.STORAGE_GOLDEN_CARROT, CItemTags.STORAGE_GOLDEN_CARROT)
+        getOrCreateTagBuilder(ConventionalItemTags.STORAGE_BLOCKS)
+            .forceAddTag(CItemTags.STORAGE_GOLDEN_BEETROOT)
+            .forceAddTag(CItemTags.STORAGE_GOLDEN_CARROT)
 
 
         getOrCreateTagBuilder(ConventionalItemTags.SOUP_FOODS).add(

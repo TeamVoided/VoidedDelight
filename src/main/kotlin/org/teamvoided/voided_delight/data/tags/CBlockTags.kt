@@ -7,6 +7,7 @@ import org.teamvoided.voided_delight.VoidedDelight.id
 
 object CBlockTags {
     val STORAGE_GOLDEN_BEETROOT = create("storage_blocks/golden_beetroot")
+    val STORAGE_GOLDEN_CARROT = create("storage_blocks/golden_carrot")
 
     fun create(name: String): TagKey<Block> = TagKey.of(RegistryKeys.BLOCK, id("c",name))
 }

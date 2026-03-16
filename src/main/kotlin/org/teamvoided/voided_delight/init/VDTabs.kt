@@ -24,7 +24,8 @@ object VDTabs {
                 add(
                     VDItems.NETHERITE_SKILLET,
                     VDItems.NETHERITE_COOKING_POT,
-                    VDItems.SKILLETON_SKULL
+                    VDItems.SKILLETON_SKULL,
+                    VDBlocks.GOLDEN_CARROT_CRATE
                 )
                 if (HAS_DND) add(VDBlocks.GOLDEN_BEETROOT_CRATE)
 

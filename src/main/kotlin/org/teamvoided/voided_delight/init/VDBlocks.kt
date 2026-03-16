@@ -64,6 +64,8 @@ object VDBlocks {
         )
     )
 
+    val GOLDEN_CARROT_CRATE = register("golden_carrot_crate", Block(copy(FDBlocks.CARROT_CRATE.get()))).axe()
+
 
     // region Dusks and Dungeons
     val STUFFED_LANTERN_PUMPKIN = registerMaxStack(

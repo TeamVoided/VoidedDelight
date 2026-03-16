@@ -46,7 +46,10 @@ class BlockTagProvider(output: FabricDataOutput, completableFuture: CompletableF
             .add(FDBlocks.COOKING_POT.get(), VDBlocks.NETHERITE_COOKING_POT)
 
         getOrCreateTagBuilder(CBlockTags.STORAGE_GOLDEN_BEETROOT).add(VDBlocks.GOLDEN_BEETROOT_CRATE)
-        getOrCreateTagBuilder(ConventionalBlockTags.STORAGE_BLOCKS).forceAddTag(CBlockTags.STORAGE_GOLDEN_BEETROOT)
+        getOrCreateTagBuilder(CBlockTags.STORAGE_GOLDEN_CARROT).add(VDBlocks.GOLDEN_CARROT_CRATE)
+        getOrCreateTagBuilder(ConventionalBlockTags.STORAGE_BLOCKS)
+            .forceAddTag(CBlockTags.STORAGE_GOLDEN_BEETROOT)
+            .forceAddTag(CBlockTags.STORAGE_GOLDEN_CARROT)
         getOrCreateTagBuilder(ConventionalBlockTags.SKULLS).add(
             VDBlocks.SKILLETON_SKULL, VDBlocks.SKILLETON_WALL_SKULL,
             VDBlocks.NETHERITE_SKILLETON_SKULL, VDBlocks.NETHERITE_SKILLETON_WALL_SKULL
