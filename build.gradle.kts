@@ -62,9 +62,10 @@ dependencies {
 
     modImplementation(libs.modmenu)
 
-
-    modImplementation(libs.voidlib)
-    include(libs.voidlib)
+    modImplementation(libs.voidcore)
+    include(libs.voidcore)
+    modImplementation(libs.headless)
+    include(libs.headless)
 
     // region Recipe Viewer Compat
     // EMI
