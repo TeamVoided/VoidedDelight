@@ -9,7 +9,6 @@ import net.minecraft.data.server.recipe.ShapelessRecipeJsonFactory
 import net.minecraft.item.Items
 import net.minecraft.recipe.RecipeCategory
 import net.minecraft.registry.HolderLookup
-import org.teamvoided.dusks_and_dungeons.init.DnDItems
 import org.teamvoided.voided_delight.VDCompat
 import org.teamvoided.voided_delight.data.tags.VDItemTags
 import org.teamvoided.voided_delight.init.VDBlocks
@@ -42,6 +41,7 @@ class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Pro
             .ingredient(ConventionalItemTags.BERRY_FOODS)
             .ingredient(ConventionalItemTags.BERRY_FOODS)
             .ingredient(VDItemTags.PUMPKIN_SLICES)
+            .ingredient(Items.BOWL)
             .criterion(ConventionalItemTags.BERRY_FOODS)
             .criterion(VDItemTags.PUMPKIN_SLICES)
             .offerTo(conditional(e, VDCompat.DND, VDCompat.WHITE_PUMPKINS))
