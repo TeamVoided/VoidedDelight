@@ -30,10 +30,7 @@ import vectorwing.farmersdelight.common.registry.ModSounds
 class SkilletonEntity(entityType: EntityType<out SkilletonEntity>, world: World) :
     AbstractSkeletonEntity(entityType, world) {
 
-    @Override
-    @Suppress("unused")
-    // This is secretly overring a function. Why? Java package private, that's why.
-    fun getStepSound(): SoundEvent =
+    override fun getStepSound(): SoundEvent =
         if (isNetherite()) SoundEvents.BLOCK_NETHERITE_BLOCK_STEP else SoundEvents.BLOCK_LANTERN_STEP
 
     override fun getAmbientSound(): SoundEvent =
