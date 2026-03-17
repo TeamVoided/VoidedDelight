@@ -28,7 +28,7 @@ class EnLangProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Prov
         VDItems.ITEMS.forEach { gen.add(it.translationKey, process(genLang(it.id))) }
         VDEntityTypes.ENTITY_TYPES.forEach { gen.add(it.translationKey, genLang(it.id)) }
         VDItemTags.ITEM_TAGS.forEach { gen.add(it, genLang(it.id)) }
-        gen.addAdvancement(SKILLET_ISSUE, "Skillet Issue", "Kill a Skilleton")
+        gen.addAdvancement(SKILLET_ISSUE, "Skillet Issue", "Kill a Skilleton with a Skillet")
         gen.addAdvancement(COOKED_TOO_LONG, "This One Cooked For Too Long...", "Acquire a Netherite Skilleton Skull")
         gen.add(VDPaintingVariants.SKILLETON, "Skill Coil", "TheEnderCore")
     }

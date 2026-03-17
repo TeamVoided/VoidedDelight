@@ -8,7 +8,6 @@ import net.minecraft.advancement.AdvancementType
 import net.minecraft.advancement.criterion.InventoryChangedCriterionTrigger
 import net.minecraft.advancement.criterion.OnKilledCriterionTrigger.Conditions.createKilled
 import net.minecraft.item.ItemConvertible
-import net.minecraft.predicate.entity.EntityPredicate
 import net.minecraft.registry.HolderLookup
 import net.minecraft.text.MutableText
 import net.minecraft.text.Text
@@ -16,10 +15,16 @@ import net.minecraft.util.Identifier
 import org.teamvoided.voided_delight.VoidedDelight.MODID
 import org.teamvoided.voided_delight.VoidedDelight.fd
 import org.teamvoided.voided_delight.VoidedDelight.id
+import org.teamvoided.voided_delight.data.tags.FDItemTags
 import org.teamvoided.voided_delight.init.VDEntityTypes
 import org.teamvoided.voided_delight.init.VDItems
 import java.util.concurrent.CompletableFuture
 import java.util.function.Consumer
+import net.minecraft.predicate.entity.DamageSourcePredicate.Builder.create as dsBuilder
+import net.minecraft.predicate.entity.EntityEquipmentPredicate.Builder.create as eepBuilder
+import net.minecraft.predicate.entity.EntityPredicate.Builder.create as epBuilder
+import net.minecraft.predicate.item.ItemPredicate.Builder.create as ipBuilder
+
 
 class AdvancementGenerator(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
     FabricAdvancementProvider(o, r) {
@@ -34,7 +39,14 @@ class AdvancementGenerator(o: FabricDataOutput, r: CompletableFuture<HolderLooku
             announceToChat = true,
             hidden = false
         )
-            .putCriteria("skilleton", createKilled(EntityPredicate.Builder.create().type(VDEntityTypes.SKILLETON)))
+            .putCriteria(
+                "skilleton", createKilled(
+                    epBuilder().type(VDEntityTypes.SKILLETON),
+                    dsBuilder().setSourceEntity(
+                        epBuilder().equipment(eepBuilder().mainhand(ipBuilder().tag(FDItemTags.SKILLETS)))
+                    )
+                )
+            )
             .build(gen, id("main/kill_skilleton"))
 
 
