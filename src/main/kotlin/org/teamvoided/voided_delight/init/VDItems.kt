@@ -102,6 +102,9 @@ object VDItems {
             it.addAfter(Items.SKELETON_HORSE_SPAWN_EGG, SKILLETON_SPAWN_EGG)
         }
 
+        // TODO remove in 1.1
+        Registries.ITEM.addAlias(Identifier.parse("farmersdelight:netherite_skillet"), id("netherite_skillet"))
+
         DispenserBlock.registerBehavior(SKILLETON_SKULL, EquipArmorBehavior)
         DispenserBlock.registerBehavior(NETHERITE_SKILLETON_SKULL, EquipArmorBehavior)
     }
