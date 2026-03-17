@@ -154,6 +154,8 @@ uploadConfig {
     modrinthId = "KbU9jcgj"
 //    curseId = ""
 
+    changeLog = File("changelog.md").readText()
+
     // FabricApi
     modrinthDependency("P7dR8mSH", uploadConfig.REQUIRED)
     curseDependency("fabric-api", uploadConfig.REQUIRED)
@@ -166,4 +168,9 @@ uploadConfig {
     // Farmers Delight Refabricated
     modrinthDependency("7vxePowz", uploadConfig.REQUIRED)
     curseDependency("not-found", uploadConfig.REQUIRED)
+
+    // Optional
+    // White Pumpkins
+    modrinthDependency("lIw0R1DW", uploadConfig.OPTIONAL)
+    curseDependency("not-found", uploadConfig.OPTIONAL)
 }
