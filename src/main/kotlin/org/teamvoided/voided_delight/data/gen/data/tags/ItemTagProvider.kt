@@ -7,14 +7,18 @@ import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.tag.ItemTags
 import net.minecraft.registry.tag.TagKey
+import org.teamvoided.voided_delight.FDItems
+import org.teamvoided.voided_delight.FDTags
 import org.teamvoided.voided_delight.VoidedDelight.id
-import org.teamvoided.voided_delight.data.tags.*
+import org.teamvoided.voided_delight.data.tags.block.CBlockTags
+import org.teamvoided.voided_delight.data.tags.block.FDBlockTags
+import org.teamvoided.voided_delight.data.tags.item.CItemTags
+import org.teamvoided.voided_delight.data.tags.item.FDItemTags
+import org.teamvoided.voided_delight.data.tags.item.VDItemTags
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
 import org.teamvoided.voided_delight.util.add
-import vectorwing.farmersdelight.common.tag.ModTags
 import java.util.concurrent.CompletableFuture
-import vectorwing.farmersdelight.common.registry.ModItems as FDItems
 
 class ItemTagProvider(
     output: FabricDataOutput, completableFuture: CompletableFuture<HolderLookup.Provider>, blockTag: BlockTagProvider,
@@ -22,7 +26,7 @@ class ItemTagProvider(
     override fun configure(wrapperLookup: HolderLookup.Provider) {
         candy()
         pumpkins()
-        getOrCreateTagBuilder(ModTags.MEALS).addTag(VDItemTags.MEALS)
+        getOrCreateTagBuilder(FDTags.MEALS).addTag(VDItemTags.MEALS)
         getOrCreateTagBuilder(ConventionalItemTags.FOODS).addTag(VDItemTags.PIE_SLICES)
         copy(FDBlockTags.COOKING_POTS, FDItemTags.COOKING_POTS)
         copy(FDBlockTags.SKILLETS, FDItemTags.SKILLETS)

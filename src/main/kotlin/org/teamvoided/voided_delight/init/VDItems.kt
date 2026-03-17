@@ -2,59 +2,53 @@ package org.teamvoided.voided_delight.init
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.block.dispenser.DispenserBlock
-import net.minecraft.block.dispenser.FallibleItemDispenserBehavior
-import net.minecraft.component.DataComponentTypes.NOTE_BLOCK_SOUND
 import net.minecraft.item.*
 import net.minecraft.item.Item.Settings
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
-import net.minecraft.sound.SoundEvent
 import net.minecraft.util.Identifier
-import net.minecraft.util.math.BlockPointer
+import org.teamvoided.voided_delight.FDSounds
 import org.teamvoided.voided_delight.VoidedDelight.id
 import org.teamvoided.voided_delight.item.CustomSkillet
 import org.teamvoided.voided_delight.item.VDFoodComponents
 import org.teamvoided.voided_delight.item.VDTiers
 import org.teamvoided.voided_delight.util.getModEntries
+import org.teamvoided.voided_delight.util.noteBlockSound
+import org.teamvoided.voided_delight.util.outsource.EquipArmorBehavior
 import vectorwing.farmersdelight.common.FoodValues.*
 import vectorwing.farmersdelight.common.item.ConsumableItem
 import vectorwing.farmersdelight.common.item.CookingPotItem
 import vectorwing.farmersdelight.common.item.SkilletItem
 import vectorwing.farmersdelight.common.registry.ModItems.bowlFoodItem
-import vectorwing.farmersdelight.common.registry.ModSounds
-
 
 object VDItems {
     val ITEMS get() = getModEntries(Registries.ITEM)
 
-    val NETHERITE_COOKING_POT =
-        register(
-            "netherite_cooking_pot",
-            CookingPotItem(VDBlocks.NETHERITE_COOKING_POT, Settings().maxCount(1).fireproof())
-        )
+    val NETHERITE_COOKING_POT = register(
+        "netherite_cooking_pot",
+        CookingPotItem(VDBlocks.NETHERITE_COOKING_POT, Settings().maxCount(1).fireproof())
+    )
     val NETHERITE_SKILLET = register(
         "netherite_skillet", CustomSkillet(
-            VDTiers.NETHERITE_SKILLET, VDBlocks.NETHERITE_SKILLET,
-            Settings().maxCount(1).fireproof()
+            VDTiers.NETHERITE_SKILLET, VDBlocks.NETHERITE_SKILLET, Settings().maxCount(1).fireproof()
                 .attributeModifiersComponent(SkilletItem.createAttributes(VDTiers.NETHERITE_SKILLET, 5.0f, -3f))
         )
     )
 
-    val SKILLETON_SPAWN_EGG = register(
-        "skilleton_spawn_egg", SpawnEggItem(VDEntityTypes.SKILLETON, 0x3a3a3a, 0xc66851, Settings())
-    )
+    val SKILLETON_SPAWN_EGG =
+        register("skilleton_spawn_egg", SpawnEggItem(VDEntityTypes.SKILLETON, 0x3a3a3a, 0xc66851, Settings()))
 
     val SKILLETON_SKULL = register(
         "skilleton_skull", SkullItem(
             VDBlocks.SKILLETON_SKULL,
             VDBlocks.SKILLETON_WALL_SKULL,
-            Settings().noteBlockSound(ModSounds.ITEM_SKILLET_ATTACK_WEAK.get())
+            Settings().noteBlockSound(FDSounds.ITEM_SKILLET_ATTACK_WEAK.get())
         )
     )
     val NETHERITE_SKILLETON_SKULL = register(
         "netherite_skilleton_skull", SkullItem(
             VDBlocks.NETHERITE_SKILLETON_SKULL, VDBlocks.NETHERITE_SKILLETON_WALL_SKULL,
-            Settings().noteBlockSound(ModSounds.ITEM_SKILLET_ATTACK_STRONG.get())
+            Settings().noteBlockSound(FDSounds.ITEM_SKILLET_ATTACK_STRONG.get())
         )
     )
 
@@ -112,16 +106,4 @@ object VDItems {
     fun register(id: String, item: Item): Item = Registry.register(Registries.ITEM, id(id), item)
     fun bowlItem(food: FoodComponent) = ConsumableItem(bowlFoodItem(food), true)
     fun foodItem(food: FoodComponent) = Item(Settings().food(food))
-}
-
-fun Settings.noteBlockSound(sound: SoundEvent): Settings = noteBlockSound(sound.id)
-fun Settings.noteBlockSound(soundId: Identifier): Settings = component(NOTE_BLOCK_SOUND, soundId)
-
-
-// TODO move to Voidlib
-object EquipArmorBehavior : FallibleItemDispenserBehavior() {
-    override fun dispenseSilently(pointer: BlockPointer, stack: ItemStack): ItemStack {
-        isSuccess = ArmorItem.dispenseArmor(pointer, stack)
-        return stack
-    }
 }

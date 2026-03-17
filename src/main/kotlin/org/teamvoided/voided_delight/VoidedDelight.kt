@@ -24,11 +24,7 @@ object VoidedDelight {
         VDBlocks.init()
         VDEntityTypes.init()
         VDTabs.init()
-
-        modifyItemComponents()
-        injectSpawns()
-        modifyEnchanting()
-        registerComposting()
+        FabEvents.init()
     }
 
     fun id(namespace: String, path: String): Identifier = Identifier.of(namespace, path)

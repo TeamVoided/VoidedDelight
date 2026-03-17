@@ -9,12 +9,12 @@ import net.minecraft.data.server.recipe.ShapelessRecipeJsonFactory
 import net.minecraft.item.Items
 import net.minecraft.recipe.RecipeCategory
 import net.minecraft.registry.HolderLookup
+import org.teamvoided.voided_delight.FDItems
 import org.teamvoided.voided_delight.VDCompat
-import org.teamvoided.voided_delight.data.tags.VDItemTags
+import org.teamvoided.voided_delight.data.tags.item.VDItemTags
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.init.VDItems
 import java.util.concurrent.CompletableFuture
-import vectorwing.farmersdelight.common.registry.ModItems as FDItems
 
 class RecipesProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) : FabricRecipeProvider(o, r) {
     override fun generateRecipes(e: RecipeExporter) {

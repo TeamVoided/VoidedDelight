@@ -17,13 +17,13 @@ import net.minecraft.registry.Registry
 import net.minecraft.sound.BlockSoundGroup
 import org.teamvoided.headless.block.HeadlessSkull
 import org.teamvoided.headless.block.HeadlessWallSkull
+import org.teamvoided.voided_delight.FDBlockEntityTypes
+import org.teamvoided.voided_delight.FDBlocks
 import org.teamvoided.voided_delight.VoidedDelight.id
 import org.teamvoided.voided_delight.item.VDFoodComponents
 import org.teamvoided.voided_delight.util.*
 import vectorwing.farmersdelight.common.block.CookingPotBlock
 import vectorwing.farmersdelight.common.block.SkilletBlock
-import vectorwing.farmersdelight.common.registry.ModBlockEntityTypes
-import vectorwing.farmersdelight.common.registry.ModBlocks as FDBlocks
 
 
 object VDBlocks {
@@ -121,8 +121,8 @@ object VDBlocks {
     // endregion
 
     fun init() {
-        ModBlockEntityTypes.COOKING_POT.get().addSupportedBlock(NETHERITE_COOKING_POT)
-        ModBlockEntityTypes.SKILLET.get().addSupportedBlock(NETHERITE_SKILLET)
+        FDBlockEntityTypes.COOKING_POT.get().addSupportedBlock(NETHERITE_COOKING_POT)
+        FDBlockEntityTypes.SKILLET.get().addSupportedBlock(NETHERITE_SKILLET)
     }
 
     fun register(id: String, block: Block): Block {

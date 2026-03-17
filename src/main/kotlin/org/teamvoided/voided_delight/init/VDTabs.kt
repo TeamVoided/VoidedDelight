@@ -1,7 +1,6 @@
 package org.teamvoided.voided_delight.init
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup
-import net.minecraft.item.ItemConvertible
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
@@ -12,6 +11,8 @@ import org.teamvoided.voided_delight.VDCompat.HAS_DND
 import org.teamvoided.voided_delight.VDCompat.HAS_WHITE_PUMPKINS
 import org.teamvoided.voided_delight.VDCompat.isDev
 import org.teamvoided.voided_delight.VoidedDelight.id
+import org.teamvoided.voided_delight.util.outsource.add
+import org.teamvoided.voided_delight.util.outsource.entries
 import kotlin.jvm.optionals.getOrNull
 
 
@@ -109,9 +110,3 @@ object VDTabs {
 
     fun getKey(itemGroup: ItemGroup): RegistryKey<ItemGroup>? = Registries.ITEM_GROUP.getKey(itemGroup)?.getOrNull()
 }
-
-//TODO Move to Voidlib
-typealias TabBuilder = ItemGroup.ItemStackCollector.(ItemGroup.DisplayParameters) -> Unit
-
-fun ItemGroup.Builder.entries(fn: TabBuilder): ItemGroup.Builder = entries { par, col -> fn.invoke(col, par) }
-fun ItemGroup.ItemStackCollector.add(vararg item: ItemConvertible) = item.forEach(::addItem)

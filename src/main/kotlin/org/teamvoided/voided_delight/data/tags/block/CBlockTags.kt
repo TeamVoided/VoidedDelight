@@ -1,4 +1,4 @@
-package org.teamvoided.voided_delight.data.tags
+package org.teamvoided.voided_delight.data.tags.block
 
 import net.minecraft.block.Block
 import net.minecraft.registry.RegistryKeys

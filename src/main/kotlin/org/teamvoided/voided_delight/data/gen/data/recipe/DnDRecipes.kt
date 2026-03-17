@@ -93,6 +93,7 @@ fun dnd(e: RecipeExporter) {
     e.make2x2(VDBlocks.PALE_PUMPKIN_PIE, VDItems.PALE_PUMPKIN_PIE_SLICE, 1, "_from_slices")
     // endregion
 
+    // region Golden Beetroot
     ShapelessRecipeJsonFactory.create(RecipeCategory.FOOD, VDItems.GOLDEN_BEETROOT_SOUP)
         .ingredient(Items.BOWL)
         .ingredient(DnDItems.GOLDEN_BEETROOT, 6)
@@ -115,5 +116,6 @@ fun dnd(e: RecipeExporter) {
         "golden_beetroot_from_golden_beetroot_crate",
         "golden_beetroot"
     )
+    // endregion
 }
 

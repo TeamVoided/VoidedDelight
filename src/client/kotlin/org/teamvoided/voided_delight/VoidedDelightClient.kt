@@ -16,7 +16,6 @@ import org.teamvoided.voided_delight.init.VDItems
 import org.teamvoided.voided_delight.init.VDSkulls
 import org.teamvoided.voided_delight.render.entity.SkilletonEntityRenderer
 import vectorwing.farmersdelight.client.renderer.SkilletItemRenderer
-import vectorwing.farmersdelight.common.registry.ModBlocks
 import vectorwing.farmersdelight.common.registry.ModDataComponents.SKILLET_INGREDIENT
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap.INSTANCE as BlockLayerMap
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry.register as registerRenderer
@@ -34,7 +33,7 @@ object VoidedDelightClient {
     fun init() {
         BlockLayerMap.putBlocks(
             RenderLayer.getCutout(),
-            VDBlocks.NETHERITE_COOKING_POT, VDBlocks.NETHERITE_SKILLET, ModBlocks.SKILLET.get()
+            VDBlocks.NETHERITE_COOKING_POT, VDBlocks.NETHERITE_SKILLET, FDBlocks.SKILLET.get()
         )
 
         registerRenderer(VDEntityTypes.SKILLETON, ::SkilletonEntityRenderer)

@@ -22,14 +22,13 @@ import net.minecraft.util.random.RandomGenerator
 import net.minecraft.world.LocalDifficulty
 import net.minecraft.world.ServerWorldAccess
 import net.minecraft.world.World
+import org.teamvoided.voided_delight.FDItems
 import org.teamvoided.voided_delight.VoidedDelight.config
 import org.teamvoided.voided_delight.init.VDItems
-import vectorwing.farmersdelight.common.registry.ModItems
 import vectorwing.farmersdelight.common.registry.ModSounds
 
 class SkilletonEntity(entityType: EntityType<out SkilletonEntity>, world: World) :
     AbstractSkeletonEntity(entityType, world) {
-
 
     @Override
     @Suppress("unused")
@@ -51,10 +50,10 @@ class SkilletonEntity(entityType: EntityType<out SkilletonEntity>, world: World)
     override fun initEquipment(random: RandomGenerator, difficulty: LocalDifficulty) {
         super.initEquipment(random, difficulty)
         if ((random.nextInt(10) - (difficulty.clampedLocalDifficulty * 3)) > 1) {
-            equipStack(EquipmentSlot.MAINHAND, ItemStack(ModItems.SKILLET.get()))
+            equipStack(EquipmentSlot.MAINHAND, ItemStack(FDItems.SKILLET.get()))
         }
         if (random.nextInt(25) == 0) {
-            equipStack(EquipmentSlot.HEAD, ItemStack(ModItems.SKILLET.get()))
+            equipStack(EquipmentSlot.HEAD, ItemStack(FDItems.SKILLET.get()))
         }
     }
 
@@ -89,7 +88,7 @@ class SkilletonEntity(entityType: EntityType<out SkilletonEntity>, world: World)
 
     override fun writeCustomDataToNbt(nbt: NbtCompound) {
         super.writeCustomDataToNbt(nbt)
-        nbt.putBoolean(N_KEY, isNetherite())
+        if (isNetherite()) nbt.putBoolean(N_KEY, isNetherite())
     }
 
 

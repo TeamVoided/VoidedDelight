@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier
 import org.teamvoided.voided_delight.VoidedDelight.MODID
 import org.teamvoided.voided_delight.VoidedDelight.fd
 import org.teamvoided.voided_delight.VoidedDelight.id
-import org.teamvoided.voided_delight.data.tags.FDItemTags
+import org.teamvoided.voided_delight.data.tags.item.FDItemTags
 import org.teamvoided.voided_delight.init.VDEntityTypes
 import org.teamvoided.voided_delight.init.VDItems
 import java.util.concurrent.CompletableFuture

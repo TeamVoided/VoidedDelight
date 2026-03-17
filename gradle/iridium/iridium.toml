@@ -1,6 +1,6 @@
 projectTitle = "Voided Delight"
 modId = "voided_delight"
-modVersion = "1.0.0-beta.4"
+modVersion = "1.0.0"
 group = "org.teamvoided"
 githubRepo = "Teamvoided/VoidedDelight"
 discordServerInviteId = "KZ5Q364hEg"
@@ -8,7 +8,7 @@ authors = [ "TheEnderCore" ]
 majorMinecraftVersion = ">=1.21"
 minecraftVersion = "1.21.1"
 fabricLoaderVersion = "0.17.3"
-fabricApiVersion = "0.116.7+1.21.1"
+fabricApiVersion = "0.116.9+1.21.1"
 fabricLangKotlinVersion = "1.13.7+kotlin.2.2.21"
 license = "MIT"
 modules = [ ]

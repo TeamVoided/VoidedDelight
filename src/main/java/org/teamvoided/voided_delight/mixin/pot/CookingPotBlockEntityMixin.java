@@ -13,7 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.teamvoided.voided_delight.data.tags.FDItemTags;
+import org.teamvoided.voided_delight.data.tags.item.FDItemTags;
 import vectorwing.farmersdelight.common.block.entity.CookingPotBlockEntity;
 
 import static org.teamvoided.voided_delight.util.MixinHelpersKt.getPotCookingTimeModifier;

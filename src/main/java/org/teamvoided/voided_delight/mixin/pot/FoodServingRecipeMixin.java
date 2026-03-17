@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.teamvoided.voided_delight.data.tags.FDItemTags;
+import org.teamvoided.voided_delight.data.tags.item.FDItemTags;
 import vectorwing.farmersdelight.common.crafting.FoodServingRecipe;
 
 

@@ -8,14 +8,14 @@ import net.minecraft.block.StairsBlock
 import net.minecraft.block.WallBlock
 import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.tag.BlockTags
-import org.teamvoided.voided_delight.data.tags.CBlockTags
-import org.teamvoided.voided_delight.data.tags.FDBlockTags
+import org.teamvoided.voided_delight.FDBlocks
+import org.teamvoided.voided_delight.FDTags
+import org.teamvoided.voided_delight.data.tags.block.CBlockTags
+import org.teamvoided.voided_delight.data.tags.block.FDBlockTags
 import org.teamvoided.voided_delight.init.VDBlocks
 import org.teamvoided.voided_delight.util.*
 import vectorwing.farmersdelight.common.tag.CommonTags
-import vectorwing.farmersdelight.common.tag.ModTags
 import java.util.concurrent.CompletableFuture
-import vectorwing.farmersdelight.common.registry.ModBlocks as FDBlocks
 
 class BlockTagProvider(output: FabricDataOutput, completableFuture: CompletableFuture<HolderLookup.Provider>) :
     FabricTagProvider.BlockTagProvider(output, completableFuture) {
@@ -72,7 +72,7 @@ class BlockTagProvider(output: FabricDataOutput, completableFuture: CompletableF
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).addAll(SHOVEL_MINEABLE)
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).addAll(HOE_MINEABLE)
 
-        getOrCreateTagBuilder(ModTags.MINEABLE_WITH_KNIFE).addAll(KNIFE_MINEABLE)
+        getOrCreateTagBuilder(FDTags.MINEABLE_WITH_KNIFE).addAll(KNIFE_MINEABLE)
         getOrCreateTagBuilder(CommonTags.MINEABLE_WITH_KNIFE).addAll(KNIFE_MINEABLE)
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).addAll(NEEDS_STONE)

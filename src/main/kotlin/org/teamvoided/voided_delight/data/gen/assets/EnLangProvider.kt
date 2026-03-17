@@ -4,20 +4,19 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityType
-import net.minecraft.entity.decoration.painting.PaintingVariant
 import net.minecraft.item.Item
 import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.Registries
-import net.minecraft.registry.RegistryKey
 import net.minecraft.util.Identifier
 import org.teamvoided.voided_delight.data.VDPaintingVariants
 import org.teamvoided.voided_delight.data.gen.data.AdvancementGenerator.Companion.COOKED_TOO_LONG
 import org.teamvoided.voided_delight.data.gen.data.AdvancementGenerator.Companion.SKILLET_ISSUE
-import org.teamvoided.voided_delight.data.gen.data.AdvancementGenerator.Companion.tKey
-import org.teamvoided.voided_delight.data.tags.VDItemTags
+import org.teamvoided.voided_delight.data.tags.item.VDItemTags
 import org.teamvoided.voided_delight.init.VDEntityTypes
 import org.teamvoided.voided_delight.init.VDItems
 import org.teamvoided.voided_delight.init.VDTabs
+import org.teamvoided.voided_delight.util.outsource.add
+import org.teamvoided.voided_delight.util.outsource.addAdvancement
 import java.util.concurrent.CompletableFuture
 
 class EnLangProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>) :
@@ -41,28 +40,14 @@ class EnLangProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Prov
             if (lang.contains(" Block")) {
                 return lang.removeSuffix(" Block")
             }
-
             return "Bowl of $lang"
         }
-
         return lang
     }
 
     val Item.id get() = Registries.ITEM.getId(this)
     val Block.id get() = Registries.BLOCK.getId(this)
     val EntityType<*>.id get() = Registries.ENTITY_TYPE.getId(this)
-}
-
-fun FabricLanguageProvider.TranslationBuilder.add(
-    painting: RegistryKey<PaintingVariant>, title: String, author: String,
-) {
-    add(painting.value.toTranslationKey("painting", "title"), title)
-    add(painting.value.toTranslationKey("painting", "author"), author)
-}
-
-fun FabricLanguageProvider.TranslationBuilder.addAdvancement(name: String, title: String, description: String) {
-    add(tKey("advancement.$name"), title)
-    add(tKey("advancement.$name.desc"), description)
 }
 
 
